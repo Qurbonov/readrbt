@@ -1,0 +1,97 @@
+[
+  {
+    "etp_id": 2,
+    "request_id": 1,
+    "method_name": "RESULTAT",
+    "payload": {
+      "lotid": 20201008000001,
+      "proc_id": 1,
+      "lotdate1": "17102019",
+      "lotdate2": "17112019",
+      "contractnum": "02-128/39,д/с2",
+      "contractdat": "17112019",
+      "dvr": 1,
+      "organ": "00000000244",
+      "inn": "203462011",
+      "ls": "100010860262807092100075002",
+      "vendorname": "инфо-техсервис",
+      "vendorbank": "01115",
+      "vendoracc": "20210000200190664001",
+      "vendorinn": "200605317",
+      "maloy": "n",
+      "payload_SUMMA": 11200000000,
+      "sumnds": 0,
+      "srok": 90,
+      "payload_AVANS": 1120000000,
+      "avansday": 15,
+      "contractbeg": "20112019",
+      "contractend": "31122019",
+      "purpose": "косметический ремонт",
+      "vendorterr": "26266",
+      "finsrc": {
+        "finsrc_NPOS": 1,
+        "finsrc_KLS": "100010860262807092100075001",
+        "bankcode": "00014",
+        "bankacc": "20001086026280709210",
+        "finsrc_SUMMA": 50000000,
+        "finsrc_AVANS": 7500000
+      },
+      "specifications": {
+        "finyear": 2020,
+        "kls": "100010860262807092100075001",
+        "npos": 1,
+        "tovar": "010173",
+        "tovarname": "текущий ремонт класса",
+        "tovarnote": "покраска стен, потолка, пола",
+        "tovaredizm": "сум",
+        "tovaramount": 50000000,
+        "tovarprice": 50000000,
+        "tovarsumma": 50000000,
+        "expense": "44239000",
+        "note": {
+          "marka": "принтер",
+          "techspec": "мфу 3в1 canoni-sensysmf411dw",
+          "manufacturer": "canon",
+          "country": "cn",
+          "garant": "01122020",
+          "godizg": "01102019",
+          "srokgod": "01102025",
+          "license": "897541/4587-2016"
+        },
+        "split": {
+          "month": 1,
+          "split_TOVARAMOUNT": 1
+        },
+        "properties": {
+          "numb": 1,
+          "prop_name": "влажность",
+          "val_numb": 1,
+          "val_name": "10%"
+        }
+      },
+      "grafics": {
+        "finyear": 2019,
+        "month": 10,
+        "kls": "100010860262807092100075001",
+        "tovarsumma": 5000000,
+        "expense": "44239000",
+        "avans": 500000
+      },
+      "links": {
+        "filename": "заключения минстроя",
+        "linkdoc": "tender.mf.uz/docs_id"
+      },
+      "beneficiar": "касымов улмас кадырович",
+      "raschot": 10,
+      "reestr_id": 123,
+      "pnfl": "123",
+      "vendorcountry": "123",
+      "vendorforiegin": "123",
+      "vendorinfo": "123",
+      "vendorkls": "100021860262667095100054001",
+      "gen_id": 123,
+      "contract_id": 405892,
+      "version": 2
+    }
+  }
+]
