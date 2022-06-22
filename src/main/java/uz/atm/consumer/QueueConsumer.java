@@ -7,6 +7,7 @@ import com.google.gson.Gson;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.stereotype.Component;
+import uz.atm.model.resultat.ResultatMethod;
 import uz.atm.services.RbtMsgsService;
 
 import java.io.IOException;
@@ -20,7 +21,7 @@ public class QueueConsumer {
 	ResultatMethod resultatMethod = null;
 	Gson gson = new Gson();
 
-	@RabbitListener(queues = {"${queue.name}"})
+//	@RabbitListener(queues = {"${queue.name}"})
 	public void receive(@Payload String fileBody) throws IOException
 	{
 //		String formattedStr = fileBody.trim();
