@@ -1,4 +1,4 @@
-package uz.atm.model;
+package uz.atm.model.resultat;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

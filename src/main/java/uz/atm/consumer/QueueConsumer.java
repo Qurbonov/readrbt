@@ -7,7 +7,6 @@ import com.google.gson.Gson;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.stereotype.Component;
-import uz.atm.model.ResultatMethod;
 import uz.atm.services.RbtMsgsService;
 
 import java.io.IOException;

@@ -5,7 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import uz.sh.jsonparsetest.entity.resultat.SPECIFICATIONS;
+import uz.atm.model.resultat.SPECIFICATIONS;
 
 import javax.persistence.*;
 import java.util.List;

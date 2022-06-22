@@ -2,7 +2,7 @@ package uz.atm.model.requestEtp;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
-import uz.sh.jsonparsetest.entity.resultat.SPECIFICATIONS;
+import uz.atm.model.resultat.SPECIFICATIONS;
 
 import javax.persistence.*;
 import java.util.List;

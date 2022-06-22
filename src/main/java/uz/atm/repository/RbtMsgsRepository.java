@@ -1,6 +1,7 @@
 package uz.atm.repository;
 
 import org.springframework.data.repository.CrudRepository;
-import uz.atm.model.ResultatMethod;
+import uz.atm.model.resultat.ResultatMethod;
 
-public interface RbtMsgsRepository extends CrudRepository<ResultatMethod, Long> {}
+public interface RbtMsgsRepository extends CrudRepository<ResultatMethod, Long> {
+}
