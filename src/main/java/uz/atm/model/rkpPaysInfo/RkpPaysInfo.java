@@ -5,6 +5,7 @@ import lombok.*;
 import uz.atm.model.successInfo.SuccessInfo;
 
 import javax.persistence.*;
+import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -26,43 +27,7 @@ public class RkpPaysInfo {
     private String methodName;
 
     @JsonProperty("PAYLOAD")
-    @Embedded
-    private Payload payload;
-    @Embeddable
-    @Data
-    private static class Payload{
-        @JsonProperty("PAYID")
-        private long payId;
-
-        @JsonProperty("ID")
-        private long id;
-
-        @JsonProperty("LOTID")
-        private Long lotId;
-
-        @JsonProperty("OPERDAY")
-        private String operDay;
-
-        @JsonProperty("DOCNUMB")
-        private String docNumb;
-
-        @JsonProperty("DOCDATE")
-        private String docDate;
-
-        @JsonProperty("ACC")
-        private String acc;
-
-        @JsonProperty("SUMPAY")
-        private double sumPay;
-
-        @JsonProperty("CONTRACT")
-        private long contract;
-
-        @JsonProperty("STATE")
-        private int state;
-
-        @JsonProperty("ERRMSG")
-        private String errMsg;
-    }
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<Payload> payload;
 
 }
