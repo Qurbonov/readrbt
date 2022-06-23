@@ -18,11 +18,14 @@ public class RequestEtp {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @JsonProperty("RESPONSE_ID")
-    private Long responseId;
+    @JsonProperty("ETP_ID")
+    private Long etpId;
 
     @JsonProperty("REQUEST_ID")
     private Long requestId;
+
+    @JsonProperty("METHOD_NAME")
+    private String methodName;
 
     @JsonProperty("PAYLOAD")
     @Embedded
@@ -55,7 +58,7 @@ public class RequestEtp {
         private Integer month;
 
         @JsonProperty("SPECIFICATIONS")
-        @OneToMany
+        @OneToMany(cascade = CascadeType.ALL)
         private List<SPECIFICATIONS> specifications;
     }
 

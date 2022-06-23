@@ -10,11 +10,10 @@ import uz.atm.model.General;
 import uz.atm.model.contactInfo.ContractInfo;
 import uz.atm.model.errorInfo.ErrorInfo;
 import uz.atm.model.facturaInfo.FacturaInfo;
+import uz.atm.model.requestEtp.RequestEtp;
 import uz.atm.model.resultat.ResultatMethod;
-import uz.atm.repository.ContractInfoRepository;
-import uz.atm.repository.ErrorInfoRepository;
-import uz.atm.repository.FacturalInfoRepository;
-import uz.atm.repository.ResultatMethodRepository;
+import uz.atm.model.rkpEnd.RkpEnd;
+import uz.atm.repository.*;
 
 @Service
 public class GeneralService {
@@ -23,12 +22,16 @@ public class GeneralService {
     private final ContractInfoRepository contractInfoRepository;
     private final ErrorInfoRepository errorInfoRepository;
     private final FacturalInfoRepository facturalInfoRepository;
+    private final RequestEtpRepository requestEtpRepository;
+    private final RkpEndRepository rkpEndRepository;
 
-    public GeneralService(ResultatMethodRepository resultatMethodRepository, ContractInfoRepository contractInfoRepository, ErrorInfoRepository errorInfoRepository, FacturalInfoRepository facturalInfoRepository) {
+    public GeneralService(ResultatMethodRepository resultatMethodRepository, ContractInfoRepository contractInfoRepository, ErrorInfoRepository errorInfoRepository, FacturalInfoRepository facturalInfoRepository, RequestEtpRepository requestEtpRepository, RkpEndRepository rkpEndRepository) {
         this.resultatMethodRepository = resultatMethodRepository;
         this.contractInfoRepository = contractInfoRepository;
         this.errorInfoRepository = errorInfoRepository;
         this.facturalInfoRepository = facturalInfoRepository;
+        this.requestEtpRepository = requestEtpRepository;
+        this.rkpEndRepository = rkpEndRepository;
     }
 
     public void parse(String str) throws JsonProcessingException {
@@ -44,7 +47,23 @@ public class GeneralService {
             this.errorInfoMethod(str);
         } else if (methodName.equals(Methods.FACTURA_INFO.toString())) {
             this.facturalInfomethod(str);
+        } else if (methodName.equals(Methods.REQUEST_ETP.toString())) {
+            this.requestEtpMethod(str);
+        } else if (methodName.equals(Methods.RKP_END.toString())) {
+            this.rkpEndMethod(str);
         }
+    }
+
+    private void rkpEndMethod(String json) throws JsonProcessingException {
+        RkpEnd rkpEnd = mapper.readValue(json, new TypeReference<RkpEnd>() {
+        });
+        RkpEnd save = rkpEndRepository.save(rkpEnd);
+    }
+
+    private void requestEtpMethod(String json) throws JsonProcessingException {
+        RequestEtp requestEtp = mapper.readValue(json, new TypeReference<RequestEtp>() {
+        });
+        RequestEtp save = requestEtpRepository.save(requestEtp);
     }
 
     private void facturalInfomethod(String json) throws JsonProcessingException {
