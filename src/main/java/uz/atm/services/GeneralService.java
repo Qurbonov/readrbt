@@ -15,6 +15,8 @@ import uz.atm.model.resultat.ResultatMethod;
 import uz.atm.model.rkpEnd.RkpEnd;
 import uz.atm.repository.*;
 
+import java.util.Objects;
+
 @Service
 public class GeneralService {
     private final ObjectMapper mapper = new ObjectMapper();
@@ -36,22 +38,24 @@ public class GeneralService {
 
     public void parse(String str) throws JsonProcessingException {
         General general = new Gson().fromJson(str, General.class);
-
-        String methodName = general.getMETHOD_NAME();
-
-        if (methodName.equals(Methods.RESULTAT.toString())) {
-            this.resultatMethod(str);
-        } else if (methodName.equals(Methods.CONTRACT_INFO.toString())) {
-            this.contractInfo(str);
-        } else if (methodName.equals(Methods.ERROR_INFO.toString())) {
-            this.errorInfoMethod(str);
-        } else if (methodName.equals(Methods.FACTURA_INFO.toString())) {
-            this.facturalInfomethod(str);
-        } else if (methodName.equals(Methods.REQUEST_ETP.toString())) {
-            this.requestEtpMethod(str);
-        } else if (methodName.equals(Methods.RKP_END.toString())) {
-            this.rkpEndMethod(str);
+        if (Objects.nonNull(general.getMETHOD_NAME())) {
+            String methodName = general.getMETHOD_NAME();
+           /* if (methodName.equals(Methods.RESULTAT.toString())) {
+                this.resultatMethod(str);
+            } else*/ if (methodName.equals(Methods.CONTRACT_INFO.toString())) {
+                this.contractInfo(str);
+            } else if (methodName.equals(Methods.ERROR_INFO.toString())) {
+                this.errorInfoMethod(str);
+            } else if (methodName.equals(Methods.FACTURA_INFO.toString())) {
+                this.facturalInfomethod(str);
+            } else if (methodName.equals(Methods.REQUEST_ETP.toString())) {
+                this.requestEtpMethod(str);
+            } else if (methodName.equals(Methods.RKP_END.toString())) {
+                this.rkpEndMethod(str);
+            }
         }
+
+
     }
 
     private void rkpEndMethod(String json) throws JsonProcessingException {
