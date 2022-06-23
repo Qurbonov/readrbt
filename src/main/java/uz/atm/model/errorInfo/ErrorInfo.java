@@ -25,6 +25,9 @@ public class ErrorInfo {
     @JsonProperty("REQUEST_ID_PARENT")
     private Long requestIdParent;
 
+    @JsonProperty("METHOD_NAME")
+    private String methodName;
+
     @JsonProperty("PAYLOAD")
     @Embedded
     private ErrorPayload payload;
