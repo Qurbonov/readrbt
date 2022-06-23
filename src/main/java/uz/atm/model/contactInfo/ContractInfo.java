@@ -22,6 +22,9 @@ public class ContractInfo {
     @JsonProperty("REQUEST_ID")
     private Long requestId;
 
+    @JsonProperty("METHOD_NAME")
+    private String methodName;
+
     @JsonProperty("PAYLOAD")
     @Embedded
     private ContactInfoPayload payload;

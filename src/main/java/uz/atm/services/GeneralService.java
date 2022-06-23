@@ -7,16 +7,20 @@ import com.google.gson.Gson;
 import org.springframework.stereotype.Service;
 import uz.atm.enums.Methods;
 import uz.atm.model.General;
+import uz.atm.model.contactInfo.ContractInfo;
 import uz.atm.model.resultat.ResultatMethod;
+import uz.atm.repository.ContractInfoRepository;
 import uz.atm.repository.ResultatMethodRepository;
 
 @Service
 public class GeneralService {
     private final ObjectMapper mapper = new ObjectMapper();
     private final ResultatMethodRepository resultatMethodRepository;
+    private final ContractInfoRepository contractInfoRepository;
 
-    public GeneralService(ResultatMethodRepository resultatMethodRepository) {
+    public GeneralService(ResultatMethodRepository resultatMethodRepository, ContractInfoRepository contractInfoRepository) {
         this.resultatMethodRepository = resultatMethodRepository;
+        this.contractInfoRepository = contractInfoRepository;
     }
 
     public void parse(String str) throws JsonProcessingException {
@@ -26,6 +30,8 @@ public class GeneralService {
 
         if (methodName.equals(Methods.RESULTAT.toString())) {
             this.resultatMethod(str);
+        } else if (methodName.equals(Methods.CONTRACT_INFO.toString())) {
+            this.contractInfo(str);
         }
     }
 
@@ -33,5 +39,11 @@ public class GeneralService {
         ResultatMethod resultatMethod = mapper.readValue(json, new TypeReference<ResultatMethod>() {
         });
         ResultatMethod save = resultatMethodRepository.save(resultatMethod);
+    }
+
+    private void contractInfo(String json) throws JsonProcessingException {
+        ContractInfo contractInfo = mapper.readValue(json, new TypeReference<ContractInfo>() {
+        });
+        ContractInfo save = contractInfoRepository.save(contractInfo);
     }
 }
