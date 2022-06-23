@@ -9,9 +9,11 @@ import uz.atm.enums.Methods;
 import uz.atm.model.General;
 import uz.atm.model.contactInfo.ContractInfo;
 import uz.atm.model.errorInfo.ErrorInfo;
+import uz.atm.model.facturaInfo.FacturaInfo;
 import uz.atm.model.resultat.ResultatMethod;
 import uz.atm.repository.ContractInfoRepository;
 import uz.atm.repository.ErrorInfoRepository;
+import uz.atm.repository.FacturalInfoRepository;
 import uz.atm.repository.ResultatMethodRepository;
 
 @Service
@@ -20,11 +22,13 @@ public class GeneralService {
     private final ResultatMethodRepository resultatMethodRepository;
     private final ContractInfoRepository contractInfoRepository;
     private final ErrorInfoRepository errorInfoRepository;
+    private final FacturalInfoRepository facturalInfoRepository;
 
-    public GeneralService(ResultatMethodRepository resultatMethodRepository, ContractInfoRepository contractInfoRepository, ErrorInfoRepository errorInfoRepository) {
+    public GeneralService(ResultatMethodRepository resultatMethodRepository, ContractInfoRepository contractInfoRepository, ErrorInfoRepository errorInfoRepository, FacturalInfoRepository facturalInfoRepository) {
         this.resultatMethodRepository = resultatMethodRepository;
         this.contractInfoRepository = contractInfoRepository;
         this.errorInfoRepository = errorInfoRepository;
+        this.facturalInfoRepository = facturalInfoRepository;
     }
 
     public void parse(String str) throws JsonProcessingException {
@@ -38,8 +42,17 @@ public class GeneralService {
             this.contractInfo(str);
         } else if (methodName.equals(Methods.ERROR_INFO.toString())) {
             this.errorInfoMethod(str);
+        } else if (methodName.equals(Methods.FACTURA_INFO.toString())) {
+            this.facturalInfomethod(str);
         }
     }
+
+    private void facturalInfomethod(String json) throws JsonProcessingException {
+        FacturaInfo facturalInfo = mapper.readValue(json, new TypeReference<FacturaInfo>() {
+        });
+        FacturaInfo save = facturalInfoRepository.save(facturalInfo);
+    }
+
 
     private void resultatMethod(String json) throws JsonProcessingException {
         ResultatMethod resultatMethod = mapper.readValue(json, new TypeReference<ResultatMethod>() {
@@ -58,4 +71,5 @@ public class GeneralService {
         });
         ErrorInfo save = errorInfoRepository.save(errorInfo);
     }
+
 }

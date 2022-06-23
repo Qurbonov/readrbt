@@ -23,6 +23,9 @@ public class FacturaInfo {
     @JsonProperty("REQUEST_ID")
     private Long requestId;
 
+    @JsonProperty("METHOD_NAME")
+    private String methodName;
+
     @JsonProperty("PAYLOAD")
     @Embedded
     private FacturaInfoInfoPayload payload;
@@ -30,13 +33,15 @@ public class FacturaInfo {
 
     @Data
     @Embeddable
+    @AllArgsConstructor
+    @NoArgsConstructor
     static class FacturaInfoInfoPayload {
 
         @JsonProperty("COUNTS")
         private Integer counts;
 
         @JsonProperty("RECORDS")
-        @OneToMany
+        @OneToMany(cascade = CascadeType.ALL)
         private List<Records> records;
     }
 

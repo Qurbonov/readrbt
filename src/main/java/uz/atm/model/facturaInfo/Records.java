@@ -61,7 +61,7 @@ public class Records {
     private Long genId;
 
     @JsonProperty("SPECIFICATIONS")
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL)
     private List<SPECIFICATIONS> specifications;
 
 
