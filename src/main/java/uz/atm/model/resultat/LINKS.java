@@ -21,6 +21,7 @@ class LINKS {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
+	@JsonProperty("FILENAME")
 	private String FILENAME;
 	@JsonProperty("LINKDOC")
 	private String linkdoc;

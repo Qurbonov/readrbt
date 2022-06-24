@@ -14,41 +14,46 @@ import java.util.List;
 @Entity
 @NoArgsConstructor
 public class SPECIFICATIONS {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    @JsonProperty("FINYEAR")
-    private int FINYEAR;
-    @JsonProperty("KLS")
-    private String KLS;
-    @JsonProperty("NPOS")
-    private int NPOS;
-    @JsonProperty("TOVAR")
-    private String TOVAR;
-    @JsonProperty("TOVARNAME")
-    private String TOVARNAME;
-    @JsonProperty("TOVARNOTE")
-    private String TOVARNOTE;
-    @JsonProperty("TOVAREDIZM")
-    private String TOVAREDIZM;
-    @JsonProperty("TOVARAMOUNT")
-    private Long TOVARAMOUNT;
-    @JsonProperty("TOVARPRICE")
-    private Long TOVARPRICE;
-    @JsonProperty("TOVARSUMMA")
-    private Long TOVARSUMMA;
-    @JsonProperty("EXPENSE")
-    private Long EXPENSE;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
+	@JsonProperty("FINYEAR")
+	private int FINYEAR;
+	@JsonProperty("KLS")
+	private String KLS;
+	@JsonProperty("NPOS")
+	private int NPOS;
+	@JsonProperty("TOVAR")
+	private String TOVAR;
+	@JsonProperty("TOVARNAME")
+	private String TOVARNAME;
+	@JsonProperty("TOVARNOTE")
+	private String TOVARNOTE;
+	@JsonProperty("TOVAREDIZM")
+	private String TOVAREDIZM;
+	@JsonProperty("TOVARAMOUNT")
+	private Long TOVARAMOUNT;
+	@JsonProperty("TOVARPRICE")
+	private Long TOVARPRICE;
+	@JsonProperty("TOVARSUMMA")
+	private Long TOVARSUMMA;
+	@JsonProperty("EXPENSE")
+	private Long EXPENSE;
 
-    //    @Embedded
-    @JsonProperty("NOTE")
-    private String NOTE;
+	//    @Embedded
+//	@JsonProperty("NOTE")
+//	@OneToMany(cascade = CascadeType.ALL)
+//	private List<NOTE> NOTE;
 
-    @OneToMany(cascade = CascadeType.ALL)
-    @JsonProperty("SPLIT")
-    private List<SPLIT> split;
+	@JsonProperty("NOTE")
+//	@OneToMany(cascade = CascadeType.ALL)
+	private String NOTE;
 
-    @OneToMany(cascade = CascadeType.ALL)
-    @JsonProperty("PROPERTIES")
-    private List<PROPERTIES> properties;
+	@OneToMany(cascade = CascadeType.ALL)
+	@JsonProperty("SPLIT")
+	private List<SPLIT> split;
+
+	@OneToMany(cascade = CascadeType.ALL)
+	@JsonProperty("PROPERTIES")
+	private List<PROPERTIES> properties;
 }

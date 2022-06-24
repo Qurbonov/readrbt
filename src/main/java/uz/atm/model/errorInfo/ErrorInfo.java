@@ -12,35 +12,36 @@ import javax.persistence.*;
 @Setter
 public class ErrorInfo {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
 
-    @JsonProperty("REQUEST_ID")
-    private Long requestId;
+	@JsonProperty("REQUEST_ID")
+	private Long requestId;
 
-    @JsonProperty("RESPONSE_ID_PARENT")
-    private Long responseIdParent;
+	@JsonProperty("RESPONSE_ID_PARENT")
+	private Long responseIdParent;
 
-    @JsonProperty("REQUEST_ID_PARENT")
-    private Long requestIdParent;
+	@JsonProperty("REQUEST_ID_PARENT")
+	private Long requestIdParent;
 
-    @JsonProperty("METHOD_NAME")
-    private String methodName;
+	@JsonProperty("METHOD_NAME")
+	private String methodName;
 
-    @JsonProperty("PAYLOAD")
-    @Embedded
-    private ErrorPayload payload;
+	@JsonProperty("PAYLOAD")
+	@Embedded
+	private ErrorPayload payload;
 
-    @Data
-    @Embeddable
-    static class ErrorPayload {
+	@Data
+	@Embeddable
+	static class ErrorPayload {
 
-        @JsonProperty("LOTID")
-        private Long lotId;
+		@JsonProperty("LOTID")
+		private Long lotId;
 
-        @JsonProperty("ERRTXT")
-        private String errTxt;
+		@JsonProperty("ERRTXT")
+		@Column(columnDefinition = "TEXT")
+		private String errTxt;
 
-    }
+	}
 }

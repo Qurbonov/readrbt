@@ -30,7 +30,7 @@ class FINSRC {
 	private String BANKACC;
 	@Column(name = "f_summa")
 	@JsonProperty("SUMMA")
-	private int SUMMA;
+	private Long SUMMA;
 	@Column(name = "f_avans")
 	@JsonProperty("AVANS")
 	private String AVANS;

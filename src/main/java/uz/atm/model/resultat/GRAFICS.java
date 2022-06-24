@@ -29,11 +29,11 @@ class GRAFICS {
 	private String kls;
 	@JsonProperty("TOVARSUMMA")
 	@Column(name = "g_tovarsumma")
-	private int tovarsumma;
+	private Long tovarsumma;
 	@JsonProperty("EXPENSE")
 	@Column(name = "g_expense")
 	private int expense;
-//	@JsonProperty("AVANS")
-//	@Column(name = "g_avans")
-//	private int avans;
+	@JsonProperty("AVANS")
+	@Column(name = "g_avans")
+	private Long avans;
 }

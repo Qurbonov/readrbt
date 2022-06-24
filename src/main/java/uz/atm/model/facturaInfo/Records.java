@@ -17,52 +17,52 @@ import java.util.List;
 @Setter
 public class Records {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
 
-    @JsonProperty("INVOICEID")
-    private Long invoiceId;
+	@JsonProperty("INVOICEID")
+	private Long invoiceId;
 
-    @JsonProperty("LOTID")
-    private Long lotId;
+	@JsonProperty("LOTID")
+	private Long lotId;
 
-    @JsonProperty("CONTRACT")
-    private Long contract;
+	@JsonProperty("CONTRACT")
+	private Long contract;
 
-    @JsonProperty("KLS")
-    private String kls;
+	@JsonProperty("KLS")
+	private String kls;
 
-    @JsonProperty("NUMBINVOICE")
-    private Long numbInvoice;
+	@JsonProperty("NUMBINVOICE")
+	private String numbInvoice;
 
-    @JsonProperty("DATEINVOICE")
-    private String dateInvoice;
+	@JsonProperty("DATEINVOICE")
+	private String dateInvoice;
 
-    @JsonProperty("CONAME")
-    private String coName;
+	@JsonProperty("CONAME")
+	private String coName;
 
-    @JsonProperty("COINN")
-    private String coINN;
+	@JsonProperty("COINN")
+	private String coINN;
 
-    @JsonProperty("DATEDOC")
-    private String dateDoc;
+	@JsonProperty("DATEDOC")
+	private String dateDoc;
 
-    @JsonProperty("SUMPAY")
-    private Long sumPay;
+	@JsonProperty("SUMPAY")
+	private Long sumPay;
 
-    @JsonProperty("NAMEWARRANT")
-    private String nameWarrant;
+	@JsonProperty("NAMEWARRANT")
+	private String nameWarrant;
 
-    @JsonProperty("STATE")
-    private Integer state;
+	@JsonProperty("STATE")
+	private Integer state;
 
-    @JsonProperty("GEN_ID")
-    private Long genId;
+	@JsonProperty("GEN_ID")
+	private Long genId;
 
-    @JsonProperty("SPECIFICATIONS")
-    @OneToMany(cascade = CascadeType.ALL)
-    private List<SPECIFICATIONS> specifications;
+	@JsonProperty("SPECIFICATIONS")
+	@OneToMany(cascade = CascadeType.ALL)
+	private List<SPECIFICATIONS> specifications;
 
 
 }
