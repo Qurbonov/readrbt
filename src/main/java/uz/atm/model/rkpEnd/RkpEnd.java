@@ -12,50 +12,49 @@ import javax.persistence.*;
 @Setter
 public class RkpEnd {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
+
+	@JsonProperty("ETP_ID")
+	private Long etpId;
+
+	@JsonProperty("REQUEST_ID")
+	private Long requestId;
+
+	@JsonProperty("METHOD_NAME")
+	private String methodName;
 
 
-    @JsonProperty("ETP_ID")
-    private Long etpId;
+	@JsonProperty("PAYLOAD")
+	@Embedded
+	private RkpEndPayload payload;
 
-    @JsonProperty("REQUEST_ID")
-    private Long requestId;
+	@Embeddable
+	@Data
+	static class RkpEndPayload {
 
-    @JsonProperty("METHOD_NAME")
-    private String methodName;
+		@JsonProperty("LOTID")
+		private Long lotId;
 
+		@JsonProperty("GEN_ID")
+		private Long genId;
 
-    @JsonProperty("PAYLOAD")
-    @Embedded
-    private RkpEndPayload payload;
+		@JsonProperty("ID")
+		private Long rkpEndId;
 
-    @Embeddable
-    @Data
-    static class RkpEndPayload {
+		@JsonProperty("ACTION")
+		private Integer action;
 
-        @JsonProperty("LOTID")
-        private Long lotId;
+		@JsonProperty("STRAF")
+		private String straf;
 
-        @JsonProperty("GEN_ID")
-        private Long genId;
+		@JsonProperty("SITE")
+		private String site;
 
-        @JsonProperty("ID")
-        private Long rkpEndId;
-
-        @JsonProperty("ACTION")
-        private Integer action;
-
-        @JsonProperty("STRAF")
-        private String straf;
-
-        @JsonProperty("SITE")
-        private String site;
-
-        @JsonProperty("MSG")
-        private String msg;
-    }
+		@JsonProperty("MSG")
+		private String msg;
+	}
 
 
 }

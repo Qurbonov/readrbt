@@ -34,5 +34,4 @@ class FINSRC {
 	@Column(name = "f_avans")
 	@JsonProperty("AVANS")
 	private String AVANS;
-
 }

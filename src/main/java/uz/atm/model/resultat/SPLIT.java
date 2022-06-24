@@ -23,4 +23,5 @@ class SPLIT {
 	private int MONTH;
 	@JsonProperty("TOVARAMOUNT")
 	private int TOVARAMOUNT;
+	
 }

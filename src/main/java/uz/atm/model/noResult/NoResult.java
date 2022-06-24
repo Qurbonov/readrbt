@@ -11,33 +11,33 @@ import javax.persistence.*;
 @Setter
 @Entity
 public class NoResult {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private long id;
 
-    @JsonProperty("ETP_ID")
-    private int etpId;
+	@JsonProperty("ETP_ID")
+	private int etpId;
 
-    @JsonProperty("REQUEST_ID")
-    private long requestId;
+	@JsonProperty("REQUEST_ID")
+	private long requestId;
 
-    @JsonProperty("METHOD_NAME")
-    private String methodName;
+	@JsonProperty("METHOD_NAME")
+	private String methodName;
 
-    @JsonProperty("PAYLOAD")
-    @Embedded
-    private Payload payload;
-    @Embeddable
-    @Data
-    private static class Payload{
-        @JsonProperty("LOTID")
-        private Long lotId;
+	@JsonProperty("PAYLOAD")
+	@Embedded
+	private Payload payload;
 
-        @JsonProperty("PROC_ID")
-        private long procId;
+	@Embeddable
+	@Data
+	private static class Payload {
+		@JsonProperty("LOTID")
+		private Long lotId;
 
-        @JsonProperty("PRICH")
-        private long prich;
-    }
+		@JsonProperty("PROC_ID")
+		private long procId;
 
+		@JsonProperty("PRICH")
+		private long prich;
+	}
 }

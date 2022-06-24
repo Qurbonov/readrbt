@@ -101,7 +101,7 @@ public class Payload {
 	@JsonProperty("GRAFICS")
 	@OneToMany(cascade = CascadeType.ALL)
 	private List<GRAFICS> grafics;
-	//    @Embedded
+	
 	@JsonProperty("LINKS")
 	@OneToMany(cascade = CascadeType.ALL)
 	private List<LINKS> links;

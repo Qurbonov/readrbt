@@ -22,7 +22,6 @@ public class ResultatMethod {
 	@Column(name = "etp_id")
 	@JsonProperty("ETP_ID")
 	private int etp_id;
-
 	@JsonProperty("REQUEST_ID")
 	private int request_id;
 

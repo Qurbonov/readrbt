@@ -16,15 +16,15 @@ import javax.persistence.Id;
 @AllArgsConstructor
 @NoArgsConstructor
 class PROPERTIES {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    @JsonProperty("PROP_NUMB")
-    private int propNumb;
-    @JsonProperty("PROP_NAME")
-    private String prop_name;
-    @JsonProperty("VAL_NUMB")
-    private int val_numb;
-    @JsonProperty("VAL_NAME")
-    private String val_name;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
+	@JsonProperty("PROP_NUMB")
+	private int propNumb;
+	@JsonProperty("PROP_NAME")
+	private String prop_name;
+	@JsonProperty("VAL_NUMB")
+	private int val_numb;
+	@JsonProperty("VAL_NAME")
+	private String val_name;
 }

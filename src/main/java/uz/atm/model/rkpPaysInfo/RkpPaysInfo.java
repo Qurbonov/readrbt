@@ -1,8 +1,10 @@
 package uz.atm.model.rkpPaysInfo;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.*;
-import uz.atm.model.successInfo.SuccessInfo;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.List;
@@ -13,21 +15,21 @@ import java.util.List;
 @Setter
 @Entity
 public class RkpPaysInfo {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private long id;
 
-    @JsonProperty("RESPONSE_ID")
-    private long responseId;
+	@JsonProperty("RESPONSE_ID")
+	private long responseId;
 
-    @JsonProperty("REQUEST_ID")
-    private long requestId;
+	@JsonProperty("REQUEST_ID")
+	private long requestId;
 
-    @JsonProperty("METHOD_NAME")
-    private String methodName;
+	@JsonProperty("METHOD_NAME")
+	private String methodName;
 
-    @JsonProperty("PAYLOAD")
-    @OneToMany(cascade = CascadeType.ALL)
-    private List<Payload> payload;
+	@JsonProperty("PAYLOAD")
+	@OneToMany(cascade = CascadeType.ALL)
+	private List<Payload> payload;
 
 }

@@ -11,33 +11,33 @@ import javax.persistence.*;
 @Setter
 @Entity
 public class ResponseAuction {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private long id;
+	@JsonProperty("RESPONSE_ID")
+	private long responseId;
 
-    @JsonProperty("RESPONSE_ID")
-    private long responseId;
+	@JsonProperty("REQUEST_ID")
+	private long requestId;
 
-    @JsonProperty("REQUEST_ID")
-    private long requestId;
+	@JsonProperty("METHOD_NAME")
+	private String methodName;
 
-    @JsonProperty("METHOD_NAME")
-    private String methodName;
+	@JsonProperty("PAYLOAD")
+	@Embedded
+	private Payload payload;
 
-    @JsonProperty("PAYLOAD")
-    @Embedded
-    private Payload payload;
-    @Embeddable
-    @Data
-    private static class Payload{
-        @JsonProperty("LOTID")
-        private Long lotId;
+	@Embeddable
+	@Data
+	private static class Payload {
+		@JsonProperty("LOTID")
+		private Long lotId;
 
-        @JsonProperty("STATE")
-        private int state;
+		@JsonProperty("STATE")
+		private int state;
 
-        @JsonProperty("MSG")
-        private String msg;
-    }
+		@JsonProperty("MSG")
+		private String msg;
+	}
 
 }

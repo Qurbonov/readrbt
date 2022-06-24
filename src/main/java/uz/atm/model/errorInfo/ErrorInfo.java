@@ -35,7 +35,6 @@ public class ErrorInfo {
 	@Data
 	@Embeddable
 	static class ErrorPayload {
-
 		@JsonProperty("LOTID")
 		private Long lotId;
 

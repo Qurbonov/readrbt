@@ -19,7 +19,6 @@ public class NOTE {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-
 	@JsonProperty("MARKA")
 	private String MARKA;
 	@JsonProperty("TECHSPEC")

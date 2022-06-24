@@ -41,7 +41,6 @@ public class Records {
 
 	@JsonProperty("CONAME")
 	private String coName;
-
 	@JsonProperty("COINN")
 	private String coINN;
 

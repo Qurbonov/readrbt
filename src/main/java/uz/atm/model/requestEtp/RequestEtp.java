@@ -13,54 +13,53 @@ import java.util.List;
 @Getter
 @Setter
 public class RequestEtp {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+	@JsonProperty("ETP_ID")
+	private Long etpId;
 
-    @JsonProperty("ETP_ID")
-    private Long etpId;
+	@JsonProperty("REQUEST_ID")
+	private Long requestId;
 
-    @JsonProperty("REQUEST_ID")
-    private Long requestId;
+	@JsonProperty("METHOD_NAME")
+	private String methodName;
 
-    @JsonProperty("METHOD_NAME")
-    private String methodName;
-
-    @JsonProperty("PAYLOAD")
-    @Embedded
-    private RequestEtpPayload payload;
+	@JsonProperty("PAYLOAD")
+	@Embedded
+	private RequestEtpPayload payload;
 
 
-    @Embeddable
-    @Data
-    static class RequestEtpPayload {
+	@Embeddable
+	@Data
+	static class RequestEtpPayload {
 
-        @JsonProperty("LOTID")
-        private Long lotId;
+		@JsonProperty("LOTID")
+		private Long lotId;
 
-        @JsonProperty("DOCDATE")
-        private String docDate;
+		@JsonProperty("DOCDATE")
+		private String docDate;
 
-        @JsonProperty("ORGAN")
-        private String organ;
+		@JsonProperty("ORGAN")
+		private String organ;
 
-        @JsonProperty("ACC")
-        private String acc;
+		@JsonProperty("ACC")
+		private String acc;
 
-        @JsonProperty("SUMLOT")
-        private Long sumlot;
+		@JsonProperty("SUMLOT")
+		private Long sumlot;
 
-        @JsonProperty("PLTF")
-        private Integer pltf;
+		@JsonProperty("PLTF")
+		private Integer pltf;
 
-        @JsonProperty("MONTH")
-        private Integer month;
+		@JsonProperty("MONTH")
+		private Integer month;
 
-        @JsonProperty("SPECIFICATIONS")
-        @OneToMany(cascade = CascadeType.ALL)
-        private List<SPECIFICATIONS> specifications;
-    }
+		@JsonProperty("SPECIFICATIONS")
+		@OneToMany(cascade = CascadeType.ALL)
+		private List<SPECIFICATIONS> specifications;
+	}
 
 
 }

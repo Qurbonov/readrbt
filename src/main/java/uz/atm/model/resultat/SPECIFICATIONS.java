@@ -52,7 +52,6 @@ public class SPECIFICATIONS {
 	@OneToMany(cascade = CascadeType.ALL)
 	@JsonProperty("SPLIT")
 	private List<SPLIT> split;
-
 	@OneToMany(cascade = CascadeType.ALL)
 	@JsonProperty("PROPERTIES")
 	private List<PROPERTIES> properties;

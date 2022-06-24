@@ -86,7 +86,6 @@ public class GeneralService {
 		FacturaInfo save = facturalInfoRepository.save(facturalInfo);
 	}
 
-
 	private void resultatMethod(String json) throws JsonProcessingException
 	{
 		ResultatMethod resultatMethod = mapper.readValue(json, new TypeReference<ResultatMethod>() {});
