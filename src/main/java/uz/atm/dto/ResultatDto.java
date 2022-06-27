@@ -22,8 +22,6 @@ public class ResultatDto {
 
     public Long procId;
 
-    public LocalDate locDate1;
-
-    public LocalDate locDate2;
+    public LocalDate contractDate;
 
 }

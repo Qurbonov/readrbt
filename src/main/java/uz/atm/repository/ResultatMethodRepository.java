@@ -11,7 +11,7 @@ import java.util.List;
 
 public interface ResultatMethodRepository extends JpaRepository<ResultatMethod, Long> {
 
-    @Query(value = "select public.get_nimadr()", nativeQuery = true)
+    @Query(value = "select public.get_resultat(:lotId,:state,:organName,:maloy,:summaFrom,:summaTo,:locDate1,:locDate2);", nativeQuery = true)
     List<ResultatDto> findByCriteria(@Param("lotId") String lotId, @Param("state") String state,
                                      @Param("organName") String organName, @Param("maloy") String maloy,
                                      @Param("summaFrom") Long summaFrom, @Param("summaTo") Long summaTo,
