@@ -21,7 +21,7 @@ public class QueueConsumer {
 
 //	public QueueConsumer(RbtMsgsRepository repository) {this.repository = repository;}
 
-	@RabbitListener(queues = {"${queue.name}"})
+//	@RabbitListener(queues = {"${queue.name}"})
 	public void receive(@Payload String fileBody) throws IOException
 	{
 		System.out.println(fileBody);
