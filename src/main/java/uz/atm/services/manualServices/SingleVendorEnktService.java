@@ -1,20 +1,21 @@
 package uz.atm.services.manualServices;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import uz.atm.model.manuals.SingleVendorEnkt;
 import uz.atm.repository.manualsRepo.SingleVendorEnktRepo;
+import uz.atm.services.AbstractService;
 
 @Service
-@RequiredArgsConstructor
-public class SingleVendorEnktService {
-    private final SingleVendorEnktRepo repo;
-    private final ObjectMapper mapper = new ObjectMapper();
+public class SingleVendorEnktService extends AbstractService<SingleVendorEnktRepo> {
+
+    public SingleVendorEnktService(SingleVendorEnktRepo repository) {
+        super(repository);
+    }
 
     public void save(String json) throws JsonProcessingException {
         SingleVendorEnkt singleVendorEnkt = mapper.readValue(json, SingleVendorEnkt.class);
-        repo.save(singleVendorEnkt);
+        repository.save(singleVendorEnkt);
     }
 }

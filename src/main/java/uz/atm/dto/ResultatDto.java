@@ -16,8 +16,6 @@ public class ResultatDto {
 
     public Long summa;
 
-    public Long pltf;
-
     public Long procId;
 
 }

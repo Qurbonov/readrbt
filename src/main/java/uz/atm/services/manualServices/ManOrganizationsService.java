@@ -1,20 +1,20 @@
 package uz.atm.services.manualServices;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import uz.atm.model.manuals.ManOrganizations;
 import uz.atm.repository.manualsRepo.ManOrganizationsRepo;
+import uz.atm.services.AbstractService;
 
 @Service
-@RequiredArgsConstructor
-public class ManOrganizationsService {
-    private final ManOrganizationsRepo repo;
-    private final ObjectMapper mapper = new ObjectMapper();
+public class ManOrganizationsService extends AbstractService<ManOrganizationsRepo> {
+
+    public ManOrganizationsService(ManOrganizationsRepo repository) {
+        super(repository);
+    }
 
     public void save(String json) throws JsonProcessingException {
         ManOrganizations manOrganizations = mapper.readValue(json, ManOrganizations.class);
-        repo.save(manOrganizations);
+        repository.save(manOrganizations);
     }
 }
