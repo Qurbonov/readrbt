@@ -39,7 +39,10 @@ public class ResultatService extends AbstractService<ResultatMethodRepository> {
 
     public List<ResultatDto> getAllByCriteria(ResultatCriteria r) {
         try {
-            return repository.findByCriteria(r.getLotId(), r.getState(), r.getOrganName(), r.getMaloy(), r.getSummaFrom(), r.getSummaTo(),r.getProcId(), r.getFromDate(), r.getToDate());
+            String json = repository.findByCriteria(r.getLotId(), r.getState(), r.getOrganName(), r.getMaloy(), r.getSummaFrom(), r.getSummaTo(), r.getProcId(), r.getFromDate(), r.getToDate());
+            List<ResultatDto> resultatDto = mapper.readValue(json, new TypeReference<List<ResultatDto>>() {
+            });
+            return resultatDto;
         } catch (Exception e) {
             return new ArrayList<>();
         }
