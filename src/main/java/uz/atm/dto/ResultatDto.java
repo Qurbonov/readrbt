@@ -1,10 +1,14 @@
 package uz.atm.dto;
 
+import java.time.LocalDate;
+
 /**
  * @author Bekpulatov Shoxruh
  * createdAt 27/06/22
  */
 public class ResultatDto {
+
+    public Long id;
 
     public String lotId;
 
@@ -17,5 +21,9 @@ public class ResultatDto {
     public Long summa;
 
     public Long procId;
+
+    public LocalDate locDate1;
+
+    public LocalDate locDate2;
 
 }
