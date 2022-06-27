@@ -15,13 +15,16 @@ import javax.persistence.Id;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-class SPLIT {
+class Properties {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	@JsonProperty("MONTH")
-	private int MONTH;
-	@JsonProperty("TOVARAMOUNT")
-	private int TOVARAMOUNT;
-	
+	@JsonProperty("PROP_NUMB")
+	private int propNumb;
+	@JsonProperty("PROP_NAME")
+	private String propName;
+	@JsonProperty("VAL_NUMB")
+	private int valNumb;
+	@JsonProperty("VAL_NAME")
+	private String valName;
 }

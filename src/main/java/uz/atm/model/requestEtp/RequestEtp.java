@@ -2,7 +2,7 @@ package uz.atm.model.requestEtp;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
-import uz.atm.model.resultat.SPECIFICATIONS;
+import uz.atm.model.resultat.Specifications;
 
 import javax.persistence.*;
 import java.util.List;
@@ -58,7 +58,7 @@ public class RequestEtp {
 
 		@JsonProperty("SPECIFICATIONS")
 		@OneToMany(cascade = CascadeType.ALL)
-		private List<SPECIFICATIONS> specifications;
+		private List<Specifications> specifications;
 	}
 
 

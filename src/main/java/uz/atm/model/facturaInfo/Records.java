@@ -5,7 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import uz.atm.model.resultat.SPECIFICATIONS;
+import uz.atm.model.resultat.Specifications;
 
 import javax.persistence.*;
 import java.util.List;
@@ -61,7 +61,7 @@ public class Records {
 
 	@JsonProperty("SPECIFICATIONS")
 	@OneToMany(cascade = CascadeType.ALL)
-	private List<SPECIFICATIONS> specifications;
+	private List<Specifications> specifications;
 
 
 }

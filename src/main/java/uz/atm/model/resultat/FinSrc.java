@@ -9,10 +9,9 @@ import javax.persistence.*;
 
 @Data
 @AllArgsConstructor
-//@Embeddable
 @Entity
 @NoArgsConstructor
-class FINSRC {
+class FinSrc {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,18 +19,18 @@ class FINSRC {
 
 	@Column(name = "f_npos")
 	@JsonProperty("NPOS")
-	private int NPOS;
+	private int npos;
 	@Column(name = "f_kls")
 	@JsonProperty("KLS")
-	private String KLS;
+	private String kls;
 	@JsonProperty("BANKCODE")
-	private int BANKCODE;
+	private int bankCode;
 	@JsonProperty("BANKACC")
-	private String BANKACC;
+	private String bankAcc;
 	@Column(name = "f_summa")
 	@JsonProperty("SUMMA")
-	private Long SUMMA;
+	private Long summa;
 	@Column(name = "f_avans")
 	@JsonProperty("AVANS")
-	private String AVANS;
+	private String avans;
 }

@@ -15,24 +15,24 @@ import java.util.Date;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class NOTE {
+public class Note {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	@JsonProperty("MARKA")
-	private String MARKA;
+	private String marka;
 	@JsonProperty("TECHSPEC")
-	private String TECHSPEC;
+	private String techSpec;
 	@JsonProperty("MANUFACTURER")
-	private String MANUFACTURER;
+	private String manufacturer;
 	@JsonProperty("COUNTRY")
-	private String COUNTRY;
+	private String country;
 	@JsonProperty("GARANT")
-	private Date GARANT;
+	private Date garant;
 	@JsonProperty("GODIZG")
-	private Date GODIZG;
+	private Date godIzg;
 	@JsonProperty("SROKGOD")
-	private Date SROKGOD;
+	private Date spokGod;
 	@JsonProperty("LICENSE")
-	private String LICENSE;
+	private String license;
 }

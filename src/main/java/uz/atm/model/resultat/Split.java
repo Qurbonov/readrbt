@@ -10,18 +10,18 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-
 //@Embeddable
 @Data
+@Entity
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity
-class LINKS {
+class Split {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	@JsonProperty("FILENAME")
-	private String FILENAME;
-	@JsonProperty("LINKDOC")
-	private String linkdoc;
+	@JsonProperty("MONTH")
+	private int month;
+	@JsonProperty("TOVARAMOUNT")
+	private int tovarAmount;
+	
 }
