@@ -1,5 +1,6 @@
 package uz.atm.model.resultat;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
@@ -44,12 +45,15 @@ public class ResultatMethod {
         @JsonProperty("PROC_ID")
         private int procId;
         @JsonProperty("LOTDATE1")
+        @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "ddMMyyyy")
         private Date lotDate1;
         @JsonProperty("LOTDATE2")
+        @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "ddMMyyyy")
         private Date lotDate2;
         @JsonProperty("CONTRACTNUM")
         private String contractNum;
         @JsonProperty("CONTRACTDAT")
+        @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "ddMMyyyy")
         private Date contractDat;
         @JsonProperty("DVR")
         private int dvr;
@@ -82,8 +86,10 @@ public class ResultatMethod {
         @JsonProperty("AVANSDAY")
         private int avansDay;
         @JsonProperty("CONTRACTBEG")
+        @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "ddMMyyyy")
         private Date contractBeg;
         @JsonProperty("CONTRACTEND")
+        @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "ddMMyyyy")
         private Date contractEnd;
         @JsonProperty("PURPOSE")
         @Column(columnDefinition = "TEXT")
