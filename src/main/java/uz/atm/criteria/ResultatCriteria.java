@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 /**
  * @author Bekpulatov Shoxruh
@@ -13,9 +14,9 @@ import java.time.LocalDate;
 @Setter
 public class ResultatCriteria extends GenericCriteria {
 
-    private String lotId;
+    private Long lotId;
 
-    private String state;
+    private Integer state;
 
     private String organName;
 
@@ -25,9 +26,11 @@ public class ResultatCriteria extends GenericCriteria {
 
     private Long summaTo;
 
-    public LocalDate locDate1;
+    private Integer procId;
 
-    public LocalDate locDate2;
+    public LocalDateTime fromDate;
+
+    public LocalDateTime toDate;
 
 
 
