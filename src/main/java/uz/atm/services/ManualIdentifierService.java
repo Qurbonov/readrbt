@@ -1,4 +1,4 @@
-package uz.atm.services.manualServices;
+package uz.atm.services;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.google.gson.Gson;
@@ -6,6 +6,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import uz.atm.enums.ManualValues;
 import uz.atm.model.manuals.ManualIdentifier;
+import uz.atm.services.manualServices.*;
 
 import java.util.Objects;
 
@@ -20,8 +21,8 @@ public class ManualIdentifierService {
 
     public void saveManualAccordingToType(String json) throws JsonProcessingException {
         ManualIdentifier manualIdentifier = new Gson().fromJson(json, ManualIdentifier.class);
-        if (Objects.nonNull(manualIdentifier.getTYPE())) {
-            String type = manualIdentifier.getTYPE();
+        if (Objects.nonNull(manualIdentifier.getType())) {
+            String type = manualIdentifier.getType();
             if (ManualValues.MAN_ACCOUNTS.toString().equals(type)) {
                 manAccountsService.save(json);
             } else if (ManualValues.MAN_EXPGOODS.toString().equals(type)) {

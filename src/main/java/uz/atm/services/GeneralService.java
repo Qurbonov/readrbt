@@ -1,7 +1,6 @@
 package uz.atm.services;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -14,7 +13,8 @@ import java.util.Objects;
 @Service
 @RequiredArgsConstructor
 public class GeneralService {
-    private final ObjectMapper mapper = new ObjectMapper();
+    private final ManualIdentifierService manualIdentifierService;
+
     private final ResultatService resultatService;
     private final ContractInfoService contractInfoService;
     private final ErrorInfoService errorInfoService;
@@ -40,6 +40,6 @@ public class GeneralService {
             } else if (methodName.equals(Methods.RKP_END.toString())) {
                 rkpEndService.save(str);
             }
-        }
+        } else manualIdentifierService.saveManualAccordingToType(str);
     }
 }

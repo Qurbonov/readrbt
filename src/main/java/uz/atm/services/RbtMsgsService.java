@@ -30,5 +30,4 @@ public class RbtMsgsService {
 		this.rbtMsgsRepository.saveAll(resultatMethod);
 	}
 
-
 }
