@@ -4,9 +4,8 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.google.gson.Gson;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import uz.atm.enums.ManualValues;
 import uz.atm.model.manuals.ManualIdentifier;
-import uz.atm.model.manuals.ManualValues;
-
 
 import java.util.Objects;
 
@@ -20,23 +19,21 @@ public class ManualIdentifierService {
     private final SingleVendorEnktService singleVendorEnktService;
 
     public void saveManualAccordingToType(String json) throws JsonProcessingException {
-        ManualIdentifier manualIdentifier =new Gson().fromJson(json, ManualIdentifier.class);
+        ManualIdentifier manualIdentifier = new Gson().fromJson(json, ManualIdentifier.class);
         if (Objects.nonNull(manualIdentifier.getTYPE())) {
             String type = manualIdentifier.getTYPE();
-            switch (type) {
-                  case (ManualValues.MAN_ACCOUNTS) -> {
-                    manAccountsService.save(json);
-                } case (ManualValues.MAN_EXPGOODS) -> {
-                    manExpGoodsService.save(json);
-                } case (ManualValues.MAN_ORGANIZATIONS) -> {
-                    manOrganizationsService.save(json);
-                } case (ManualValues.SINGLEVENDOR) -> {
-                    singleVendorService.save(json);
-                } case (ManualValues.SINGLEVENDOR_ENKT) -> {
-                    singleVendorEnktService.save(json);
-                }
-                }
+            if (ManualValues.MAN_ACCOUNTS.toString().equals(type)) {
+                manAccountsService.save(json);
+            } else if (ManualValues.MAN_EXPGOODS.toString().equals(type)) {
+                manExpGoodsService.save(json);
+            } else if (ManualValues.MAN_ORGANIZATIONS.toString().equals(type)) {
+                manOrganizationsService.save(json);
+            } else if (ManualValues.SINGLEVENDOR.toString().equals(type)) {
+                singleVendorService.save(json);
+            } else if (ManualValues.SINGLEVENDOR_ENKT.toString().equals(type)) {
+                singleVendorEnktService.save(json);
             }
         }
     }
+}
 
