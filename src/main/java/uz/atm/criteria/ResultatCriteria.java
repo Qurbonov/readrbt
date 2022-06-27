@@ -19,9 +19,11 @@ public class ResultatCriteria extends GenericCriteria {
 
     private String maloy;
 
-    private Long summa;
+    private Long summaFrom;
 
-    private Long procId;
+    private Long summaTo;
+
+
 
 
 }
