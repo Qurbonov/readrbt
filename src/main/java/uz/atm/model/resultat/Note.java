@@ -1,5 +1,6 @@
 package uz.atm.model.resultat;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -28,9 +29,12 @@ public class Note {
 	@JsonProperty("COUNTRY")
 	private String country;
 	@JsonProperty("GARANT")
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "ddMMyyyy")
 	private Date garant;
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "ddMMyyyy")
 	@JsonProperty("GODIZG")
 	private Date godIzg;
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "ddMMyyyy")
 	@JsonProperty("SROKGOD")
 	private Date spokGod;
 	@JsonProperty("LICENSE")
