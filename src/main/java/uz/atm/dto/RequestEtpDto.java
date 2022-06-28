@@ -11,6 +11,8 @@ import java.util.Date;
  */
 public class RequestEtpDto {
 
+    private Long id;
+
     @JsonProperty("lot_id")
     public Long lotId;
 

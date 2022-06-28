@@ -8,8 +8,10 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 public class ClaimInfoEtpDto {
 
+    private Long id;
+
     @JsonProperty("lot_id")
-    public String lotId;
+    public Long lotId;
 
     @JsonProperty("organ_name")
     public String organName;
