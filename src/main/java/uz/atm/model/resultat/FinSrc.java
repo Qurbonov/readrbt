@@ -11,7 +11,7 @@ import javax.persistence.*;
 @AllArgsConstructor
 @Entity
 @NoArgsConstructor
-class FinSrc {
+public class FinSrc {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

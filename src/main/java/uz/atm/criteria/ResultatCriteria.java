@@ -28,9 +28,9 @@ public class ResultatCriteria extends GenericCriteria {
 
     private Integer procId;
 
-    public LocalDateTime fromDate;
+    public LocalDate fromDate;
 
-    public LocalDateTime toDate;
+    public LocalDate toDate;
 
 
 
