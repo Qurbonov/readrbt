@@ -2,6 +2,7 @@ package uz.atm.services.methodServices;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.SerializationFeature;
 import org.springframework.stereotype.Service;
 import uz.atm.criteria.ResultatCriteria;
 import uz.atm.dto.ResultatCollectedDto;
@@ -40,10 +41,12 @@ public class ResultatService extends AbstractService<ResultatMethodRepository> {
     public List<ResultatDto> getAllByCriteria(ResultatCriteria r) {
         try {
             String json = repository.findByCriteria(r.getLotId(), r.getState(), r.getOrganName(), r.getMaloy(), r.getSummaFrom(), r.getSummaTo(), r.getProcId(), r.getFromDate(), r.getToDate());
+            mapper.disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
             List<ResultatDto> resultatDto = mapper.readValue(json, new TypeReference<List<ResultatDto>>() {
             });
             return resultatDto;
         } catch (Exception e) {
+            e.printStackTrace();
             return new ArrayList<>();
         }
     }
