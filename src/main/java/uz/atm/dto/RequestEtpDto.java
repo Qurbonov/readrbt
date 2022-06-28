@@ -29,4 +29,6 @@ public class RequestEtpDto {
 
     public Integer state;
 
+    public Integer pltf;
+
 }

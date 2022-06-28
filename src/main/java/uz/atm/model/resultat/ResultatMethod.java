@@ -60,7 +60,7 @@ public class ResultatMethod {
         @JsonProperty("ORGAN")
         private String organ;
         @JsonProperty("INN")
-        private int inn;
+        private Long inn;
         @JsonProperty("LS")
         private String ls;
         @JsonProperty("VENDORNAME")

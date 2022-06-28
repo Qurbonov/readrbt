@@ -95,7 +95,7 @@ public class AtmController {
         requestEtpCriteria.setSumLotTo(sumLotTo.orElse(999999999999999999L));
         requestEtpCriteria.setMonth(month.orElse(2147483647));
         requestEtpCriteria.setState(state.orElse(2147483647));
-        requestEtpCriteria.setPltf(Pltf.AUKSION.getCode());
+        requestEtpCriteria.setPltf(Pltf.E_MAGAZIN.getCode());
         List<RequestEtpDto> allByCriteria = requestEtpService.getAllAuctionsByCriteria(requestEtpCriteria);
         return new ResponseEntity<>(allByCriteria, HttpStatus.OK);
     }

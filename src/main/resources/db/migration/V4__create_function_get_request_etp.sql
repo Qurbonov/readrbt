@@ -19,7 +19,7 @@ BEGIN
                     ra.state,
                     re.pltf
              FROM request_etp re
-                      INNER JOIN response_auction ra
+                      LEFT JOIN response_auction ra
                                  ON re.lot_id = ra.lot_id
                       LEFT JOIN man_organizations$payload$data mpd
                                 ON mpd.organ = re.organ

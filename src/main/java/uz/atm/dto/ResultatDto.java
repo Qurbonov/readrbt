@@ -32,4 +32,13 @@ public class ResultatDto {
     @JsonProperty("contract_dat")
     public Date contractDate;
 
+    @JsonProperty("vendor_country")
+    public String vendorCountry;
+
+    @JsonProperty("vendor_inn")
+    public Long vendorInn;
+
+    @JsonProperty("vendor_name")
+    public String vendorName;
+
 }

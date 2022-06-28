@@ -39,5 +39,3 @@ return dataJson::text;
 END;
 $$;
 
-alter function get_resultat(bigint, integer, varchar, varchar, bigint, bigint, integer, timestamp, timestamp) owner to postgres;
-
