@@ -1,4 +1,4 @@
-createor or replace function
+create or replace function
     get_resultat(v_lot_id bigint, v_state integer,
                  v_organ_name character varying, v_maloy character varying,
                  v_from_summa bigint, v_to_summa bigint, v_proc_id integer,

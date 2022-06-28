@@ -6,9 +6,10 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * @author Bekpulatov Shoxruh
  * createdAt 27/06/22
  */
+
 public class ClaimInfoEtpDto {
 
-    private Long id;
+    public Long id;
 
     @JsonProperty("lot_id")
     public Long lotId;
