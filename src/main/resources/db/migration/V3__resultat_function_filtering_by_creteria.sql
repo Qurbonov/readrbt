@@ -24,7 +24,7 @@ for r in SELECT rm.id,
                 rm.vendor_inn,
                 rm.vendor_name
          FROM resultat_method rm
-                  INNER JOIN contract_info ci
+                  left JOIN contract_info ci
                              ON rm.lot_id = ci.lot_id
                   LEFT JOIN man_organizations$payload$data mpd
                                   ON mpd.organ = rm.organ
