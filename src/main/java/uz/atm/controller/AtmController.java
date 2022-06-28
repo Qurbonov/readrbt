@@ -8,6 +8,7 @@ import uz.atm.dto.ResultatCollectedDto;
 import uz.atm.dto.ResultatDto;
 import uz.atm.services.methodServices.ResultatService;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
@@ -37,8 +38,8 @@ public class AtmController {
             @RequestParam(name = "summaFrom") Optional<Long> summaFrom,
             @RequestParam(name = "summaTo") Optional<Long> summaTo,
             @RequestParam(name = "procId") Optional<Integer> procId,
-            @RequestParam(name = "locDate1") Optional<LocalDateTime> locDate1,
-            @RequestParam(name = "locDate2") Optional<LocalDateTime> locDate2
+            @RequestParam(name = "locDate1") Optional<LocalDate> contractDateFrom,
+            @RequestParam(name = "locDate2") Optional<LocalDate> contractDateTo
 
     ) {
 
@@ -47,8 +48,8 @@ public class AtmController {
         resultatCriteria.setState(state.orElse(2147483647));
         resultatCriteria.setOrganName(organName.orElse("ALL"));
         resultatCriteria.setMaloy(maloy.orElse("ALL"));
-        resultatCriteria.setFromDate(locDate1.orElse(LocalDateTime.of(1970, 1, 1, 1, 1)));
-        resultatCriteria.setToDate(locDate2.orElse(LocalDateTime.now().plusYears(1)));
+        resultatCriteria.setFromDate(contractDateFrom.orElse(LocalDate.of(1970, 1, 1)));
+        resultatCriteria.setToDate(contractDateTo.orElse(LocalDate.now().plusYears(1)));
         resultatCriteria.setSummaFrom(summaFrom.orElse(0L));
         resultatCriteria.setSummaTo(summaTo.orElse(999999999999999999L));
         resultatCriteria.setProcId(procId.orElse(2147483647));

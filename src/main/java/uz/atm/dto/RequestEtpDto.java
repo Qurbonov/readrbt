@@ -1,17 +1,32 @@
 package uz.atm.dto;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+import java.util.Date;
+
 /**
- * @author Bekpulatov Shoxruh
- * createdAt 27/06/22
+ * Author: Bekpulatov Shoxruh
+ * Date: 28/06/22
+ * Time: 11:15
  */
 public class RequestEtpDto {
 
-    public String lotId;
+    @JsonProperty("lot_id")
+    public Long lotId;
 
-    public Long sumLot;
+    @JsonProperty("doc_date")
+    public Date docDate;
 
+    @JsonProperty("organ_name")
     public String organName;
 
-    public Long pltf;
+    @JsonProperty("sum_lot")
+    public Long sumLot;
+
+    public Integer month;
+
+    public Integer state;
+
+    public Integer pltf;
 
 }

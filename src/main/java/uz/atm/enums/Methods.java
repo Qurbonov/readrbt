@@ -3,6 +3,7 @@ package uz.atm.enums;
 public enum Methods {
 
     CONTRACT_INFO,
+    CLAIM_INFO_ETP,
     FACTURA_INFO,
     REQUEST_ETP,
     RKP_END,

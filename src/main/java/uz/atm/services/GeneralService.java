@@ -21,6 +21,7 @@ public class GeneralService {
     private final FacturaInfoService facturalInfoService;
     private final RequestEtpService requestEtpService;
     private final RkpEndService rkpEndService;
+    private final ClaimInfoEtpService claimInfoEtpService;
 
 
     public void parse(String str) throws JsonProcessingException {
@@ -31,6 +32,8 @@ public class GeneralService {
                 resultatService.save(str);
             } else if (methodName.equals(Methods.CONTRACT_INFO.toString())) {
                 contractInfoService.save(str);
+            } else if (methodName.equals(Methods.CLAIM_INFO_ETP.toString())) {
+                claimInfoEtpService.save(str);
             } else if (methodName.equals(Methods.ERROR_INFO.toString())) {
                 errorInfoService.save(str);
             } else if (methodName.equals(Methods.FACTURA_INFO.toString())) {

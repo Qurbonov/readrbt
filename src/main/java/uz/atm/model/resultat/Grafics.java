@@ -5,34 +5,36 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
-//@Embeddable
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-class Grafics {
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+public class Grafics {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-	@Column(name = "g_finyear")
-	@JsonProperty("FINYEAR")
-	private int finyear;
-	@JsonProperty("MONTH")
-	@Column(name = "g_month")
-	private int month;
-	@JsonProperty("KLS")
-	@Column(name = "g_kls")
-	private String kls;
-	@JsonProperty("TOVARSUMMA")
-	@Column(name = "g_tovarsumma")
-	private Long tovarsumma;
-	@JsonProperty("EXPENSE")
-	@Column(name = "g_expense")
-	private int expense;
-	@JsonProperty("AVANS")
-	@Column(name = "g_avans")
-	private Long avans;
+    @JsonProperty("FINYEAR")
+    private int finyear;
+
+    @JsonProperty("MONTH")
+    private int month;
+
+    @JsonProperty("KLS")
+    private String kls;
+
+    @JsonProperty("TOVARSUMMA")
+    private Long tovarsumma;
+
+    @JsonProperty("EXPENSE")
+    private int expense;
+
+    @JsonProperty("AVANS")
+    private Long avans;
+
 }
