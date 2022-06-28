@@ -19,7 +19,10 @@ for r in SELECT rm.id,
                 rm.maloy,
                 rm.p_summa as "summa",
                 rm.proc_id,
-                rm.contract_dat::DATE
+                rm.contract_dat::DATE,
+                rm.vendor_country,
+                rm.vendor_inn,
+                rm.vendor_name
          FROM resultat_method rm
                   INNER JOIN contract_info ci
                              ON rm.lot_id = ci.lot_id
