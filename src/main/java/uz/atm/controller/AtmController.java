@@ -21,7 +21,7 @@ import java.util.Optional;
  * @author Bekpulatov Shoxruh
  * createdAt 27/06/22
  */
-
+@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 @RequestMapping("/v1/atm")
 public class AtmController {

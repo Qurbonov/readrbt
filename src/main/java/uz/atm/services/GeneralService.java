@@ -43,6 +43,7 @@ public class GeneralService {
             } else if (methodName.equals(Methods.RKP_END.toString())) {
                 rkpEndService.save(str);
             }
-        } else manualIdentifierService.saveManualAccordingToType(str);
+        } else
+            manualIdentifierService.saveManualAccordingToType(str);
     }
 }

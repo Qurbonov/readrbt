@@ -13,15 +13,15 @@ public class QueueConsumer {
 	private final RbtMsgsRepository repository;
 	GeneralService generalService;
 
+
 	public QueueConsumer(RbtMsgsRepository repository, GeneralService generalService)
 	{
 		this.repository = repository;
 		this.generalService = generalService;
 	}
 
-//	public QueueConsumer(RbtMsgsRepository repository) {this.repository = repository;}
 
-//	@RabbitListener(queues = {"${queue.name}"})
+	@RabbitListener(queues = {"${queue.name}"})
 	public void receive(@Payload String fileBody) throws IOException
 	{
 		System.out.println(fileBody);
