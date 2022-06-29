@@ -4,17 +4,18 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import uz.atm.criteria.ClaimInfoCriteria;
 import uz.atm.criteria.RequestEtpCriteria;
 import uz.atm.criteria.ResultatCriteria;
-import uz.atm.dto.RequestEtpCollectedDto;
-import uz.atm.dto.RequestEtpDto;
-import uz.atm.dto.ResultatCollectedDto;
-import uz.atm.dto.ResultatDto;
+import uz.atm.dto.*;
 import uz.atm.enums.Pltf;
+import uz.atm.enums.ProcId;
+import uz.atm.services.methodServices.ClaimInfoEtpService;
 import uz.atm.services.methodServices.RequestEtpService;
 import uz.atm.services.methodServices.ResultatService;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
@@ -31,6 +32,7 @@ public class AtmController {
 
     private final ResultatService resultatService;
     private final RequestEtpService requestEtpService;
+    private final ClaimInfoEtpService claimInfoEtpService;
 
 
     @GetMapping("/getResultats")
@@ -134,5 +136,56 @@ public class AtmController {
                 .orElseGet(() -> new ResponseEntity<>(new RequestEtpCollectedDto(), HttpStatus.NOT_FOUND));
     }
 
+
+    @GetMapping("/getAllTenders")
+    public ResponseEntity<List<ClaimInfoEtpDto>> getAllTenders(
+            @RequestParam(name = "lotId") Optional<Long> lotId,
+            @RequestParam(name = "organName") Optional<String> organName,
+            @RequestParam(name = "summaFrom") Optional<Long> summaFrom,
+            @RequestParam(name = "summTo") Optional<Long> summaTo,
+            @RequestParam(name = "srok") Optional<Integer> srok,
+            @RequestParam(name = "state") Optional<Integer> state
+    ) {
+        ClaimInfoCriteria claimInfoCriteria = new ClaimInfoCriteria();
+        claimInfoCriteria.setLotId(lotId.orElse(9223372036854775807L));
+        claimInfoCriteria.setOrganName(organName.orElse("ALL"));
+        claimInfoCriteria.setSummaFrom(summaFrom.orElse(9223372036854775807L));
+        claimInfoCriteria.setSummaTo(summaTo.orElse(9223372036854775807L));
+        claimInfoCriteria.setSrok(srok.orElse(2147483647));
+        claimInfoCriteria.setState(state.orElse(2147483647));
+        claimInfoCriteria.setProcId(ProcId.TENDER.getCode());
+
+        Optional<List<ClaimInfoEtpDto>> claimInfoEtpDto = claimInfoEtpService.getByCriteria(claimInfoCriteria);
+
+        return claimInfoEtpDto
+                .map(m -> new ResponseEntity<>(m, HttpStatus.OK))
+                .orElseGet(() -> new ResponseEntity<>(new ArrayList<>(), HttpStatus.NOT_FOUND));
+    }
+
+    @GetMapping("/getAllKonkurs")
+    public ResponseEntity<List<ClaimInfoEtpDto>> getAllKonkurs(
+            @RequestParam(name = "lotId") Optional<Long> lotId,
+            @RequestParam(name = "organName") Optional<String> organName,
+            @RequestParam(name = "summaFrom") Optional<Long> summaFrom,
+            @RequestParam(name = "summTo") Optional<Long> summaTo,
+            @RequestParam(name = "srok") Optional<Integer> srok,
+            @RequestParam(name = "state") Optional<Integer> state
+    ) {
+        ClaimInfoCriteria claimInfoCriteria = new ClaimInfoCriteria();
+        claimInfoCriteria.setLotId(lotId.orElse(9223372036854775807L));
+        claimInfoCriteria.setOrganName(organName.orElse("ALL"));
+        claimInfoCriteria.setSummaFrom(summaFrom.orElse(0L));
+        claimInfoCriteria.setSummaTo(summaTo.orElse(999999999999999999L));
+        claimInfoCriteria.setSrok(srok.orElse(2147483647));
+        claimInfoCriteria.setState(state.orElse(2147483647));
+        claimInfoCriteria.setProcId(ProcId.KONKURS.getCode());
+
+
+        Optional<List<ClaimInfoEtpDto>> claimInfoEtpDto = claimInfoEtpService.getByCriteria(claimInfoCriteria);
+
+        return claimInfoEtpDto
+                .map(m -> new ResponseEntity<>(m, HttpStatus.OK))
+                .orElseGet(() -> new ResponseEntity<>(new ArrayList<>(), HttpStatus.NOT_FOUND));
+    }
 
 }

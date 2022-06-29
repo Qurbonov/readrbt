@@ -1,6 +1,7 @@
 package uz.atm.enums;
 
 import lombok.AllArgsConstructor;
+import lombok.Getter;
 
 /**
  * Author: Bekpulatov Shoxruh
@@ -8,6 +9,7 @@ import lombok.AllArgsConstructor;
  * Time: 11:08
  */
 @AllArgsConstructor
+@Getter
 public enum ProcId {
 
     TENDER(1),

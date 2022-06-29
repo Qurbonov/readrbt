@@ -28,5 +28,4 @@ public class ClaimInfoEtpDto {
     @JsonProperty("proc_id")
     public Integer prodId;
 
-
 }
