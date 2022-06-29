@@ -22,6 +22,8 @@ public class GeneralService {
     private final RequestEtpService requestEtpService;
     private final RkpEndService rkpEndService;
     private final ClaimInfoEtpService claimInfoEtpService;
+    private final SuccessInfoService successInfoService;
+    private final ResponseClaimInfoService responseClaimInfoService;
 
 
     public void parse(String str) throws JsonProcessingException {
@@ -42,6 +44,10 @@ public class GeneralService {
                 requestEtpService.save(str);
             } else if (methodName.equals(Methods.RKP_END.toString())) {
                 rkpEndService.save(str);
+            } else if (methodName.equals(Methods.SUCCESS_INFO.toString())) {
+                successInfoService.save(str);
+            } else if (methodName.equals(Methods.RESPONSE_CLAIM_INFO.toString())){
+                responseClaimInfoService.save(str);
             }
         } else manualIdentifierService.saveManualAccordingToType(str);
     }

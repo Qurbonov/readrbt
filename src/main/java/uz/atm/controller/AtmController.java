@@ -1,5 +1,6 @@
 package uz.atm.controller;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -24,15 +25,12 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/v1/atm")
+@RequiredArgsConstructor
 public class AtmController {
 
     private final ResultatService resultatService;
     private final RequestEtpService requestEtpService;
 
-    public AtmController(ResultatService resultatService, RequestEtpService requestEtpService) {
-        this.resultatService = resultatService;
-        this.requestEtpService = requestEtpService;
-    }
 
 
     @GetMapping("/getResultats")
