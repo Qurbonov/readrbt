@@ -13,7 +13,11 @@ import uz.atm.model.clalimInfo.ClaimInfoEtp;
  */
 @Repository
 public interface ClaimInfoEtpRepository extends JpaRepository<ClaimInfoEtp, Long> {
-    @Query(value = "select public.nimadr()", nativeQuery = true)
-    String getByCriteria(@Param("lotId") Long lotId, @Param("organName") String organName, @Param("prodId") Integer prodId,
+
+
+    @Query(value = "select public.get_claim_info(:lotId,:organName,:summaFrom,:summaTo,:srok,:state,:procId);", nativeQuery = true)
+    String getByCriteria(@Param("lotId") Long lotId, @Param("organName") String organName, @Param("procId") Integer procId,
                          @Param("srok") Integer srok, @Param("state") Integer state, @Param("summaFrom") Long summaFrom, @Param("summaTo") Long summaTo);
+
+
 }

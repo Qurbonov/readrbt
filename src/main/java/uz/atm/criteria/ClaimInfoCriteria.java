@@ -28,7 +28,7 @@ public class ClaimInfoCriteria {
     private Integer state;
 
     @JsonProperty("proc_id")
-    private Integer prodId;
+    private Integer procId;
 
 
 }

@@ -153,7 +153,7 @@ public class AtmController {
         claimInfoCriteria.setSummaTo(summaTo.orElse(9223372036854775807L));
         claimInfoCriteria.setSrok(srok.orElse(2147483647));
         claimInfoCriteria.setState(state.orElse(2147483647));
-        claimInfoCriteria.setProdId(ProcId.TENDER.getCode());
+        claimInfoCriteria.setProcId(ProcId.TENDER.getCode());
 
         Optional<List<ClaimInfoEtpDto>> claimInfoEtpDto = claimInfoEtpService.getByCriteria(claimInfoCriteria);
 
@@ -174,11 +174,11 @@ public class AtmController {
         ClaimInfoCriteria claimInfoCriteria = new ClaimInfoCriteria();
         claimInfoCriteria.setLotId(lotId.orElse(9223372036854775807L));
         claimInfoCriteria.setOrganName(organName.orElse("ALL"));
-        claimInfoCriteria.setSummaFrom(summaFrom.orElse(9223372036854775807L));
-        claimInfoCriteria.setSummaTo(summaTo.orElse(9223372036854775807L));
+        claimInfoCriteria.setSummaFrom(summaFrom.orElse(0L));
+        claimInfoCriteria.setSummaTo(summaTo.orElse(999999999999999999L));
         claimInfoCriteria.setSrok(srok.orElse(2147483647));
         claimInfoCriteria.setState(state.orElse(2147483647));
-        claimInfoCriteria.setProdId(ProcId.KONKURS.getCode());
+        claimInfoCriteria.setProcId(ProcId.KONKURS.getCode());
 
 
         Optional<List<ClaimInfoEtpDto>> claimInfoEtpDto = claimInfoEtpService.getByCriteria(claimInfoCriteria);
