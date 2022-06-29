@@ -5,14 +5,16 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import org.springframework.stereotype.Service;
 import uz.atm.criteria.RequestEtpCriteria;
+import uz.atm.dto.RequestEtpCollectedDto;
 import uz.atm.dto.RequestEtpDto;
-import uz.atm.dto.ResultatDto;
 import uz.atm.model.requestEtp.RequestEtp;
 import uz.atm.repository.RequestEtpRepository;
+import uz.atm.repository.ResponseAuctionRepository;
 import uz.atm.services.AbstractService;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 /**
  * @author Bekpulatov Shoxruh
@@ -21,8 +23,11 @@ import java.util.List;
 @Service
 public class RequestEtpService extends AbstractService<RequestEtpRepository> {
 
-    public RequestEtpService(RequestEtpRepository repository) {
+    private final ResponseAuctionRepository responseAuctionRepository;
+
+    public RequestEtpService(RequestEtpRepository repository, ResponseAuctionRepository responseAuctionRepository) {
         super(repository);
+        this.responseAuctionRepository = responseAuctionRepository;
     }
 
     public void save(String json) throws JsonProcessingException {
@@ -47,5 +52,17 @@ public class RequestEtpService extends AbstractService<RequestEtpRepository> {
             return new ArrayList<>();
         }
 
+    }
+
+    public Optional<RequestEtpCollectedDto> getById(Long id) {
+        RequestEtpCollectedDto collectedDto = new RequestEtpCollectedDto();
+        Optional<RequestEtp> byId = repository.findById(id);
+        if (byId.isPresent()) {
+            RequestEtp requestEtp = byId.get();
+            collectedDto.requestEtp = requestEtp;
+            Long lotId = requestEtp.getPayload().getLotId();
+            collectedDto.responseAuctions = responseAuctionRepository.findAllByPayload_LotId(lotId);
+            return Optional.of(collectedDto);
+        } else return Optional.empty();
     }
 }
