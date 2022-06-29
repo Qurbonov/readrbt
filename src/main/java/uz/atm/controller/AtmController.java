@@ -6,6 +6,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import uz.atm.criteria.RequestEtpCriteria;
 import uz.atm.criteria.ResultatCriteria;
+import uz.atm.dto.RequestEtpCollectedDto;
 import uz.atm.dto.RequestEtpDto;
 import uz.atm.dto.ResultatCollectedDto;
 import uz.atm.dto.ResultatDto;
@@ -30,7 +31,6 @@ public class AtmController {
 
     private final ResultatService resultatService;
     private final RequestEtpService requestEtpService;
-
 
 
     @GetMapping("/getResultats")
@@ -83,6 +83,33 @@ public class AtmController {
             @RequestParam(name = "state") Optional<Integer> state
 
     ) {
+        RequestEtpCriteria requestEtpCriteria = new RequestEtpCriteria();
+        requestEtpCriteria.setLotId(lotId.orElse(9223372036854775807L));
+        requestEtpCriteria.setDocDateFrom(docDateFrom.orElse(new Date(0)));
+        requestEtpCriteria.setDocDateTo(docDateTo.orElse(new Date()));
+        requestEtpCriteria.setOrganName(organName.orElse("ALL"));
+        requestEtpCriteria.setSumLotFrom(sumLotFrom.orElse(0L));
+        requestEtpCriteria.setSumLotTo(sumLotTo.orElse(999999999999999999L));
+        requestEtpCriteria.setMonth(month.orElse(2147483647));
+        requestEtpCriteria.setState(state.orElse(2147483647));
+        requestEtpCriteria.setPltf(Pltf.AUKSION.getCode());
+        List<RequestEtpDto> allByCriteria = requestEtpService.getAllAuctionsByCriteria(requestEtpCriteria);
+        return new ResponseEntity<>(allByCriteria, HttpStatus.OK);
+    }
+
+
+    @GetMapping("/getEMagazins")
+    public ResponseEntity<List<RequestEtpDto>> getAllEMagazins(
+            @RequestParam(name = "lotId") Optional<Long> lotId,
+            @RequestParam(name = "docDateFrom") Optional<Date> docDateFrom,
+            @RequestParam(name = "docDateTo") Optional<Date> docDateTo,
+            @RequestParam(name = "organName") Optional<String> organName,
+            @RequestParam(name = "sumLotFrom") Optional<Long> sumLotFrom,
+            @RequestParam(name = "sumLotTo") Optional<Long> sumLotTo,
+            @RequestParam(name = "month") Optional<Integer> month,
+            @RequestParam(name = "state") Optional<Integer> state
+
+    ) {
 
         RequestEtpCriteria requestEtpCriteria = new RequestEtpCriteria();
         requestEtpCriteria.setLotId(lotId.orElse(9223372036854775807L));
@@ -96,6 +123,15 @@ public class AtmController {
         requestEtpCriteria.setPltf(Pltf.E_MAGAZIN.getCode());
         List<RequestEtpDto> allByCriteria = requestEtpService.getAllAuctionsByCriteria(requestEtpCriteria);
         return new ResponseEntity<>(allByCriteria, HttpStatus.OK);
+    }
+
+
+    @GetMapping("/getAuksionOrEMagazinById/{id}")
+    public ResponseEntity<RequestEtpCollectedDto> getAuksionOrEMagazinById(@PathVariable("id") Long id) {
+        Optional<RequestEtpCollectedDto> optional = requestEtpService.getById(id);
+        return optional
+                .map(resultatCollectedDto -> new ResponseEntity<>(resultatCollectedDto, HttpStatus.OK))
+                .orElseGet(() -> new ResponseEntity<>(new RequestEtpCollectedDto(), HttpStatus.NOT_FOUND));
     }
 
 

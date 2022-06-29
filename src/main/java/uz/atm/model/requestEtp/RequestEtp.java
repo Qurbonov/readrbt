@@ -35,7 +35,7 @@ public class RequestEtp {
 
     @Embeddable
     @Data
-    static class RequestEtpPayload {
+    public static class RequestEtpPayload {
 
         @JsonProperty("LOTID")
         private Long lotId;
