@@ -1,10 +1,8 @@
 package uz.atm.dto;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.sql.Date;
-import java.sql.Timestamp;
 
 /**
  * @author Bekpulatov Shoxruh
@@ -40,5 +38,26 @@ public class ResultatDto {
 
     @JsonProperty("vendor_name")
     public String vendorName;
+
+    @JsonProperty("contract_beg")
+    public String contractBeg;
+
+    @JsonProperty("contract_end")
+    public String contractEnd;
+
+    @JsonProperty("avans_day")
+    public String avansDay;
+
+    @JsonProperty("etp_id")
+    public String etpId;
+
+    @JsonProperty("purpose")
+    public String purpose;
+
+    @JsonProperty("vendor_acc")
+    public String vendorAcc;
+
+    @JsonProperty("vendor_bank")
+    public String vendorBank;
 
 }
