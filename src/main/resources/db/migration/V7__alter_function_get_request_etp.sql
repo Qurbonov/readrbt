@@ -1,4 +1,4 @@
-create function get_request_etp(v_lot_id bigint, v_from_doc_date date, v_to_doc_date date, v_organ_name character varying, v_from_sum_lot bigint, v_to_sum_lot bigint, v_month integer, v_state integer, v_pltf integer) returns text
+create or replace function get_request_etp(v_lot_id bigint, v_from_doc_date date, v_to_doc_date date, v_organ_name character varying, v_from_sum_lot bigint, v_to_sum_lot bigint, v_month integer, v_state integer, v_pltf integer) returns text
     language plpgsql
 as
 $$
