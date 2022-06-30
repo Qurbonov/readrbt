@@ -60,4 +60,13 @@ public class ResultatDto {
     @JsonProperty("vendor_bank")
     public Integer vendorBank;
 
+    @JsonProperty("contract_num")
+    public String contractNum;
+
+    @JsonProperty("p_avans")
+    public String pAvans;
+
+    @JsonProperty("beneficiar")
+    public String beneficiar;
+
 }
