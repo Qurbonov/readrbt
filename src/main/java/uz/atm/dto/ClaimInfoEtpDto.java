@@ -28,4 +28,16 @@ public class ClaimInfoEtpDto {
     @JsonProperty("proc_id")
     public Integer prodId;
 
+    @JsonProperty("inn")
+    public Long inn;
+
+    @JsonProperty("date1")
+    public String date1;
+
+    @JsonProperty("date2")
+    public String date2;
+
+    @JsonProperty("dvr")
+    public Integer dvr;
+
 }
