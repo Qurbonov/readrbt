@@ -22,6 +22,6 @@ class Links {
 	private Long id;
 	@JsonProperty("FILENAME")
 	private String fileName;
-	@JsonProperty("LINKDOC")
+	@JsonProperty("LINK")
 	private String linkDoc;
 }
