@@ -40,16 +40,16 @@ public class ResultatDto {
     public String vendorName;
 
     @JsonProperty("contract_beg")
-    public String contractBeg;
+    public Date contractBeg;
 
     @JsonProperty("contract_end")
-    public String contractEnd;
+    public Date contractEnd;
 
     @JsonProperty("avans_day")
-    public String avansDay;
+    public Integer avansDay;
 
     @JsonProperty("etp_id")
-    public String etpId;
+    public Integer etpId;
 
     @JsonProperty("purpose")
     public String purpose;
@@ -58,6 +58,6 @@ public class ResultatDto {
     public String vendorAcc;
 
     @JsonProperty("vendor_bank")
-    public String vendorBank;
+    public Integer vendorBank;
 
 }

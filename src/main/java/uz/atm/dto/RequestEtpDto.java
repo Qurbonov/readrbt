@@ -31,4 +31,10 @@ public class RequestEtpDto {
 
     public Integer pltf;
 
+    @JsonProperty("etp_id")
+    public Integer etpId;
+
+    @JsonProperty("acc")
+    public String acc;
+
 }
