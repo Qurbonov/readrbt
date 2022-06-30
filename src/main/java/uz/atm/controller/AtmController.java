@@ -10,9 +10,11 @@ import uz.atm.criteria.ResultatCriteria;
 import uz.atm.dto.*;
 import uz.atm.enums.Pltf;
 import uz.atm.enums.ProcId;
+import uz.atm.model.resultat.Specifications;
 import uz.atm.services.methodServices.ClaimInfoEtpService;
 import uz.atm.services.methodServices.RequestEtpService;
 import uz.atm.services.methodServices.ResultatService;
+import uz.atm.services.methodServices.SpecificationService;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -33,6 +35,7 @@ public class AtmController {
     private final ResultatService resultatService;
     private final RequestEtpService requestEtpService;
     private final ClaimInfoEtpService claimInfoEtpService;
+    private final SpecificationService specificationService;
 
 
     @GetMapping("/getResultats")
@@ -46,7 +49,6 @@ public class AtmController {
             @RequestParam(name = "procId") Optional<Integer> procId,
             @RequestParam(name = "locDate1") Optional<LocalDate> contractDateFrom,
             @RequestParam(name = "locDate2") Optional<LocalDate> contractDateTo
-
     ) {
 
         ResultatCriteria resultatCriteria = new ResultatCriteria();
@@ -72,7 +74,26 @@ public class AtmController {
                 .orElseGet(() -> new ResponseEntity<>(new ResultatCollectedDto(), HttpStatus.NOT_FOUND));
     }
 
+    @GetMapping("/getSpecificationsByResultatId/{id}")
+    public ResponseEntity<List<Specifications>> getSpecificationsByResultatId(@PathVariable("id") Long id){
+        Optional<List<Specifications>> specifications = specificationService.findSpecificationsByResultatId(id);
+        return specifications.map(specificationsList -> new ResponseEntity<>(specificationsList, HttpStatus.OK))
+                .orElse(new ResponseEntity<>(new ArrayList<>(), HttpStatus.NOT_FOUND));
+    }
 
+    @GetMapping("/getSpecificationsByRequestEtpId/{id}")
+    public ResponseEntity<List<Specifications>> getSpecificationsByRequestEtpId(@PathVariable("id") Long id){
+        Optional<List<Specifications>> specifications = specificationService.findSpecificationsByRequestEtpId(id);
+        return specifications.map(specificationsList -> new ResponseEntity<>(specificationsList, HttpStatus.OK))
+                .orElse(new ResponseEntity<>(new ArrayList<>(), HttpStatus.NOT_FOUND));
+    }
+
+    @GetMapping("/getSpecificationsByClaimInfoEtpId/{id}")
+    public ResponseEntity<List<Specifications>> getSpecificationsByClaimInfoEtpId(@PathVariable("id") Long id){
+        Optional<List<Specifications>> specifications = specificationService.findSpecificationsByClaimInfoEtpId(id);
+        return specifications.map(specificationsList -> new ResponseEntity<>(specificationsList, HttpStatus.OK))
+                .orElse(new ResponseEntity<>(new ArrayList<>(), HttpStatus.NOT_FOUND));
+    }
     @GetMapping("/getAuctions")
     public ResponseEntity<List<RequestEtpDto>> getAllAuctions(
             @RequestParam(name = "lotId") Optional<Long> lotId,
