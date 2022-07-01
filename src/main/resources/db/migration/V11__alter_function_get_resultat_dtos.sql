@@ -43,7 +43,7 @@ BEGIN
                AND (v_maloy = rm.maloy OR v_maloy = 'ALL')
                AND (rm.p_summa between v_from_summa and v_to_summa)
                AND (v_proc_id = rm.proc_id OR v_proc_id = 2147483647)
-               AND (rm.contract_dat BETWEEN v_date1 AND v_date2) limit v_limit offset v_offset
+               AND (rm.contract_dat BETWEEN v_date1 AND v_date2) limit v_limit offset v_offset-1
         loop
             dataJson = dataJson || jsonb_agg(r);
         end loop;

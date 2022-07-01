@@ -46,8 +46,8 @@ public class AtmController {
             @RequestParam(name = "procId") Optional<Integer> procId,
             @RequestParam(name = "locDate1") Optional<LocalDate> contractDateFrom,
             @RequestParam(name = "locDate2") Optional<LocalDate> contractDateTo,
-            @RequestParam(name = "locDate2") Optional<Integer> limit,
-            @RequestParam(name = "locDate2") Optional<Integer> offset
+            @RequestParam(name = "limit") Optional<Integer> limit,
+            @RequestParam(name = "offset    ") Optional<Integer> offset
 
     ) {
 
