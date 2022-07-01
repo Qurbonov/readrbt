@@ -50,10 +50,7 @@ public class AtmController {
             @RequestParam(name = "locDate1") Optional<LocalDate> contractDateFrom,
             @RequestParam(name = "locDate2") Optional<LocalDate> contractDateTo,
             @RequestParam(name = "limit") Optional<Integer> limit,
-            @RequestParam(name = "offset    ") Optional<Integer> offset
-
-            @RequestParam(name = "locDate2") Optional<LocalDate> contractDateTo
-    ) {
+            @RequestParam(name = "offset") Optional<Integer> offset) {
 
         ResultatCriteria resultatCriteria = new ResultatCriteria();
         resultatCriteria.setLotId(lotId.orElse(9223372036854775807L));
@@ -81,25 +78,26 @@ public class AtmController {
     }
 
     @GetMapping("/getSpecificationsByResultatId/{id}")
-    public ResponseEntity<List<Specifications>> getSpecificationsByResultatId(@PathVariable("id") Long id){
+    public ResponseEntity<List<Specifications>> getSpecificationsByResultatId(@PathVariable("id") Long id) {
         Optional<List<Specifications>> specifications = specificationService.findSpecificationsByResultatId(id);
         return specifications.map(specificationsList -> new ResponseEntity<>(specificationsList, HttpStatus.OK))
                 .orElse(new ResponseEntity<>(new ArrayList<>(), HttpStatus.NOT_FOUND));
     }
 
     @GetMapping("/getSpecificationsByRequestEtpId/{id}")
-    public ResponseEntity<List<Specifications>> getSpecificationsByRequestEtpId(@PathVariable("id") Long id){
+    public ResponseEntity<List<Specifications>> getSpecificationsByRequestEtpId(@PathVariable("id") Long id) {
         Optional<List<Specifications>> specifications = specificationService.findSpecificationsByRequestEtpId(id);
         return specifications.map(specificationsList -> new ResponseEntity<>(specificationsList, HttpStatus.OK))
                 .orElse(new ResponseEntity<>(new ArrayList<>(), HttpStatus.NOT_FOUND));
     }
 
     @GetMapping("/getSpecificationsByClaimInfoEtpId/{id}")
-    public ResponseEntity<List<Specifications>> getSpecificationsByClaimInfoEtpId(@PathVariable("id") Long id){
+    public ResponseEntity<List<Specifications>> getSpecificationsByClaimInfoEtpId(@PathVariable("id") Long id) {
         Optional<List<Specifications>> specifications = specificationService.findSpecificationsByClaimInfoEtpId(id);
         return specifications.map(specificationsList -> new ResponseEntity<>(specificationsList, HttpStatus.OK))
                 .orElse(new ResponseEntity<>(new ArrayList<>(), HttpStatus.NOT_FOUND));
     }
+
     @GetMapping("/getAuctions")
     public ResponseEntity<List<RequestEtpDto>> getAllAuctions(
             @RequestParam(name = "lotId") Optional<Long> lotId,
