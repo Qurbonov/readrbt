@@ -45,7 +45,9 @@ public class AtmController {
             @RequestParam(name = "summaTo") Optional<Long> summaTo,
             @RequestParam(name = "procId") Optional<Integer> procId,
             @RequestParam(name = "locDate1") Optional<LocalDate> contractDateFrom,
-            @RequestParam(name = "locDate2") Optional<LocalDate> contractDateTo
+            @RequestParam(name = "locDate2") Optional<LocalDate> contractDateTo,
+            @RequestParam(name = "locDate2") Optional<Integer> limit,
+            @RequestParam(name = "locDate2") Optional<Integer> offset
 
     ) {
 
@@ -59,6 +61,8 @@ public class AtmController {
         resultatCriteria.setSummaFrom(summaFrom.orElse(0L));
         resultatCriteria.setSummaTo(summaTo.orElse(999999999999999999L));
         resultatCriteria.setProcId(procId.orElse(2147483647));
+        resultatCriteria.setSize(limit.orElse(10));
+        resultatCriteria.setPage(offset.orElse(1));
         List<ResultatDto> allByCriteria = resultatService.getAllByCriteria(resultatCriteria);
         return new ResponseEntity<>(allByCriteria, HttpStatus.OK);
     }
