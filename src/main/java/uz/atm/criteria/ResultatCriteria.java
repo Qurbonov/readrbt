@@ -16,7 +16,7 @@ public class ResultatCriteria extends GenericCriteria {
 
     private Long lotId;
 
-    private Integer state;
+//    private Integer state;
 
     private String organName;
 
