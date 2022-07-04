@@ -11,7 +11,7 @@ import lombok.Setter;
  */
 @Getter
 @Setter
-public class ClaimInfoCriteria {
+public class ClaimInfoCriteria extends GenericCriteria{
 
     @JsonProperty("lot_id")
     private Long lotId;

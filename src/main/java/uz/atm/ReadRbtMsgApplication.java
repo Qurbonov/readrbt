@@ -11,7 +11,6 @@ public class ReadRbtMsgApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(ReadRbtMsgApplication.class, args);
-
     }
 
 //	@Bean

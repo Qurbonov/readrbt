@@ -13,7 +13,7 @@ import java.util.Date;
 
 @Getter
 @Setter
-public class RequestEtpCriteria {
+public class RequestEtpCriteria extends GenericCriteria {
 
     private Long lotId;
 
