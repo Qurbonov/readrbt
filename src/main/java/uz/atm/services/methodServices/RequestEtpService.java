@@ -41,8 +41,7 @@ public class RequestEtpService extends AbstractService<RequestEtpRepository> {
             String json = repository.findByCriteria(
                     r.getDocDateFrom(), r.getDocDateTo(), r.getLotId(),
                     r.getMonth(), r.getSumLotTo(), r.getSumLotFrom(),
-                    r.getOrganName(), r.getPltf(), r.getState(),
-                    r.getSize(),r.getPage()
+                    r.getOrganName(), r.getPltf(), r.getSize(),r.getPage()
             );
             mapper.disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
             List<RequestEtpDto> requestEtpDtos = mapper.readValue(json, new TypeReference<List<RequestEtpDto>>() {

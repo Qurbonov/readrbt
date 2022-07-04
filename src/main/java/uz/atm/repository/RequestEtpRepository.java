@@ -12,10 +12,10 @@ import java.util.Date;
 public interface RequestEtpRepository extends JpaRepository<RequestEtp, Long> {
 
 
-    @Query(value = "select public.get_request_etp(:lotId,:docDateFrom,:docDateTo,:organName,:sumLotFrom,:sumLotTo,:month,:state,:pltf,:size,:page);", nativeQuery = true)
+    @Query(value = "select public.get_request_etp(:lotId,:docDateFrom,:docDateTo,:organName,:sumLotFrom,:sumLotTo,:month,:pltf,:size,:page);", nativeQuery = true)
     String findByCriteria(
             @Param("docDateFrom") Date docDateFrom, @Param("docDateTo") Date docDateTo, @Param("lotId") Long lotId,
             @Param("month") Integer month, @Param("sumLotTo") Long sumLotTo, @Param("sumLotFrom") Long sumLotFrom,
-            @Param("organName") String organName, @Param("pltf") Integer pltf, @Param("state") Integer state,
+            @Param("organName") String organName, @Param("pltf") Integer pltf,
             @Param("size") Integer size, @Param("page") Integer page);
 }
