@@ -107,7 +107,6 @@ public class AtmController {
             @RequestParam(name = "sumLotFrom") Optional<Long> sumLotFrom,
             @RequestParam(name = "sumLotTo") Optional<Long> sumLotTo,
             @RequestParam(name = "month") Optional<Integer> month,
-            @RequestParam(name = "state") Optional<Integer> state,
             @RequestParam(name = "limit") Optional<Integer> limit,
             @RequestParam(name = "offset") Optional<Integer> offset
 
@@ -120,7 +119,6 @@ public class AtmController {
         requestEtpCriteria.setSumLotFrom(sumLotFrom.orElse(0L));
         requestEtpCriteria.setSumLotTo(sumLotTo.orElse(999999999999999999L));
         requestEtpCriteria.setMonth(month.orElse(2147483647));
-        requestEtpCriteria.setState(state.orElse(2147483647));
         requestEtpCriteria.setPltf(Pltf.AUKSION.getCode());
         requestEtpCriteria.setSize(limit.orElse(10));
         requestEtpCriteria.setPage(offset.orElse(1));

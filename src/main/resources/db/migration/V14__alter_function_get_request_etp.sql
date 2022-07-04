@@ -2,7 +2,7 @@
 create or replace function
     get_request_etp(v_lot_id bigint, v_from_doc_date DATE, v_to_doc_date DATE,
                     v_organ_name character varying, v_from_sum_lot bigint, v_to_sum_lot bigint,
-                    v_month integer, v_state integer, v_pltf integer, v_limit integer, v_offset integer) returns text
+                    v_month integer, v_pltf integer, v_limit integer, v_offset integer) returns text
     language plpgsql
 as
 $$
@@ -30,7 +30,7 @@ BEGIN
                AND (re.sumlot BETWEEN v_from_sum_lot AND v_to_sum_lot)
                AND (re.month = v_month OR v_month = 2147483647)
                AND (ra.state = v_state OR v_state = 2147483647)
-               AND (re.pltf = v_pltf) /* AND ra.state = 2 */ LIMIT v_limit OFFSET v_limit * (v_offset-1)
+               AND (re.pltf = v_pltf)  AND ra.state = 2 LIMIT v_limit OFFSET v_limit * (v_offset-1)
         loop
             dataJson = dataJson ||  jsonb_agg(r);
         end loop;
