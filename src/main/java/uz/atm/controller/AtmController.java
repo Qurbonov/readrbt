@@ -40,8 +40,8 @@ public class AtmController {
 
     @GetMapping("/getResultats")
     public ResponseEntity<List<ResultatDto>> getAllResultats(
-            @RequestParam(name = "lotId") Optional<Long> lotId,
-            @RequestParam(name = "state") Optional<Integer> state,
+            @RequestParam(name = "lotId") Optional<Long> lotId,/*
+            @RequestParam(name = "state") Optional<Integer> state,*/
             @RequestParam(name = "organName") Optional<String> organName,
             @RequestParam(name = "maloy") Optional<String> maloy,
             @RequestParam(name = "summaFrom") Optional<Long> summaFrom,
@@ -54,7 +54,7 @@ public class AtmController {
 
         ResultatCriteria resultatCriteria = new ResultatCriteria();
         resultatCriteria.setLotId(lotId.orElse(9223372036854775807L));
-        resultatCriteria.setState(state.orElse(2147483647));
+//        resultatCriteria.setState(state.orElse(2147483647));
         resultatCriteria.setOrganName(organName.orElse("ALL"));
         resultatCriteria.setMaloy(maloy.orElse("ALL"));
         resultatCriteria.setFromDate(contractDateFrom.orElse(LocalDate.of(1970, 1, 1)));
@@ -184,7 +184,7 @@ public class AtmController {
         ClaimInfoCriteria claimInfoCriteria = new ClaimInfoCriteria();
         claimInfoCriteria.setLotId(lotId.orElse(9223372036854775807L));
         claimInfoCriteria.setOrganName(organName.orElse("ALL"));
-        claimInfoCriteria.setSummaFrom(summaFrom.orElse(9223372036854775807L));
+        claimInfoCriteria.setSummaFrom(summaFrom.orElse(0L));
         claimInfoCriteria.setSummaTo(summaTo.orElse(9223372036854775807L));
         claimInfoCriteria.setSrok(srok.orElse(2147483647));
         claimInfoCriteria.setState(state.orElse(2147483647));

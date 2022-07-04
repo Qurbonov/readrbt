@@ -5,7 +5,6 @@ import org.springframework.stereotype.Repository;
 import uz.atm.model.contactInfo.ContractInfo;
 
 import java.util.List;
-import java.util.Optional;
 @Repository
 public interface ContractInfoRepository extends JpaRepository<ContractInfo, Long> {
 

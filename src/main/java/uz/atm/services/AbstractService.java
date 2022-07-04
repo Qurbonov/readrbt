@@ -12,7 +12,6 @@ import javax.persistence.MappedSuperclass;
  */
 
 
-@MappedSuperclass
 public abstract class AbstractService<R extends JpaRepository> {
 
     protected R repository;

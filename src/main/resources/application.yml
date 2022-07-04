@@ -13,3 +13,6 @@ spring:
 springdoc:
   swagger-ui:
     path: /swagger-ui
+logging:
+  level:
+    org.zalando.logbook: TRACE
