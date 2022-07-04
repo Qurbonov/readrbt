@@ -107,7 +107,9 @@ public class AtmController {
             @RequestParam(name = "sumLotFrom") Optional<Long> sumLotFrom,
             @RequestParam(name = "sumLotTo") Optional<Long> sumLotTo,
             @RequestParam(name = "month") Optional<Integer> month,
-            @RequestParam(name = "state") Optional<Integer> state
+            @RequestParam(name = "state") Optional<Integer> state,
+            @RequestParam(name = "limit") Optional<Integer> limit,
+            @RequestParam(name = "offset") Optional<Integer> offset
 
     ) {
         RequestEtpCriteria requestEtpCriteria = new RequestEtpCriteria();
@@ -120,6 +122,8 @@ public class AtmController {
         requestEtpCriteria.setMonth(month.orElse(2147483647));
         requestEtpCriteria.setState(state.orElse(2147483647));
         requestEtpCriteria.setPltf(Pltf.AUKSION.getCode());
+        requestEtpCriteria.setSize(limit.orElse(10));
+        requestEtpCriteria.setPage(offset.orElse(1));
         List<RequestEtpDto> allByCriteria = requestEtpService.getAllAuctionsByCriteria(requestEtpCriteria);
         return new ResponseEntity<>(allByCriteria, HttpStatus.OK);
     }
@@ -134,7 +138,9 @@ public class AtmController {
             @RequestParam(name = "sumLotFrom") Optional<Long> sumLotFrom,
             @RequestParam(name = "sumLotTo") Optional<Long> sumLotTo,
             @RequestParam(name = "month") Optional<Integer> month,
-            @RequestParam(name = "state") Optional<Integer> state
+            @RequestParam(name = "state") Optional<Integer> state,
+            @RequestParam(name = "limit") Optional<Integer> limit,
+            @RequestParam(name = "offset") Optional<Integer> offset
 
     ) {
 
@@ -148,6 +154,8 @@ public class AtmController {
         requestEtpCriteria.setMonth(month.orElse(2147483647));
         requestEtpCriteria.setState(state.orElse(2147483647));
         requestEtpCriteria.setPltf(Pltf.E_MAGAZIN.getCode());
+        requestEtpCriteria.setSize(limit.orElse(10));
+        requestEtpCriteria.setPage(offset.orElse(1));
         List<RequestEtpDto> allByCriteria = requestEtpService.getAllAuctionsByCriteria(requestEtpCriteria);
         return new ResponseEntity<>(allByCriteria, HttpStatus.OK);
     }
@@ -169,7 +177,9 @@ public class AtmController {
             @RequestParam(name = "summaFrom") Optional<Long> summaFrom,
             @RequestParam(name = "summTo") Optional<Long> summaTo,
             @RequestParam(name = "srok") Optional<Integer> srok,
-            @RequestParam(name = "state") Optional<Integer> state
+            @RequestParam(name = "state") Optional<Integer> state,
+            @RequestParam(name = "limit") Optional<Integer> limit,
+            @RequestParam(name = "offset") Optional<Integer> offset
     ) {
         ClaimInfoCriteria claimInfoCriteria = new ClaimInfoCriteria();
         claimInfoCriteria.setLotId(lotId.orElse(9223372036854775807L));
@@ -179,6 +189,8 @@ public class AtmController {
         claimInfoCriteria.setSrok(srok.orElse(2147483647));
         claimInfoCriteria.setState(state.orElse(2147483647));
         claimInfoCriteria.setProcId(ProcId.TENDER.getCode());
+        claimInfoCriteria.setSize(limit.orElse(10));
+        claimInfoCriteria.setPage(offset.orElse(1));
 
         Optional<List<ClaimInfoEtpDto>> claimInfoEtpDto = claimInfoEtpService.getByCriteria(claimInfoCriteria);
 
@@ -194,7 +206,9 @@ public class AtmController {
             @RequestParam(name = "summaFrom") Optional<Long> summaFrom,
             @RequestParam(name = "summTo") Optional<Long> summaTo,
             @RequestParam(name = "srok") Optional<Integer> srok,
-            @RequestParam(name = "state") Optional<Integer> state
+            @RequestParam(name = "state") Optional<Integer> state,
+            @RequestParam(name = "limit") Optional<Integer> limit,
+            @RequestParam(name = "offset") Optional<Integer> offset
     ) {
         ClaimInfoCriteria claimInfoCriteria = new ClaimInfoCriteria();
         claimInfoCriteria.setLotId(lotId.orElse(9223372036854775807L));
@@ -204,6 +218,8 @@ public class AtmController {
         claimInfoCriteria.setSrok(srok.orElse(2147483647));
         claimInfoCriteria.setState(state.orElse(2147483647));
         claimInfoCriteria.setProcId(ProcId.KONKURS.getCode());
+        claimInfoCriteria.setSize(limit.orElse(10));
+        claimInfoCriteria.setPage(offset.orElse(1));
 
 
         Optional<List<ClaimInfoEtpDto>> claimInfoEtpDto = claimInfoEtpService.getByCriteria(claimInfoCriteria);
