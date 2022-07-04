@@ -29,7 +29,6 @@ BEGIN
                AND (mpd.name = v_organ_name OR v_organ_name = 'ALL')
                AND (re.sumlot BETWEEN v_from_sum_lot AND v_to_sum_lot)
                AND (re.month = v_month OR v_month = 2147483647)
-               AND (ra.state = v_state OR v_state = 2147483647)
                AND (re.pltf = v_pltf)  AND ra.state = 2 LIMIT v_limit OFFSET v_limit * (v_offset-1)
         loop
             dataJson = dataJson ||  jsonb_agg(r);
