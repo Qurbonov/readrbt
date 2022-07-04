@@ -33,9 +33,10 @@ public class ClaimInfoEtpService extends AbstractService<ClaimInfoEtpRepository>
 
     public Optional<List<ClaimInfoEtpDto>> getByCriteria(ClaimInfoCriteria c) {
         try {
-            String dataJson = repository.getByCriteria(c.getLotId(), c.getOrganName(),
-                    c.getProcId(), c.getSrok(), c.getState(),
-                    c.getSummaFrom(), c.getSummaTo());
+            String dataJson = repository.getByCriteria(
+                    c.getLotId(), c.getOrganName(), c.getProcId(),
+                    c.getSrok(), c.getState(), c.getSummaFrom(),
+                    c.getSummaTo(),c.getSize(),c.getPage());
             List<ClaimInfoEtpDto> claimInfoEtpDtos = mapper.readValue(dataJson, new TypeReference<List<ClaimInfoEtpDto>>() {
             });
             return Optional.of(claimInfoEtpDtos);

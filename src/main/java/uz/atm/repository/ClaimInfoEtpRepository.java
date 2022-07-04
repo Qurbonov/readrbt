@@ -15,9 +15,10 @@ import uz.atm.model.clalimInfo.ClaimInfoEtp;
 public interface ClaimInfoEtpRepository extends JpaRepository<ClaimInfoEtp, Long> {
 
 
-    @Query(value = "select public.get_claim_info(:lotId,:organName,:summaFrom,:summaTo,:srok,:state,:procId);", nativeQuery = true)
+    @Query(value = "select public.get_claim_info(:lotId,:organName,:summaFrom,:summaTo,:srok,:state,:procId,:size,:page);", nativeQuery = true)
     String getByCriteria(@Param("lotId") Long lotId, @Param("organName") String organName, @Param("procId") Integer procId,
-                         @Param("srok") Integer srok, @Param("state") Integer state, @Param("summaFrom") Long summaFrom, @Param("summaTo") Long summaTo);
+                         @Param("srok") Integer srok, @Param("state") Integer state, @Param("summaFrom") Long summaFrom,
+                         @Param("summaTo") Long summaTo, @Param("size") Integer size, @Param("page") Integer page);
 
 
 }
