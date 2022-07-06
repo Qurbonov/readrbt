@@ -64,6 +64,7 @@ public class AuthUserService extends AbstractService<AuthUserRepository> impleme
             AuthUser save = repository.save(authUser);
             return authUserMapper.toDto(save);
         } catch (Exception e) {
+            e.printStackTrace();
             throw new UserAlreadyExistException("User already exist with this Username : " + createDto.username);
         }
     }
