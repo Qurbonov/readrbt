@@ -25,9 +25,9 @@ public class JwtUtil {
             JwtParser jwtParser = Jwts.parser();
 
             jwtParser.setSigningKey(secretKey);
-            Jws jws = jwtParser.parseClaimsJws(jwt);
+            Jws<Claims> jws = jwtParser.parseClaimsJws(jwt);
 
-            Claims claims = (Claims) jws.getBody();
+            Claims claims = jws.getBody();
 
             String username = claims.getSubject();
 
