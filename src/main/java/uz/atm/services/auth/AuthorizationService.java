@@ -2,6 +2,7 @@ package uz.atm.services.auth;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import uz.atm.config.encoder.PassEncoder;
 import uz.atm.dto.auth.LoginResponse;
 import uz.atm.dto.auth.ProfileDetailDTO;
 import uz.atm.enums.Status;
@@ -15,6 +16,7 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class AuthorizationService {
     private final AuthUserRepository authUserRepository;
+    private final PassEncoder passEncoder;
 
     public LoginResponse login(ProfileDetailDTO dto) {
 
@@ -23,8 +25,8 @@ public class AuthorizationService {
         if (authUser.isEmpty()) {
             return new LoginResponse(false, "Check your username!!!", false);
         }
-
-        if (!authUser.get().getPassword().equals(dto.getPassword())) {
+        boolean matches = passEncoder.passwordEncoder().matches(dto.getPassword(), authUser.get().getPassword());
+        if (!matches) {
             return new LoginResponse(false, "Check your password!!!", true);
         }
 
