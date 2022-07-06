@@ -14,7 +14,7 @@ import uz.atm.dto.auth.ProfileDetailDTO;
 import uz.atm.services.auth.AuthorizationService;
 
 
-@RequestMapping("api/atm")
+@RequestMapping("/v1/atm")
 @Slf4j
 @RestController
 @RequiredArgsConstructor

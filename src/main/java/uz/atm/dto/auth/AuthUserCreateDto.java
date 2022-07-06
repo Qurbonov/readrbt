@@ -1,5 +1,8 @@
 package uz.atm.dto.auth;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.NoArgsConstructor;
 import uz.atm.dto.BaseDto;
 import uz.atm.enums.Role;
 
@@ -8,6 +11,9 @@ import uz.atm.enums.Role;
  * Date: 06/07/22
  * Time: 10:19
  */
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
 public class AuthUserCreateDto implements BaseDto {
 
     public String username;
