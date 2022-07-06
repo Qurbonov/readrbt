@@ -4,7 +4,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import org.springframework.stereotype.Service;
 import uz.atm.criteria.ClaimInfoCriteria;
-import uz.atm.dto.ClaimInfoEtpDto;
+import uz.atm.dto.methods.ClaimInfoEtpDto;
 import uz.atm.model.clalimInfo.ClaimInfoEtp;
 import uz.atm.repository.ClaimInfoEtpRepository;
 import uz.atm.services.AbstractService;
