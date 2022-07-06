@@ -3,6 +3,7 @@ package uz.atm.repository;
 import org.springframework.data.jpa.repository.JpaRepository;
 import uz.atm.model.auth.AuthUser;
 
+import java.util.List;
 import java.util.Optional;
 
 /**
@@ -12,5 +13,9 @@ import java.util.Optional;
  */
 public interface AuthUserRepository extends JpaRepository<AuthUser, Long> {
 
-    Optional<AuthUser> findByUsername(String username);
+    Optional<AuthUser> findByUsernameAndDeletedFalse(String username);
+
+    Optional<AuthUser> findByIdAndDeletedFalse(Long id);
+
+    List<AuthUser> findAllByDeletedFalse();
 }

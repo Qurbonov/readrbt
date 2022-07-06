@@ -1,4 +1,4 @@
-package uz.atm.dto;
+package uz.atm.dto.methods;
 
 import uz.atm.model.requestEtp.RequestEtp;
 import uz.atm.model.responseAuction.ResponseAuction;

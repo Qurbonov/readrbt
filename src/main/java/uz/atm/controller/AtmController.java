@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import uz.atm.criteria.ClaimInfoCriteria;
 import uz.atm.criteria.RequestEtpCriteria;
 import uz.atm.criteria.ResultatCriteria;
-import uz.atm.dto.*;
+import uz.atm.dto.methods.*;
 import uz.atm.enums.Pltf;
 import uz.atm.enums.ProcId;
 import uz.atm.model.resultat.Specifications;

@@ -1,4 +1,4 @@
-package uz.atm.dto;
+package uz.atm.dto.methods;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
