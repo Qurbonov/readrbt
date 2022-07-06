@@ -20,7 +20,6 @@ public class ReadRbtMsgApplication {
     public static void main(String[] args) {
         SpringApplication.run(ReadRbtMsgApplication.class, args);
     }
-
     @Bean
     static CommandLineRunner runner(final AuthUserService service) {
         return args -> {

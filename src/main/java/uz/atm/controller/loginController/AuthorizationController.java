@@ -18,16 +18,15 @@ import uz.atm.services.auth.AuthorizationService;
 @Slf4j
 @RestController
 @RequiredArgsConstructor
-//@Api(tags = "Authorization")
+
 public class AuthorizationController {
 
     private final AuthorizationService authorizationService;
 
 
-//    @ApiOperation(value = "Login", notes = "Method used for login")
     @PostMapping("/login")
-    public ResponseEntity<LoginResponse> login(@RequestBody ProfileDetailDTO dto){
+    public ResponseEntity<LoginResponse> login(@RequestBody ProfileDetailDTO dto) {
         log.info("Login {}", dto);
-        return ResponseEntity.ok().body(authorizationService.login(dto));
+        return ResponseEntity.status(authorizationService.login(dto).getStatus() ? 200 : 409).body(authorizationService.login(dto));
     }
 }
