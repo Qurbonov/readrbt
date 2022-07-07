@@ -1,15 +1,10 @@
 package uz.atm;
 
 import io.swagger.v3.oas.annotations.OpenAPIDefinition;
-import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
-import org.springframework.context.annotation.Bean;
-import uz.atm.dto.auth.AuthUserCreateDto;
-import uz.atm.enums.Role;
 import uz.atm.properties.OpenApiProperties;
-import uz.atm.services.auth.AuthUserService;
 
 @SpringBootApplication
 @OpenAPIDefinition
@@ -20,7 +15,8 @@ public class ReadRbtMsgApplication {
     public static void main(String[] args) {
         SpringApplication.run(ReadRbtMsgApplication.class, args);
     }
-    @Bean
+
+/*    @Bean
     static CommandLineRunner runner(final AuthUserService service) {
         return args -> {
             service.create(AuthUserCreateDto.builder()
@@ -29,7 +25,7 @@ public class ReadRbtMsgApplication {
                     .role(Role.ADMIN)
                     .build());
         };
-    }
+    }*/
 
 
 }

@@ -14,6 +14,11 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 import uz.atm.config.filter.JwtFilter;
 import uz.atm.services.auth.AuthUserService;
 
+/**
+ * Author: Khonimov Ulugbek
+ * Date: 06/07/22
+ * Time: 10:47
+ */
 @Configuration
 @EnableWebSecurity
 @RequiredArgsConstructor
@@ -28,12 +33,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     private final JwtFilter jwtFilter;
 
-
-    private static final String[] AUTH_WHITELIST = {
-            "/v1/atm/login",
-            "/swagger-ui/**",
-            "/api/doc"
-    };
 
 
     @Override
@@ -55,8 +54,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 UsernamePasswordAuthenticationFilter.class);
 
         http.authorizeRequests()
-                .antMatchers(AUTH_WHITELIST).permitAll()
-                .anyRequest().authenticated();
+                .antMatchers("/v1/atm/auth").authenticated()
+                .anyRequest().permitAll();
         http.cors().and().csrf().disable();
 
     }
