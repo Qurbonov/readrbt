@@ -15,12 +15,12 @@ public class LoginResponse {
     private String title;
     private Boolean isExist;
 
-    private ProfileDetailDTO profileDetail;
+    private String token;
 
     public LoginResponse(Boolean status, String title, Boolean isExist) {
         this.status = status;
         this.title = title;
-        this.isExist=isExist;
+        this.isExist = isExist;
     }
 
 }

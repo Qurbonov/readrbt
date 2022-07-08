@@ -1,6 +1,9 @@
 package uz.atm.services.auth;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import uz.atm.config.encoder.PassEncoder;
 import uz.atm.dto.auth.LoginResponse;
@@ -12,30 +15,42 @@ import uz.atm.util.JwtUtil;
 
 import java.util.Optional;
 
+
+/**
+ * Author: Khonimov Ulugbek
+ * Date: 06/07/22
+ * Time: 10:47
+ */
 @Service
 @RequiredArgsConstructor
 public class AuthorizationService {
     private final AuthUserRepository authUserRepository;
     private final PassEncoder passEncoder;
 
-    public LoginResponse login(ProfileDetailDTO dto) {
+    /**
+     *
+     * @param dto -> username, password
+     * @return Token
+     */
+    public ResponseEntity<LoginResponse> login(ProfileDetailDTO dto) {
 
         Optional<AuthUser> authUser = authUserRepository.findByUsernameAndDeletedFalse(dto.getUsername());
 
         if (authUser.isEmpty()) {
-            return new LoginResponse(false, "Check your username!!!", false);
+            return ResponseEntity.badRequest().body(new LoginResponse(false, "Check your username!!!", false));
         }
         boolean matches = passEncoder.passwordEncoder().matches(dto.getPassword(), authUser.get().getPassword());
+
         if (!matches) {
-            return new LoginResponse(false, "Check your password!!!", true);
+            return ResponseEntity.badRequest().body(new LoginResponse(false, "Check your password!!!", true));
         }
 
         if (authUser.get().getStatus().equals(Status.BLOCK)) {
-            return new LoginResponse(false, "Your account is blocked!!!", true);
+            return ResponseEntity.badRequest().body(new LoginResponse(false, "Your account is blocked!!!", true));
         }
 
-        dto.setToken(JwtUtil.encode(dto.getUsername()));
+        String token = JwtUtil.encode(dto.getUsername());
 
-        return new LoginResponse(true, "You are login successfully", true, dto);
+        return ResponseEntity.ok().body(new LoginResponse(true, "You are login successfully", true, token));
     }
 }

@@ -12,5 +12,4 @@ import lombok.Setter;
 public class ProfileDetailDTO {
     private String username;
     private String password;
-    private String token;
 }
