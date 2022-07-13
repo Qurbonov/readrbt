@@ -45,6 +45,6 @@ public class AuthUser extends Auditable {
     private String position;
 
     @Enumerated(EnumType.STRING)
-    private Status status;
+    private Status status = Status.ACTIVE;
 
 }
