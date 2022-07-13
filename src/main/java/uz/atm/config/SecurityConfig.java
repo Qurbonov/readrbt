@@ -58,7 +58,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 UsernamePasswordAuthenticationFilter.class);
         try {
             http.authorizeRequests()
-                    .antMatchers("/v1/atm/auth").authenticated()
+                    .antMatchers("/v1/atm/auth/**").authenticated()
                     .anyRequest().permitAll();
             http.cors().and().csrf().disable();
         } catch (Exception e) {
