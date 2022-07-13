@@ -3,6 +3,7 @@ package uz.atm.util;
 import io.jsonwebtoken.*;
 import uz.atm.dto.auth.JwtDTO;
 import uz.atm.enums.Role;
+import uz.atm.exceptions.AppBadRequestException;
 
 import java.util.*;
 
@@ -18,7 +19,9 @@ public class JwtUtil {
         jwtBuilder.setIssuedAt(new Date());
         jwtBuilder.signWith(SignatureAlgorithm.HS256, secretKey);
         jwtBuilder.setExpiration(new Date(System.currentTimeMillis() + (60 * 60 * 1000 * 24)));
-        jwtBuilder.setIssuer(role.name());
+        if (Optional.ofNullable(role).isPresent()) {
+            jwtBuilder.claim("role", role);
+        }
 
 
         return jwtBuilder.compact();
@@ -34,12 +37,12 @@ public class JwtUtil {
             Claims claims = jws.getBody();
 
             String username = claims.getSubject();
-            String issuer = claims.getIssuer();
+            String role = String.valueOf(claims.get("role"));
 
-            return new JwtDTO(username, issuer);
+            return new JwtDTO(username, role);
 
         } catch (JwtException e) {
-            throw new RuntimeException("JWT invalid!");
+            throw new AppBadRequestException("JWT invalid!");
         }
     }
 

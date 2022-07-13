@@ -34,6 +34,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     private final JwtFilter jwtFilter;
 
+    private static final String[] AUTH_BLACKLIST={
+            "/v1/atm/auth/**",
+    };
+
     @Override
     protected void configure(AuthenticationManagerBuilder auth) {
 
@@ -58,7 +62,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 UsernamePasswordAuthenticationFilter.class);
         try {
             http.authorizeRequests()
-                    .antMatchers("/v1/atm/auth/**").authenticated()
+                    .antMatchers(AUTH_BLACKLIST).authenticated()
                     .anyRequest().permitAll();
             http.cors().and().csrf().disable();
         } catch (Exception e) {
