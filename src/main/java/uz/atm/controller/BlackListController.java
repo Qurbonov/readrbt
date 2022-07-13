@@ -42,7 +42,7 @@ public class BlackListController {
         }
     }
 
-    @PostMapping("/getAll")
+    @GetMapping("/getAll")
     public ResponseEntity<List<BlackList>> getAll() {
         return new ResponseEntity<>(service.getAll(), HttpStatus.OK);
     }
