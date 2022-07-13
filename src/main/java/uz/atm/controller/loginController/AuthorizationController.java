@@ -1,9 +1,7 @@
 package uz.atm.controller.loginController;
 
-import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.apiguardian.api.API;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -14,20 +12,24 @@ import uz.atm.dto.auth.ProfileDetailDTO;
 import uz.atm.services.auth.AuthorizationService;
 
 
+/**
+ * Author: Khonimov Ulugbek
+ * Date: 06/07/22
+ * Time: 10:47
+ */
 @RequestMapping("/v1/atm")
 @Slf4j
 @RestController
 @RequiredArgsConstructor
-//@Api(tags = "Authorization")
+
 public class AuthorizationController {
 
     private final AuthorizationService authorizationService;
 
 
-//    @ApiOperation(value = "Login", notes = "Method used for login")
     @PostMapping("/login")
-    public ResponseEntity<LoginResponse> login(@RequestBody ProfileDetailDTO dto){
+    public ResponseEntity<LoginResponse> login(@RequestBody ProfileDetailDTO dto) {
         log.info("Login {}", dto);
-        return ResponseEntity.ok().body(authorizationService.login(dto));
+        return authorizationService.login(dto);
     }
 }

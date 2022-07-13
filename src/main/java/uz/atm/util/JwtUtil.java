@@ -7,7 +7,7 @@ import java.util.Date;
 
 public class JwtUtil {
 
-    private final static String secretKey = "key";
+    private final static String secretKey = "key finance";
 
     public static String encode(String phone) {
         JwtBuilder jwtBuilder = Jwts.builder();

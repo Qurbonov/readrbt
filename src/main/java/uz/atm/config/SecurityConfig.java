@@ -12,8 +12,14 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import uz.atm.config.filter.JwtFilter;
+import uz.atm.exceptions.AppForbiddenException;
 import uz.atm.services.auth.AuthUserService;
 
+/**
+ * Author: Khonimov Ulugbek
+ * Date: 06/07/22
+ * Time: 10:47
+ */
 @Configuration
 @EnableWebSecurity
 @RequiredArgsConstructor
@@ -28,20 +34,17 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     private final JwtFilter jwtFilter;
 
-
-    private static final String[] AUTH_WHITELIST = {
-            "/v1/atm/login",
-            "/swagger-ui/**",
-            "/api/doc"
-    };
-
-
     @Override
-    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+    protected void configure(AuthenticationManagerBuilder auth) {
 
-        auth.userDetailsService(authUserService)
-                .passwordEncoder(getPasswordEncoder());
+        try {
+            auth.userDetailsService(authUserService)
+                    .passwordEncoder(getPasswordEncoder());
+        } catch (Exception e) {
+            throw new IllegalArgumentException();
+        }
     }
+
     @Bean
     public PasswordEncoder getPasswordEncoder() {
         return new BCryptPasswordEncoder();
@@ -49,15 +52,18 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 
     @Override
-    protected void configure(HttpSecurity http) throws Exception {
+    protected void configure(HttpSecurity http) {
         http.addFilterBefore(
                 jwtFilter,
                 UsernamePasswordAuthenticationFilter.class);
-
-        http.authorizeRequests()
-                .antMatchers(AUTH_WHITELIST).permitAll()
-                .anyRequest().authenticated();
-        http.cors().and().csrf().disable();
+        try {
+            http.authorizeRequests()
+                    .antMatchers("/v1/atm/auth").authenticated()
+                    .anyRequest().permitAll();
+            http.cors().and().csrf().disable();
+        } catch (Exception e) {
+            throw new AppForbiddenException(e.getMessage());
+        }
 
     }
 }
