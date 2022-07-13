@@ -49,7 +49,7 @@ public class AuthorizationService {
             return ResponseEntity.badRequest().body(new LoginResponse(false, "Your account is blocked!!!", true));
         }
 
-        String token = JwtUtil.encode(dto.getUsername());
+        String token = JwtUtil.encode(authUser.get().getUsername(),authUser.get().getRole());
 
         return ResponseEntity.ok().body(new LoginResponse(true, "You are login successfully", true, token));
     }
