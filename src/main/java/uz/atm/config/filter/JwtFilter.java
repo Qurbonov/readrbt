@@ -2,7 +2,6 @@ package uz.atm.config.filter;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
@@ -17,8 +16,6 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.Collections;
-import java.util.List;
 import java.util.Optional;
 
 /**
@@ -50,15 +47,12 @@ public class JwtFilter extends OncePerRequestFilter {
             JwtDTO jwtDTO = JwtUtil.decode(token);
 
             String username = jwtDTO.getUsername();
-            String role = jwtDTO.getRole();
-            List<SimpleGrantedAuthority> roles = Collections.singletonList(new SimpleGrantedAuthority(role));
 
-
-//            UserDetails userDetails = authUserService.loadUserByUsername(username);
+            UserDetails userDetails = authUserService.loadUserByUsername(username);
 
             UsernamePasswordAuthenticationToken
-                    authentication = new UsernamePasswordAuthenticationToken(username,
-                    null, roles);
+                    authentication = new UsernamePasswordAuthenticationToken(userDetails,
+                    null, userDetails.getAuthorities());
 
             authentication.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
 
