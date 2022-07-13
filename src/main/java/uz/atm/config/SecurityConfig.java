@@ -36,6 +36,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     private static final String[] AUTH_BLACKLIST={
             "/v1/atm/auth/**",
+            "/v1/atm/black/list/add",
+            "/v1/atm/black/list/remove/**"
+
     };
 
     @Override
