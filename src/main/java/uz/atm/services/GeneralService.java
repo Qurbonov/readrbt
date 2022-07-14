@@ -6,6 +6,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import uz.atm.enums.Methods;
 import uz.atm.model.General;
+import uz.atm.model.responseAuction.ResponseAuction;
 import uz.atm.services.methodServices.*;
 
 import javax.persistence.EntityListeners;
@@ -25,6 +26,8 @@ public class GeneralService {
     private final ClaimInfoEtpService claimInfoEtpService;
     private final SuccessInfoService successInfoService;
     private final ResponseClaimInfoService responseClaimInfoService;
+
+    private final ResponseAuctionService responseAuctionService;
 
 
     public void parse(String str) throws JsonProcessingException {
@@ -47,8 +50,10 @@ public class GeneralService {
                 rkpEndService.save(str);
             } else if (methodName.equals(Methods.SUCCESS_INFO.toString())) {
                 successInfoService.save(str);
-            } else if (methodName.equals(Methods.RESPONSE_CLAIM_INFO.toString())){
+            } else if (methodName.equals(Methods.RESPONSE_CLAIM_INFO.toString())) {
                 responseClaimInfoService.save(str);
+            } else if (methodName.equals(Methods.RESPONSE_AUCTION.name())){
+                responseAuctionService.save(str);
             }
         } else manualIdentifierService.saveManualAccordingToType(str);
     }
