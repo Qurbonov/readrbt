@@ -34,7 +34,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     private final JwtFilter jwtFilter;
 
-    private static final String[] AUTH_BLACKLIST={
+    private static final String[] AUTH_BLACKLIST = {
             "/v1/atm/auth/**",
             "/v1/atm/black/list/add",
             "/v1/atm/black/list/remove/**"
