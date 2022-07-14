@@ -67,7 +67,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             http.authorizeRequests()
                     .antMatchers(AUTH_BLACKLIST).authenticated()
                     .anyRequest().permitAll();
-            http.cors().and().csrf().disable();
+//            http.cors().and().csrf().disable();
         } catch (Exception e) {
             throw new AppForbiddenException(e.getMessage());
         }

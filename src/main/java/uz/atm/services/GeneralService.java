@@ -55,6 +55,7 @@ public class GeneralService {
             } else if (methodName.equals(Methods.RESPONSE_AUCTION.name())){
                 responseAuctionService.save(str);
             }
-        } else manualIdentifierService.saveManualAccordingToType(str);
+        } else
+            manualIdentifierService.saveManualAccordingToType(str);
     }
 }

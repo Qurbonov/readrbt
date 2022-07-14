@@ -1,8 +1,8 @@
 spring:
   datasource:
     username: postgres
-    password: Shoxruh0912
-    url: jdbc:postgresql://localhost:5432/postgres
+    password: 1234
+    url: jdbc:postgresql://localhost:5432/rbtmsgs
     driver-class-name: org.postgresql.Driver
   jpa:
     hibernate:
@@ -19,18 +19,3 @@ logging:
   level:
     org.zalando.logbook: WARN
 
-
-
-api:
-  info:
-    title: Review Service API
-    description: API to fetch review details for product
-    version: 1.0.0
-    terms-of-service: http://pdp.com/terms/
-    contact:
-      name: Review Service API Team
-      email: apiteam@example.com
-      url: http://pdp.com/team
-    license:
-      name: Apache 2.0
-      url: http://www.apache.org/licenses/LICENSE-2.0.html

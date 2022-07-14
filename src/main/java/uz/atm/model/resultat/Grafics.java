@@ -37,4 +37,7 @@ public class Grafics {
     @JsonProperty("AVANS")
     private Long avans;
 
+    @JsonProperty("SUMMA")
+    private Long summa;
+
 }
