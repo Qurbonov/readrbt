@@ -11,4 +11,5 @@ import lombok.Setter;
 @NoArgsConstructor
 public class JwtDTO {
     private String username;
+    private String role;
 }

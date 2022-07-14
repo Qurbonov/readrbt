@@ -34,15 +34,11 @@ public class BlackListController {
 
     @GetMapping("/remove/{id}")
     public ResponseEntity<?> unblock(@PathVariable Long id) {
-        try {
-            Long aLong = service.unblock(id);
-            return new ResponseEntity<>(aLong, HttpStatus.CREATED);
-        } catch (Exception e) {
-            return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
-        }
+        Long aLong = service.unblock(id);
+        return new ResponseEntity<>(aLong, HttpStatus.CREATED);
     }
 
-    @PostMapping("/getAll")
+    @GetMapping("/getAll")
     public ResponseEntity<List<BlackList>> getAll() {
         return new ResponseEntity<>(service.getAll(), HttpStatus.OK);
     }

@@ -2,20 +2,27 @@ package uz.atm.util;
 
 import io.jsonwebtoken.*;
 import uz.atm.dto.auth.JwtDTO;
+import uz.atm.enums.Role;
+import uz.atm.exceptions.AppBadRequestException;
 
-import java.util.Date;
+import java.util.*;
 
 public class JwtUtil {
 
     private final static String secretKey = "key finance";
 
-    public static String encode(String phone) {
+
+    public static String encode(String phone, Role role) {
         JwtBuilder jwtBuilder = Jwts.builder();
+
         jwtBuilder.setSubject(phone);
         jwtBuilder.setIssuedAt(new Date());
         jwtBuilder.signWith(SignatureAlgorithm.HS256, secretKey);
         jwtBuilder.setExpiration(new Date(System.currentTimeMillis() + (60 * 60 * 1000 * 24)));
-        jwtBuilder.setIssuer("finance production");
+        if (Optional.ofNullable(role).isPresent()) {
+            jwtBuilder.claim("role", role);
+        }
+
 
         return jwtBuilder.compact();
     }
@@ -30,11 +37,12 @@ public class JwtUtil {
             Claims claims = jws.getBody();
 
             String username = claims.getSubject();
+            String role = String.valueOf(claims.get("role"));
 
-            return new JwtDTO(username);
+            return new JwtDTO(username, role);
 
         } catch (JwtException e) {
-            throw new RuntimeException("JWT invalid!");
+            throw new AppBadRequestException("JWT invalid!");
         }
     }
 

@@ -1,5 +1,6 @@
 package uz.atm.exceptions.handler;
 
+import org.postgresql.util.PSQLException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.BadCredentialsException;
@@ -9,6 +10,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import uz.atm.exceptions.AppBadRequestException;
 import uz.atm.exceptions.AppForbiddenException;
 import uz.atm.exceptions.TokenNotValidException;
+import uz.atm.exceptions.UserAlreadyExistException;
 
 import javax.persistence.NonUniqueResultException;
 import java.sql.SQLException;
@@ -27,7 +29,9 @@ public class ExceptionHandlerController {
             NullPointerException.class,
             IllegalArgumentException.class,
             NonUniqueResultException.class,
-            SQLException.class})
+            SQLException.class,
+            PSQLException.class,
+            UserAlreadyExistException.class})
     public ResponseEntity<?> handleBadRequestException(RuntimeException e) {
         return ResponseEntity.badRequest().body(e.getMessage());
     }

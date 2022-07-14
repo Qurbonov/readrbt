@@ -12,6 +12,7 @@ import uz.atm.dto.auth.AuthUserCreateDto;
 import uz.atm.dto.auth.AuthUserDto;
 import uz.atm.dto.auth.AuthUserUpdateDto;
 import uz.atm.enums.Status;
+import uz.atm.exceptions.AppBadRequestException;
 import uz.atm.exceptions.UserAlreadyExistException;
 import uz.atm.exceptions.UserNotFoundException;
 import uz.atm.mapper.auth.AuthUserMapper;
@@ -50,7 +51,7 @@ public class AuthUserService extends AbstractService<AuthUserRepository> impleme
             AuthUser user = optional.get();
             if (user.getStatus().equals(Status.ACTIVE)) {
                 return User.builder().username(user.getUsername()).password(user.getPassword()).authorities(new SimpleGrantedAuthority(user.getRole().name())).build();
-            } else throw new RuntimeException("User Not Active");
+            } else throw new AppBadRequestException("User Not Active");
         } else {
             throw new UsernameNotFoundException("User not found");
         }
@@ -64,7 +65,6 @@ public class AuthUserService extends AbstractService<AuthUserRepository> impleme
             AuthUser save = repository.save(authUser);
             return authUserMapper.toDto(save);
         } catch (Exception e) {
-            e.printStackTrace();
             throw new UserAlreadyExistException("User already exist with this Username : " + createDto.username);
         }
     }
@@ -122,7 +122,7 @@ public class AuthUserService extends AbstractService<AuthUserRepository> impleme
                 authUser.setPassword(passEncoder.passwordEncoder().encode(dto.newPassword));
                 repository.save(authUser);
                 return dto.id;
-            } else throw new RuntimeException("Mismatch password");
+            } else throw new AppBadRequestException("Mismatch password");
         } else throw new UserNotFoundException();
     }
 }

@@ -3,6 +3,7 @@ package uz.atm.model;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
+import uz.atm.enums.BlackListStatus;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -39,7 +40,7 @@ public class BlackList {
     private Date dateEnd;
 
     @JsonProperty("STATUS")
-    private Integer status;
+    private Integer status = BlackListStatus.BLOCK.getCode();
 
     @JsonProperty("NOTE")
     @Column(columnDefinition = "TEXT")
