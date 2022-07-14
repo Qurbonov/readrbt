@@ -1,6 +1,5 @@
 package uz.atm.dto.blackList;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.Date;
 
@@ -20,6 +19,5 @@ public class BlackListCreateDto {
     public Date dateEnd;
 
     public String note;
-
 
 }
