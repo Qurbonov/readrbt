@@ -838,3 +838,23 @@ uz.atm.exceptions.UserAlreadyExistException: User already exist with this Userna
 2022-07-13 16:50:45,213 ERROR            [main] org.hibernate.engine.jdbc.spi.SqlExceptionHelper                                             : ОШИБКА: повторяющееся значение ключа нарушает ограничение уникальности "uk_t1iph3dfc25ukwcl9xemtnojn"
   Подробности: Ключ "(username)=(admin)" уже существует.
 2022-07-13 16:50:50,892 WARN             [http-nio-8080-exec-2] org.apache.juli.logging.DirectJDKLog                                         : Creation of SecureRandom instance for session ID generation using [SHA1PRNG] took [114] milliseconds.
+2022-07-14 17:59:37,172 WARN             [main] org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration      : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-07-14 17:59:37,846 WARN             [main] org.springframework.context.support.AbstractApplicationContext                               : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'queueConsumer': Unsatisfied dependency expressed through field 'generalService'; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'generalService' defined in file [D:\Projects\IntellijIdea\readrbt\target\classes\uz\atm\services\GeneralService.class]: Unsatisfied dependency expressed through constructor parameter 10; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'uz.atm.services.methodServices.ResponseAuctionService' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {}
+2022-07-14 17:59:37,926 ERROR            [main] org.springframework.boot.diagnostics.LoggingFailureAnalysisReporter                          : 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Parameter 10 of constructor in uz.atm.services.GeneralService required a bean of type 'uz.atm.services.methodServices.ResponseAuctionService' that could not be found.
+
+The injection point has the following annotations:
+	- @org.springframework.beans.factory.annotation.Autowired(required=true)
+
+
+Action:
+
+Consider defining a bean of type 'uz.atm.services.methodServices.ResponseAuctionService' in your configuration.
+
