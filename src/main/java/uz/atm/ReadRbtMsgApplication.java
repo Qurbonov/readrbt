@@ -5,7 +5,6 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
-import org.springframework.context.annotation.Bean;
 import uz.atm.dto.auth.AuthUserCreateDto;
 import uz.atm.enums.Role;
 import uz.atm.properties.OpenApiProperties;
@@ -27,7 +26,7 @@ public class ReadRbtMsgApplication {
         SpringApplication.run(ReadRbtMsgApplication.class, args);
     }
 
-//    @Bean
+    //    @Bean
     public void run() throws Exception {
         CommandLineRunner runner = (a) -> {
             try {

@@ -10,23 +10,21 @@ import java.io.IOException;
 
 @Component
 public class QueueConsumer {
-	private final RbtMsgsRepository repository;
-	GeneralService generalService;
+    private final RbtMsgsRepository repository;
+    GeneralService generalService;
 
-	public QueueConsumer(RbtMsgsRepository repository, GeneralService generalService)
-	{
-		this.repository = repository;
-		this.generalService = generalService;
-	}
 
-//	public QueueConsumer(RbtMsgsRepository repository) {this.repository = repository;}
+    public QueueConsumer(RbtMsgsRepository repository, GeneralService generalService) {
+        this.repository = repository;
+        this.generalService = generalService;
+    }
 
-//	@RabbitListener(queues = {"${queue.name}"})
-	public void receive(@Payload String fileBody) throws IOException
-	{
-		System.out.println(fileBody);
-		generalService.parse(fileBody);
-	}
+
+//    @RabbitListener(queues = {"${queue.name}"})
+    public void receive(@Payload String fileBody) throws IOException {
+//		System.out.println(fileBody);
+        generalService.parse(fileBody);
+    }
 }
 
 

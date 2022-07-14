@@ -50,6 +50,7 @@ public class GeneralService {
             } else if (methodName.equals(Methods.RESPONSE_CLAIM_INFO.toString())){
                 responseClaimInfoService.save(str);
             }
-        } else manualIdentifierService.saveManualAccordingToType(str);
+        } else
+            manualIdentifierService.saveManualAccordingToType(str);
     }
 }

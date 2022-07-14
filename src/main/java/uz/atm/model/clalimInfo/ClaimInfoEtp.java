@@ -21,74 +21,74 @@ import java.util.List;
 @Entity
 public class ClaimInfoEtp {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
 
-    @JsonProperty("ETP_ID")
-    private int etpId;
+	@JsonProperty("ETP_ID")
+	private int etpId;
 
-    @JsonProperty("REQUEST_ID")
-    private int requestId;
+	@JsonProperty("REQUEST_ID")
+	private int requestId;
 
-    @JsonProperty("METHOD_NAME")
-    private String methodName;
+	@JsonProperty("METHOD_NAME")
+	private String methodName;
 
-    @Embedded
-    @JsonProperty("PAYLOAD")
-    private ContractinfoPayload payload;
+	@Embedded
+	@JsonProperty("PAYLOAD")
+	private ContractinfoPayload payload;
 
 
-    @Data
-    @Embeddable
-    @AllArgsConstructor
-    @NoArgsConstructor
-    private static class ContractinfoPayload {
+	@Data
+	@Embeddable
+	@AllArgsConstructor
+	@NoArgsConstructor
+	private static class ContractinfoPayload {
 
-        @JsonProperty("LOTID")
-        private Long lotId;
+		@JsonProperty("LOTID")
+		private Long lotId;
 
-        @JsonProperty("PROC_ID")
-        private Integer procId;
+		@JsonProperty("PROC_ID")
+		private Integer procId;
 
-        @JsonProperty("DATE1")
-        private String date1;
+		@JsonProperty("DATE1")
+		private String date1;
 
-        @JsonProperty("DATE2")
-        private String date2;
+		@JsonProperty("DATE2")
+		private String date2;
 
-        @JsonProperty("DVR")
-        private Integer dvr;
+		@JsonProperty("DVR")
+		private Integer dvr;
 
-        @JsonProperty("ORGAN")
-        private String organ;
+		@JsonProperty("ORGAN")
+		private String organ;
 
-        @JsonProperty("INN")
-        private Long inn;
+		@JsonProperty("INN")
+		private Long inn;
 
-        @JsonProperty("SUMMA")
-        private Long summa;
+		@JsonProperty("SUMMA")
+		private Long summa;
 
-        @JsonProperty("SROK")
-        private Integer srok;
+		@JsonProperty("SROK")
+		private Integer srok;
 
-        @JsonProperty("KLS")
-        private String kls;
+		@JsonProperty("KLS")
+		private String kls;
 
-        @JsonProperty("PURPOSE")
-        @Column(columnDefinition = "TEXT")
-        private String purpose;
+		@JsonProperty("PURPOSE")
+		@Column(columnDefinition = "TEXT")
+		private String purpose;
 
-        @JsonProperty("FINSRC")
-        @OneToMany
-        private List<FinSrc> finSrc;
+		@JsonProperty("FINSRC")
+		@OneToMany(cascade = CascadeType.ALL)
+		private List<FinSrc> finSrc;
 
-        @JsonProperty("SPECIFICATIONS")
-        @OneToMany
-        private List<Specifications> specifications;
+		@JsonProperty("SPECIFICATIONS")
+		@OneToMany(cascade = CascadeType.ALL)
+		private List<Specifications> specifications;
 
-        @JsonProperty("GRAFICS")
-        @OneToMany
-        private List<Grafics> grafics;
-    }
+		@JsonProperty("GRAFICS")
+		@OneToMany(cascade = CascadeType.ALL)
+		private List<Grafics> grafics;
+	}
 }

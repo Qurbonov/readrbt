@@ -21,14 +21,14 @@
         </rollingPolicy>
     </appender>
 
-    <root level="WARN">
-        <appender-ref ref="File" />
-        <appender-ref ref="Console" />+
-    </root>
+    <!--    <root level="WARN">-->
+    <!--        <appender-ref ref="File" />-->
+    <!--        <appender-ref ref="Console" />+-->
+    <!--    </root>-->
 
-    <logger name="uz.atm" level="warn" additivity="false">
-        <appender-ref ref="File" />
-        <appender-ref ref="Console" />
-    </logger>
+    <!--    <logger name="uz.atm" level="warn" additivity="false">-->
+    <!--        <appender-ref ref="File" />-->
+    <!--        <appender-ref ref="Console" />-->
+    <!--    </logger>-->
 
 </configuration>
