@@ -348,3 +348,31 @@ java.lang.ClassCastException: class org.springframework.security.core.userdetail
 2022-07-13 11:44:21,354 WARN             [main] org.hibernate.engine.jdbc.spi.SqlExceptionHelper                                             : SQL Error: 0, SQLState: 23505
 2022-07-13 11:44:21,355 ERROR            [main] org.hibernate.engine.jdbc.spi.SqlExceptionHelper                                             : ERROR: duplicate key value violates unique constraint "uk_t1iph3dfc25ukwcl9xemtnojn"
   Detail: Key (username)=(admin) already exists.
+2022-07-13 17:07:05,558 WARN             [main] org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration      : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-07-13 17:07:06,629 WARN             [main] org.hibernate.engine.jdbc.spi.SqlExceptionHelper                                             : SQL Error: 0, SQLState: 23505
+2022-07-13 17:07:06,629 ERROR            [main] org.hibernate.engine.jdbc.spi.SqlExceptionHelper                                             : ERROR: duplicate key value violates unique constraint "uk_t1iph3dfc25ukwcl9xemtnojn"
+  Detail: Key (username)=(admin) already exists.
+2022-07-13 17:11:02,461 WARN             [http-nio-8080-exec-9] org.hibernate.engine.jdbc.spi.SqlExceptionHelper                             : SQL Error: 0, SQLState: 23505
+2022-07-13 17:11:02,461 ERROR            [http-nio-8080-exec-9] org.hibernate.engine.jdbc.spi.SqlExceptionHelper                             : ERROR: duplicate key value violates unique constraint "uk_t1iph3dfc25ukwcl9xemtnojn"
+  Detail: Key (username)=(admin) already exists.
+2022-07-13 17:11:25,039 WARN             [main] org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration      : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-07-13 17:11:26,227 WARN             [main] org.hibernate.engine.jdbc.spi.SqlExceptionHelper                                             : SQL Error: 0, SQLState: 23505
+2022-07-13 17:11:26,228 ERROR            [main] org.hibernate.engine.jdbc.spi.SqlExceptionHelper                                             : ERROR: duplicate key value violates unique constraint "uk_t1iph3dfc25ukwcl9xemtnojn"
+  Detail: Key (username)=(admin) already exists.
+2022-07-13 17:12:04,457 WARN             [main] org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration      : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-07-13 17:12:05,610 WARN             [main] org.hibernate.engine.jdbc.spi.SqlExceptionHelper                                             : SQL Error: 0, SQLState: 23505
+2022-07-13 17:12:05,611 ERROR            [main] org.hibernate.engine.jdbc.spi.SqlExceptionHelper                                             : ERROR: duplicate key value violates unique constraint "uk_t1iph3dfc25ukwcl9xemtnojn"
+  Detail: Key (username)=(admin) already exists.
+2022-07-13 17:12:40,557 WARN             [http-nio-8080-exec-1] org.hibernate.engine.jdbc.spi.SqlExceptionHelper                             : SQL Error: 0, SQLState: 23505
+2022-07-13 17:12:40,558 ERROR            [http-nio-8080-exec-1] org.hibernate.engine.jdbc.spi.SqlExceptionHelper                             : ERROR: duplicate key value violates unique constraint "uk_t1iph3dfc25ukwcl9xemtnojn"
+  Detail: Key (username)=(admin) already exists.
+2022-07-13 17:12:57,787 WARN             [http-nio-8080-exec-2] org.hibernate.engine.jdbc.spi.SqlExceptionHelper                             : SQL Error: 0, SQLState: 23505
+2022-07-13 17:12:57,788 ERROR            [http-nio-8080-exec-2] org.hibernate.engine.jdbc.spi.SqlExceptionHelper                             : ERROR: duplicate key value violates unique constraint "uk_t1iph3dfc25ukwcl9xemtnojn"
+  Detail: Key (username)=(admin) already exists.
+2022-07-13 17:13:37,432 WARN             [http-nio-8080-exec-3] org.hibernate.engine.jdbc.spi.SqlExceptionHelper                             : SQL Error: 0, SQLState: 23505
+2022-07-13 17:13:37,434 ERROR            [http-nio-8080-exec-3] org.hibernate.engine.jdbc.spi.SqlExceptionHelper                             : ERROR: duplicate key value violates unique constraint "uk_t1iph3dfc25ukwcl9xemtnojn"
+  Detail: Key (username)=(admin) already exists.
+2022-07-13 17:14:21,891 WARN             [main] org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration      : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-07-13 17:14:41,402 WARN             [http-nio-8080-exec-1] org.hibernate.engine.jdbc.spi.SqlExceptionHelper                             : SQL Error: 0, SQLState: 23505
+2022-07-13 17:14:41,403 ERROR            [http-nio-8080-exec-1] org.hibernate.engine.jdbc.spi.SqlExceptionHelper                             : ERROR: duplicate key value violates unique constraint "uk_t1iph3dfc25ukwcl9xemtnojn"
+  Detail: Key (username)=(admin) already exists.

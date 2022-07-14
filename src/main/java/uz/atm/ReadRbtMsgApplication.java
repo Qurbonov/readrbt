@@ -27,7 +27,7 @@ public class ReadRbtMsgApplication {
         SpringApplication.run(ReadRbtMsgApplication.class, args);
     }
 
-    @Bean
+//    @Bean
     public void run() throws Exception {
         CommandLineRunner runner = (a) -> {
             try {

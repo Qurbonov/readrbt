@@ -3,6 +3,7 @@ package uz.atm.services.blacklist;
 import org.springframework.stereotype.Service;
 import uz.atm.dto.blackList.BlackListCreateDto;
 import uz.atm.enums.BlackListStatus;
+import uz.atm.exceptions.AppBadRequestException;
 import uz.atm.mapper.blackList.BlackListMapper;
 import uz.atm.model.BlackList;
 import uz.atm.model.action.Actions;
@@ -58,7 +59,7 @@ public class BlackListService extends AbstractService<BlackListRepository> {
             Actions actions = new Actions(save + "=>Org added to black list ", sessionUtils.getSessionId());
             actionService.create(actions);
             return id;
-        } else throw new RuntimeException("Organization not found with id : " + id);
+        } else throw new AppBadRequestException("Organization not found with id : " + id);
     }
 
 }
