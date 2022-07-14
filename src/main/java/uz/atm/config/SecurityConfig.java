@@ -60,7 +60,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             http.authorizeRequests()
                     .antMatchers("/v1/atm/auth").authenticated()
                     .anyRequest().permitAll();
-            http.cors().and().csrf().disable();
+//            http.cors().and().csrf().disable();
         } catch (Exception e) {
             throw new AppForbiddenException(e.getMessage());
         }

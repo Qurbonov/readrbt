@@ -19,6 +19,7 @@ import java.util.List;
  * Date: 06/07/22
  * Time: 11:27
  */
+@CrossOrigin(origins = "http://192.168.254.145:3085")
 @RestController
 @RequestMapping("/v1/atm/auth")
 public class AuthUserController {
