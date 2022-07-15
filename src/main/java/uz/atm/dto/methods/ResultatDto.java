@@ -70,6 +70,6 @@ public class ResultatDto {
     public String beneficiar;
 
     @JsonProperty("inn")
-    public Long inn;
+    public String inn;
 
 }

@@ -40,34 +40,37 @@ public class AtmController {
 
     @GetMapping("/getResultats")
     public ResponseEntity<List<ResultatDto>> getAllResultats(
-            @RequestParam(name = "lotId") Optional<Long> lotId,/*
-            @RequestParam(name = "state") Optional<Integer> state,*/
+            @RequestParam(name = "lotId") Optional<Long> lotId,
+            @RequestParam(name = "etpId") Optional<Integer> etpId,
+            @RequestParam(name = "contractNum") Optional<String> contractNum,
             @RequestParam(name = "organName") Optional<String> organName,
+            @RequestParam(name = "organInn") Optional<String> organInn,
+            @RequestParam(name = "vendorName") Optional<String> vendorName,
+            @RequestParam(name = "vendorInn") Optional<String> vendorInn,
             @RequestParam(name = "maloy") Optional<String> maloy,
-            @RequestParam(name = "summaFrom") Optional<Long> summaFrom,
-            @RequestParam(name = "summaTo") Optional<Long> summaTo,
             @RequestParam(name = "procId") Optional<Integer> procId,
-            @RequestParam(name = "locDate1") Optional<LocalDate> contractDateFrom,
-            @RequestParam(name = "locDate2") Optional<LocalDate> contractDateTo,
+            @RequestParam(name = "contractDateFrom") Optional<LocalDate> contractDateFrom,
+            @RequestParam(name = "contractDateTo") Optional<LocalDate> contractDateTo,
             @RequestParam(name = "limit") Optional<Integer> limit,
             @RequestParam(name = "offset") Optional<Integer> offset) {
 
         ResultatCriteria resultatCriteria = new ResultatCriteria();
         resultatCriteria.setLotId(lotId.orElse(9223372036854775807L));
-//        resultatCriteria.setState(state.orElse(2147483647));
+        resultatCriteria.setEtpId(etpId.orElse(2147483647));
         resultatCriteria.setOrganName(organName.orElse("ALL"));
         resultatCriteria.setMaloy(maloy.orElse("ALL"));
         resultatCriteria.setFromDate(contractDateFrom.orElse(LocalDate.of(1970, 1, 1)));
         resultatCriteria.setToDate(contractDateTo.orElse(LocalDate.now().plusYears(1)));
-        resultatCriteria.setSummaFrom(summaFrom.orElse(0L));
-        resultatCriteria.setSummaTo(summaTo.orElse(999999999999999999L));
         resultatCriteria.setProcId(procId.orElse(2147483647));
+        resultatCriteria.setOrganInn(organInn.orElse("ALL"));
+        resultatCriteria.setVendorInn(vendorInn.orElse("ALL"));
+        resultatCriteria.setVendorName(vendorName.orElse("ALL"));
+        resultatCriteria.setContractNum(contractNum.orElse("ALL"));
         resultatCriteria.setSize(limit.orElse(10));
         resultatCriteria.setPage(offset.orElse(1));
         List<ResultatDto> allByCriteria = resultatService.getAllByCriteria(resultatCriteria);
         return new ResponseEntity<>(allByCriteria, HttpStatus.OK);
     }
-
 
     @GetMapping("/getResultatById/{id}")
     public ResponseEntity<ResultatCollectedDto> getById(@PathVariable("id") Long id) {

@@ -39,11 +39,13 @@ public class ResultatService extends AbstractService<ResultatMethodRepository> {
 
     public List<ResultatDto> getAllByCriteria(ResultatCriteria r) {
         try {
-            String json = repository.findByCriteria(r.getLotId(),/* r.getState(),*/ r.getOrganName(), r.getMaloy(), r.getSummaFrom(), r.getSummaTo(), r.getProcId(), r.getFromDate(), r.getToDate(), r.getSize(), r.getPage());
+            String json = repository.findByCriteria(r.getEtpId(),
+                    r.getLotId(), r.getOrganName(), r.getOrganInn(), r.getMaloy(),
+                    r.getVendorInn(), r.getVendorName(), r.getContractNum(), r.getProcId(),
+                    r.getFromDate(), r.getToDate(), r.getSize(), r.getPage());
             mapper.disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
-            List<ResultatDto> resultatDto = mapper.readValue(json, new TypeReference<List<ResultatDto>>() {
+            return mapper.readValue(json, new TypeReference<>() {
             });
-            return resultatDto;
         } catch (Exception e) {
             e.printStackTrace();
             return new ArrayList<>();

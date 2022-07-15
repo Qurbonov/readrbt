@@ -16,21 +16,25 @@ public class ResultatCriteria extends GenericCriteria {
 
     private Long lotId;
 
-//    private Integer state;
-
     private String organName;
 
+    private String organInn;
+
+    private String vendorName;
+
+    private String vendorInn;
+
+    private String contractNum;
+
     private String maloy;
-
-    private Long summaFrom;
-
-    private Long summaTo;
 
     private Integer procId;
 
     public LocalDate fromDate;
 
     public LocalDate toDate;
+
+    public Integer etpId;
 
 
 
