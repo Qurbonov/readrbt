@@ -17,13 +17,13 @@ import java.util.List;
 public class RkpPaysInfo {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id;
+	private Long id;
 
 	@JsonProperty("RESPONSE_ID")
-	private long responseId;
+	private Long responseId;
 
 	@JsonProperty("REQUEST_ID")
-	private long requestId;
+	private Long requestId;
 
 	@JsonProperty("METHOD_NAME")
 	private String methodName;
