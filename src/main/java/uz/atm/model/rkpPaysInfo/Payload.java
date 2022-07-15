@@ -1,5 +1,7 @@
 package uz.atm.model.rkpPaysInfo;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -10,17 +12,20 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import java.time.LocalDate;
 
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
+@JsonInclude(JsonInclude.Include.NON_NULL)
 class Payload {
 	@JsonProperty("PAYID")
 	public int payId;
 	@JsonProperty("OPERDAY")
-	public String operDay;
+	@JsonFormat(pattern = "ddMMyyyy")
+	public LocalDate operDay;
 	@JsonProperty("PAYTYPE")
 	public int payType;
 	@JsonProperty("ID")
@@ -28,13 +33,14 @@ class Payload {
 	@JsonProperty("DOCNUMB")
 	public String docNumb;
 	@JsonProperty("DOCDATE")
-	public String docDate;
+	@JsonFormat(pattern = "ddMMyyyy")
+	public LocalDate docDate;
 	@JsonProperty("SUMPAY")
 	public long sumPay;
 	@JsonProperty("CONTRACT")
-	public int contract;
+	public Integer contract;
 	@JsonProperty("LOTID")
-	public long lotId;
+	public Long lotId;
 	@JsonProperty("CLNAME")
 	public String clName;
 	@JsonProperty("CLMFO")
@@ -69,3 +75,22 @@ class Payload {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 }
+
+/*{
+  "RESPONSE_ID": 3546114,
+  "REQUEST_ID": 2253590,
+  "METHOD_NAME": "RKP_PAYS_INFO",
+  "PAYLOAD": {
+    "PAYID": 326584,
+    "ID": 560426239,
+    "LOTID": 22111008515365,
+    "OPERDAY": "15072022",
+    "DOCNUMB": "326584",
+    "DOCDATE": "15072022",
+    "ACC": "700110860262877950600262007",
+    "SUMPAY": 241500000,
+    "CONTRACT": 30055641,
+    "STATE": 4,
+    "ERRMSG": "000 -  "
+  }
+}*/

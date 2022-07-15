@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -26,7 +27,8 @@ public class PaysByLotId {
 
 	@JsonProperty("PAYLOAD")
 	@Embedded
-	private Payload payload;
+	private Payload payload;   //List
+//	private List<Payload> payload;
 
 	@Embeddable
 	@Data

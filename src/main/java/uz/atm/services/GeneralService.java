@@ -3,16 +3,17 @@ package uz.atm.services;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.google.gson.Gson;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import uz.atm.enums.Methods;
 import uz.atm.exceptions.JsonParserException;
 import uz.atm.model.General;
-import uz.atm.model.paysByLotId.PaysByLotId;
 import uz.atm.services.methodServices.*;
 
 import java.util.Objects;
 
 @Service
+@Slf4j
 @RequiredArgsConstructor
 public class GeneralService {
     private final ManualIdentifierService manualIdentifierService;
@@ -69,7 +70,14 @@ public class GeneralService {
         General general = new Gson().fromJson(str, General.class);
         if (Objects.nonNull(general.getMETHOD_NAME())) {
             String methodName = general.getMETHOD_NAME();
-            Methods methods = Methods.valueOf(methodName);
+            Methods methods;
+            try {
+                methods = Methods.valueOf(methodName);
+            } catch (IllegalArgumentException e) {
+                System.out.println(str);
+                methods = Methods.valueOf("DEFAULT");
+            }
+
             try {
                 switch (methods) {
                     case RESULTAT -> resultatService.save(str);
@@ -88,7 +96,7 @@ public class GeneralService {
                     default -> manualIdentifierService.saveManualAccordingToType(str);
                 }
             } catch (JsonProcessingException e) {
-                throw new JsonParserException(e);
+                throw new JsonParserException(e.getMessage());
             }
         }
     }

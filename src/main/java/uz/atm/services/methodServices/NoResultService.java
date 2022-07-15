@@ -18,7 +18,7 @@ public class NoResultService extends AbstractService<NoResultRepository> {
             NoResult noResult = mapper.readValue(json, NoResult.class);
             repository.save(noResult);
         } catch (JsonProcessingException e) {
-            throw new JsonParserException(e);
+            throw new JsonParserException(e.getMessage());
         }
 
     }

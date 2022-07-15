@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import uz.atm.criteria.RequestEtpCriteria;
 import uz.atm.dto.methods.RequestEtpCollectedDto;
 import uz.atm.dto.methods.RequestEtpDto;
+import uz.atm.exceptions.JsonParserException;
 import uz.atm.model.requestEtp.RequestEtp;
 import uz.atm.repository.RequestEtpRepository;
 import uz.atm.repository.ResponseAuctionRepository;
@@ -30,10 +31,15 @@ public class RequestEtpService extends AbstractService<RequestEtpRepository> {
         this.responseAuctionRepository = responseAuctionRepository;
     }
 
-    public void save(String json) throws JsonProcessingException {
-        RequestEtp requestEtp = mapper.readValue(json, new TypeReference<RequestEtp>() {
-        });
-        RequestEtp save = repository.save(requestEtp);
+    public void save(String json) {
+        try {
+            RequestEtp requestEtp = mapper.readValue(json, new TypeReference<RequestEtp>() {
+            });
+            RequestEtp save = repository.save(requestEtp);
+        } catch (JsonProcessingException e) {
+            throw new JsonParserException("Json can not parse");
+        }
+
     }
 
     public List<RequestEtpDto> getAllAuctionsByCriteria(RequestEtpCriteria r) {
@@ -41,7 +47,7 @@ public class RequestEtpService extends AbstractService<RequestEtpRepository> {
             String json = repository.findByCriteria(
                     r.getDocDateFrom(), r.getDocDateTo(), r.getLotId(),
                     r.getMonth(), r.getSumLotTo(), r.getSumLotFrom(),
-                    r.getOrganName(), r.getPltf(), r.getSize(),r.getPage()
+                    r.getOrganName(), r.getPltf(), r.getSize(), r.getPage()
             );
             mapper.disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
             List<RequestEtpDto> requestEtpDtos = mapper.readValue(json, new TypeReference<List<RequestEtpDto>>() {

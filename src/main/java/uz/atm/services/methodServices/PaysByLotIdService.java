@@ -21,7 +21,7 @@ public class PaysByLotIdService extends AbstractService<PaysByLotIdRepository> {
             PaysByLotId paysByLotId = mapper.readValue(json, PaysByLotId.class);
             repository.save(paysByLotId);
         } catch (JsonProcessingException e) {
-            throw new JsonParserException(e);
+            throw new JsonParserException(e.getMessage());
         }
 
     }

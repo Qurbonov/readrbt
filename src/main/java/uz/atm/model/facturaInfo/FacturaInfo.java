@@ -45,3 +45,44 @@ public class FacturaInfo {
 	}
 
 }
+
+
+/*
+{
+  "RESPONSE_ID": 3547871,
+  "REQUEST_ID": 2195221,
+  "METHOD_NAME": "FACTURA_INFO",
+  "PAYLOAD": {
+    "COUNTS": 1,
+    "RECORDS": [
+      {
+        "INVOICEID": 30283693,
+        "LOTID": 22110012108312,
+        "CONTRACT": 30062363,
+        "KLS": "401722860302157065200110017",
+        "NUMBINVOICE": "1",
+        "DATEINVOICE": "14072022",
+        "CONAME": "Бешарик ТЙФУК",
+        "COINN": "200154776",
+        "DATEDOC": "27062022",
+        "SUMPAY": 28979835501,
+        "NAMEWARRANT": "",
+        "STATE": 2,
+        "GEN_ID": 0,
+        "SPECIFICATIONS": [
+          {
+            "NPOS": 1,
+            "TOVAR": "42.11.20.000-00010",
+            "TOVARNAME": "Услуга по текущему ремонту автомобильных дорог",
+            "TOVAREDIZM": "25",
+            "TOVARAMOUNT": 1,
+            "TOVARPRICE": 25199856957,
+            "TOVARSUMMA": 28979835501,
+            "EXPENSE": "44233100"
+          }
+        ]
+      }
+    ]
+  }
+}
+*/

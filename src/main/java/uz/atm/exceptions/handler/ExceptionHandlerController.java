@@ -2,6 +2,7 @@ package uz.atm.exceptions.handler;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import org.postgresql.util.PSQLException;
+import org.springframework.amqp.rabbit.support.ListenerExecutionFailedException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.BadCredentialsException;
@@ -23,7 +24,7 @@ import java.sql.SQLException;
 public class ExceptionHandlerController {
 
     @ExceptionHandler({
-            AppBadRequestException.class,
+            AppBadRequestException.class, ListenerExecutionFailedException.class,
             NullPointerException.class,
             IllegalArgumentException.class,
             NonUniqueResultException.class,

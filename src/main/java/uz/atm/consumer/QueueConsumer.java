@@ -20,7 +20,8 @@ public class QueueConsumer {
     }
 
 
-    //    @RabbitListener(queues = {"${queue.name}"})
+        @RabbitListener(queues = {"cportal_in"})
+
     public void receive(@Payload String fileBody) {
 //		System.out.println(fileBody);
         generalService.parser(fileBody);

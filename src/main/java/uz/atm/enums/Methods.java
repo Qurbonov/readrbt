@@ -14,5 +14,8 @@ public enum Methods {
     RKP_PAYS_INFO,
     PAYS_BY_LOTID,
     RESULTAT,
-    RESPONSE_CLAIM_INFO
+    RESPONSE_CLAIM_INFO,
+
+    DEFAULT
+
 }

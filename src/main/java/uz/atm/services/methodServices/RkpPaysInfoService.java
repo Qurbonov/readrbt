@@ -19,7 +19,7 @@ public class RkpPaysInfoService extends AbstractService<RkpPaysInfoRepository> {
             RkpPaysInfo rkpPaysInfo = mapper.readValue(json, RkpPaysInfo.class);
             repository.save(rkpPaysInfo);
         } catch (JsonProcessingException e) {
-            throw new JsonParserException(e);
+            throw new JsonParserException(e.getMessage());
         }
 
     }

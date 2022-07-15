@@ -20,7 +20,7 @@ public class ResponseAuctionService extends AbstractService<ResponseAuctionRepos
             ResponseAuction responseAuction = mapper.readValue(json, ResponseAuction.class);
             repository.save(responseAuction);
         } catch (JsonProcessingException e) {
-            throw new JsonParserException(e);
+            throw new JsonParserException(e.getMessage());
         }
 
     }
