@@ -1,8 +1,8 @@
 spring:
   datasource:
     username: postgres
-    password: 1234
-    url: jdbc:postgresql://localhost:5432/rbtmsgs
+    password: Shoxruh0912
+    url: jdbc:postgresql://localhost:5432/postgres
     driver-class-name: org.postgresql.Driver
   jpa:
     hibernate:
@@ -15,7 +15,5 @@ springdoc:
     path: /swagger-ui
   api-docs:
     path: /api/doc
-logging:
-  level:
-    org.zalando.logbook: WARN
+
 
