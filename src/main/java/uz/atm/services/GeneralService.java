@@ -7,11 +7,10 @@ import org.springframework.stereotype.Service;
 import uz.atm.enums.Methods;
 import uz.atm.exceptions.JsonParserException;
 import uz.atm.model.General;
+import uz.atm.model.paysByLotId.PaysByLotId;
 import uz.atm.services.methodServices.*;
 
 import java.util.Objects;
-
-import static uz.atm.enums.Methods.CONTRACT_INFO;
 
 @Service
 @RequiredArgsConstructor
@@ -30,35 +29,41 @@ public class GeneralService {
 
     private final ResponseAuctionService responseAuctionService;
 
+    private final NoResultService noResultService;
 
-//    public void parse(String str) throws JsonProcessingException {
-//        General general = new Gson().fromJson(str, General.class);
-//        if (Objects.nonNull(general.getMETHOD_NAME())) {
-//            String methodName = general.getMETHOD_NAME();
-//            if (methodName.equals(Methods.RESULTAT.toString())) {
-//                resultatService.save(str);
-//            } else if (methodName.equals(CONTRACT_INFO.toString())) {
-//                contractInfoService.save(str);
-//            } else if (methodName.equals(Methods.CLAIM_INFO_ETP.toString())) {
-//                claimInfoEtpService.save(str);
-//            } else if (methodName.equals(Methods.ERROR_INFO.toString())) {
-//                errorInfoService.save(str);
-//            } else if (methodName.equals(Methods.FACTURA_INFO.toString())) {
-//                facturalInfoService.save(str);
-//            } else if (methodName.equals(Methods.REQUEST_ETP.toString())) {
-//                requestEtpService.save(str);
-//            } else if (methodName.equals(Methods.RKP_END.toString())) {
-//                rkpEndService.save(str);
-//            } else if (methodName.equals(Methods.SUCCESS_INFO.toString())) {
-//                successInfoService.save(str);
-//            } else if (methodName.equals(Methods.RESPONSE_CLAIM_INFO.toString())) {
-//                responseClaimInfoService.save(str);
-//            } else if (methodName.equals(Methods.RESPONSE_AUCTION.name())) {
-//                responseAuctionService.save(str);
-//            }
-//        } else
-//            manualIdentifierService.saveManualAccordingToType(str);
-//    }
+    private final RkpPaysInfoService rkpPaysInfoService;
+
+    private final PaysByLotIdService paysByLotIdService;
+
+
+/*    public void parse(String str) throws JsonProcessingException {
+        General general = new Gson().fromJson(str, General.class);
+        if (Objects.nonNull(general.getMETHOD_NAME())) {
+            String methodName = general.getMETHOD_NAME();
+            if (methodName.equals(Methods.RESULTAT.toString())) {
+                resultatService.save(str);
+            } else if (methodName.equals(CONTRACT_INFO.toString())) {
+                contractInfoService.save(str);
+            } else if (methodName.equals(Methods.CLAIM_INFO_ETP.toString())) {
+                claimInfoEtpService.save(str);
+            } else if (methodName.equals(Methods.ERROR_INFO.toString())) {
+                errorInfoService.save(str);
+            } else if (methodName.equals(Methods.FACTURA_INFO.toString())) {
+                facturalInfoService.save(str);
+            } else if (methodName.equals(Methods.REQUEST_ETP.toString())) {
+                requestEtpService.save(str);
+            } else if (methodName.equals(Methods.RKP_END.toString())) {
+                rkpEndService.save(str);
+            } else if (methodName.equals(Methods.SUCCESS_INFO.toString())) {
+                successInfoService.save(str);
+            } else if (methodName.equals(Methods.RESPONSE_CLAIM_INFO.toString())) {
+                responseClaimInfoService.save(str);
+            } else if (methodName.equals(Methods.RESPONSE_AUCTION.name())) {
+                responseAuctionService.save(str);
+            }
+        } else
+            manualIdentifierService.saveManualAccordingToType(str);
+    }*/
 
     public void parser(String str) {
         General general = new Gson().fromJson(str, General.class);
@@ -77,6 +82,9 @@ public class GeneralService {
                     case SUCCESS_INFO -> successInfoService.save(str);
                     case RESPONSE_CLAIM_INFO -> responseClaimInfoService.save(str);
                     case RESPONSE_AUCTION -> responseAuctionService.save(str);
+                    case NO_RESULT -> noResultService.save(str);
+                    case RKP_PAYS_INFO -> rkpPaysInfoService.save(str);
+                    case PAYS_BY_LOTID -> paysByLotIdService.save(str);
                     default -> manualIdentifierService.saveManualAccordingToType(str);
                 }
             } catch (JsonProcessingException e) {
@@ -85,6 +93,7 @@ public class GeneralService {
         }
     }
 }
+
 
 /*
 
