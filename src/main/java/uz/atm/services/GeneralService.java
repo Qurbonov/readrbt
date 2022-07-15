@@ -31,34 +31,34 @@ public class GeneralService {
     private final ResponseAuctionService responseAuctionService;
 
 
-    public void parse(String str) throws JsonProcessingException {
-        General general = new Gson().fromJson(str, General.class);
-        if (Objects.nonNull(general.getMETHOD_NAME())) {
-            String methodName = general.getMETHOD_NAME();
-            if (methodName.equals(Methods.RESULTAT.toString())) {
-                resultatService.save(str);
-            } else if (methodName.equals(CONTRACT_INFO.toString())) {
-                contractInfoService.save(str);
-            } else if (methodName.equals(Methods.CLAIM_INFO_ETP.toString())) {
-                claimInfoEtpService.save(str);
-            } else if (methodName.equals(Methods.ERROR_INFO.toString())) {
-                errorInfoService.save(str);
-            } else if (methodName.equals(Methods.FACTURA_INFO.toString())) {
-                facturalInfoService.save(str);
-            } else if (methodName.equals(Methods.REQUEST_ETP.toString())) {
-                requestEtpService.save(str);
-            } else if (methodName.equals(Methods.RKP_END.toString())) {
-                rkpEndService.save(str);
-            } else if (methodName.equals(Methods.SUCCESS_INFO.toString())) {
-                successInfoService.save(str);
-            } else if (methodName.equals(Methods.RESPONSE_CLAIM_INFO.toString())) {
-                responseClaimInfoService.save(str);
-            } else if (methodName.equals(Methods.RESPONSE_AUCTION.name())) {
-                responseAuctionService.save(str);
-            }
-        } else
-            manualIdentifierService.saveManualAccordingToType(str);
-    }
+//    public void parse(String str) throws JsonProcessingException {
+//        General general = new Gson().fromJson(str, General.class);
+//        if (Objects.nonNull(general.getMETHOD_NAME())) {
+//            String methodName = general.getMETHOD_NAME();
+//            if (methodName.equals(Methods.RESULTAT.toString())) {
+//                resultatService.save(str);
+//            } else if (methodName.equals(CONTRACT_INFO.toString())) {
+//                contractInfoService.save(str);
+//            } else if (methodName.equals(Methods.CLAIM_INFO_ETP.toString())) {
+//                claimInfoEtpService.save(str);
+//            } else if (methodName.equals(Methods.ERROR_INFO.toString())) {
+//                errorInfoService.save(str);
+//            } else if (methodName.equals(Methods.FACTURA_INFO.toString())) {
+//                facturalInfoService.save(str);
+//            } else if (methodName.equals(Methods.REQUEST_ETP.toString())) {
+//                requestEtpService.save(str);
+//            } else if (methodName.equals(Methods.RKP_END.toString())) {
+//                rkpEndService.save(str);
+//            } else if (methodName.equals(Methods.SUCCESS_INFO.toString())) {
+//                successInfoService.save(str);
+//            } else if (methodName.equals(Methods.RESPONSE_CLAIM_INFO.toString())) {
+//                responseClaimInfoService.save(str);
+//            } else if (methodName.equals(Methods.RESPONSE_AUCTION.name())) {
+//                responseAuctionService.save(str);
+//            }
+//        } else
+//            manualIdentifierService.saveManualAccordingToType(str);
+//    }
 
     public void parser(String str) {
         General general = new Gson().fromJson(str, General.class);

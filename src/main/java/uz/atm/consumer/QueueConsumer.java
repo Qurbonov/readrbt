@@ -23,7 +23,7 @@ public class QueueConsumer {
 //    @RabbitListener(queues = {"${queue.name}"})
     public void receive(@Payload String fileBody) throws IOException {
 //		System.out.println(fileBody);
-        generalService.parse(fileBody);
+        generalService.parser(fileBody);
     }
 }
 
