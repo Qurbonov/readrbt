@@ -2,6 +2,7 @@ package uz.atm.model.errorInfo;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
+import uz.atm.model.DateEntity;
 
 import javax.persistence.*;
 
@@ -10,7 +11,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 @Getter
 @Setter
-public class ErrorInfo {
+public class ErrorInfo extends DateEntity {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

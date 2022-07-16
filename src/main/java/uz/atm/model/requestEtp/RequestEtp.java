@@ -3,6 +3,7 @@ package uz.atm.model.requestEtp;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
+import uz.atm.model.DateEntity;
 import uz.atm.model.resultat.Specifications;
 
 import javax.persistence.*;
@@ -14,7 +15,7 @@ import java.util.List;
 @NoArgsConstructor
 @Getter
 @Setter
-public class RequestEtp {
+public class RequestEtp extends DateEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

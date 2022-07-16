@@ -2,6 +2,7 @@ package uz.atm.model.facturaInfo;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
+import uz.atm.model.DateEntity;
 
 import javax.persistence.*;
 import java.util.List;
@@ -11,7 +12,7 @@ import java.util.List;
 @NoArgsConstructor
 @Getter
 @Setter
-public class FacturaInfo {
+public class FacturaInfo extends DateEntity {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

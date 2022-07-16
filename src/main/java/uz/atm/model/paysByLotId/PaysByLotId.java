@@ -2,6 +2,7 @@ package uz.atm.model.paysByLotId;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
+import uz.atm.model.DateEntity;
 import uz.atm.model.resultat.Note;
 
 import javax.persistence.*;
@@ -12,7 +13,7 @@ import java.util.List;
 @Getter
 @Setter
 @Entity
-public class PaysByLotId {
+public class PaysByLotId extends DateEntity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;

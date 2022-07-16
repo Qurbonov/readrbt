@@ -2,6 +2,7 @@ package uz.atm.model.clalimInfo;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
+import uz.atm.model.DateEntity;
 import uz.atm.model.resultat.FinSrc;
 import uz.atm.model.resultat.Grafics;
 import uz.atm.model.resultat.Specifications;
@@ -19,7 +20,7 @@ import java.util.List;
 @Getter
 @Setter
 @Entity
-public class ClaimInfoEtp {
+public class ClaimInfoEtp extends DateEntity {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

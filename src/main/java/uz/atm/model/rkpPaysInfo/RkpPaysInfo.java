@@ -7,6 +7,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import uz.atm.model.DateEntity;
 import uz.atm.model.responseClaimInfo.ResponseClaimInfo;
 
 import javax.persistence.*;
@@ -19,7 +20,7 @@ import java.util.List;
 @Setter
 @Entity
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class RkpPaysInfo {
+public class RkpPaysInfo extends DateEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
