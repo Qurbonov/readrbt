@@ -3,6 +3,7 @@ package uz.atm.services.methodServices;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.SerializationFeature;
+import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 import uz.atm.criteria.ResultatCriteria;
 import uz.atm.dto.methods.ResultatCollectedDto;
@@ -31,9 +32,13 @@ public class ResultatService extends AbstractService<ResultatMethodRepository> {
 
     private final ContractInfoRepository contractInfoRepository;
 
-    public ResultatService(ResultatMethodRepository repository, ContractInfoRepository contractInfoRepository) {
+    private final ModelMapper modelMapper;
+
+
+    public ResultatService(ResultatMethodRepository repository, ContractInfoRepository contractInfoRepository, ModelMapper modelMapper) {
         super(repository);
         this.contractInfoRepository = contractInfoRepository;
+        this.modelMapper = modelMapper;
     }
 
     public void save(String json) throws JsonProcessingException {
@@ -54,84 +59,21 @@ public class ResultatService extends AbstractService<ResultatMethodRepository> {
                 specificationsList.add(toSPC(specification));
             }
 
-            ResultatMethod resultatMethod = toRMDTO(resultatDTO);
-            resultatMethod.setPayload(toPayDTO(resultatDTO.getPayloadDTO()));
+            ResultatMethod resultatMethod = modelMapper.map(resultatDTO, ResultatMethod.class);
+            resultatMethod.setPayload(modelMapper.map(resultatDTO.getPayloadDTO(), ResultatMethod.Payload.class));
             resultatMethod.getPayload().setSpecifications(specificationsList);
             ResultatMethod save = repository.save(resultatMethod);
-            System.out.println(save);
+
 
         }
 
     }
 
-    private ResultatMethod toRMDTO(ResultatDTO resultatDTO) {
-        ResultatMethod resultatMethod = new ResultatMethod();
-        resultatMethod.setMethodName(resultatDTO.getMethodName());
-        resultatMethod.setEtp_id(resultatDTO.getEtp_id());
-
-        return resultatMethod;
-    }
-
-    private ResultatMethod.Payload toPayDTO(PayloadDTO payloadDTO) {
-        ResultatMethod.Payload payload = new ResultatMethod.Payload();
-        payload.setLotId(payloadDTO.getLotId());
-        payload.setProcId(payloadDTO.getProcId());
-        payload.setLotDate1(payloadDTO.getLotDate1());
-        payload.setLotDate2(payloadDTO.getLotDate2());
-        payload.setContractNum(payloadDTO.getContractNum());
-        payload.setContractDat(payloadDTO.getContractDat());
-        payload.setDvr(payloadDTO.getDvr());
-        payload.setOrgan(payloadDTO.getOrgan());
-        payload.setInn(payloadDTO.getInn());
-        payload.setLs(payloadDTO.getLs());
-        payload.setVendorName(payloadDTO.getVendorName());
-        payload.setVendorBank(payloadDTO.getVendorBank());
-        payload.setVendorAcc(payloadDTO.getVendorAcc());
-        payload.setVendorInn(payloadDTO.getVendorInn());
-        payload.setMaloy(payloadDTO.getMaloy());
-        payload.setSumma(payloadDTO.getSumma());
-        payload.setSumNds(payloadDTO.getSumNds());
-        payload.setSpok(payloadDTO.getSpok());
-        payload.setAvans(payloadDTO.getAvans());
-        payload.setAvansDay(payloadDTO.getAvansDay());
-        payload.setContractBeg(payloadDTO.getContractBeg());
-        payload.setContractEnd(payloadDTO.getContractEnd());
-        payload.setPurpose(payloadDTO.getPurpose());
-        payload.setVendorTerr(payloadDTO.getVendorTerr());
-        payload.setBeneficiar(payloadDTO.getBeneficiar());
-        payload.setRaschot(payloadDTO.getRaschot());
-        payload.setReestrId(payloadDTO.getReestrId());
-        payload.setPnfl(payloadDTO.getPnfl());
-        payload.setVendorCountry(payloadDTO.getVendorCountry());
-        payload.setVendorForeign(payloadDTO.getVendorForeign());
-        payload.setVendorInfo(payloadDTO.getVendorInfo());
-        payload.setVendorKls(payloadDTO.getVendorKls());
-        payload.setGenId(payloadDTO.getGenId());
-        payload.setContractId(payloadDTO.getContractId());
-        payload.setVersion(payloadDTO.getVersion());
-        payload.setGrafics(payloadDTO.getGrafics());
-        payload.setFinsrc(payloadDTO.getFinsrc());
-
-        return payload;
-    }
     private Specifications toSPC(SpecificationsDTO sp) {
+        Specifications specifications = modelMapper.map(sp, Specifications.class);
+        specifications.setNote(sp.setNotes(sp.getNote()));
 
-        Specifications ss = new Specifications();
-        ss.setFinYear(sp.getFinYear());
-        ss.setKls(sp.getKls());
-        ss.setNpos(sp.getNpos());
-        ss.setTovar(sp.getTovar());
-        ss.setTovarName(sp.getTovarName());
-        ss.setTovarNote(sp.getTovarNote());
-        ss.setTovarEdizm(sp.getTovarEdizm());
-        ss.setTovarAmount(sp.getTovarAmount());
-        ss.setTovarPrice(sp.getTovarPrice());
-        ss.setTovarSumma(sp.getTovarSumma());
-        ss.setExpense(sp.getExpense());
-        ss.setSplit(sp.getSplit());
-        ss.setNote(sp.setNotes(sp.getNote()));
-        ss.setProperties(sp.getProperties());
-        return ss;
+        return specifications;
     }
 
     public List<ResultatDto> getAllByCriteria(ResultatCriteria r) {
