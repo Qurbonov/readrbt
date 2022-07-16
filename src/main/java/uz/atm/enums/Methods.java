@@ -16,6 +16,8 @@ public enum Methods {
     RESULTAT,
     RESPONSE_CLAIM_INFO,
 
+    RKP_PAYS,
+
     DEFAULT
 
 }

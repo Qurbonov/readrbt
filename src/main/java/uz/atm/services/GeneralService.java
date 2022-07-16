@@ -36,6 +36,7 @@ public class GeneralService {
 
     private final PaysByLotIdService paysByLotIdService;
 
+    private final RkpPaysService rkpPaysService;
 
 /*    public void parse(String str) throws JsonProcessingException {
         General general = new Gson().fromJson(str, General.class);
@@ -94,6 +95,7 @@ public class GeneralService {
                     case NO_RESULT -> noResultService.save(str);
                     case RKP_PAYS_INFO -> rkpPaysInfoService.save(str);
                     case PAYS_BY_LOTID -> paysByLotIdService.save(str);
+                    case RKP_PAYS -> rkpPaysService.save(str);
                     default -> manualIdentifierService.saveManualAccordingToType(str);
                 }
             } catch (JsonProcessingException e) {
