@@ -1,5 +1,6 @@
 package uz.atm.model.manuals;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -62,10 +63,13 @@ public class SingleVendor {
             @JsonProperty("STATE")
             private String state;
             @JsonProperty("DATEOPEN")
+            @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "ddMMyyyy")
             private String dateOpen;
             @JsonProperty("DATECLOSE")
+            @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "ddMMyyyy")
             private String dateClose;
             @JsonProperty("DATECHANGE")
+            @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "ddMMyyyy")
             private String dateChange;
             @JsonProperty("BANKACCOUNTS")
             @OneToMany

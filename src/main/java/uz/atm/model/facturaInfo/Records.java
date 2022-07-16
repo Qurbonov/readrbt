@@ -1,5 +1,6 @@
 package uz.atm.model.facturaInfo;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -45,6 +46,7 @@ public class Records {
 	private String coINN;
 
 	@JsonProperty("DATEDOC")
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "ddMMyyyy")
 	private String dateDoc;
 
 	@JsonProperty("SUMPAY")

@@ -1,5 +1,6 @@
 package uz.atm.model.clalimInfo;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
 import uz.atm.model.DateEntity;
@@ -53,9 +54,11 @@ public class ClaimInfoEtp extends DateEntity {
 		private Integer procId;
 
 		@JsonProperty("DATE1")
+		@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "ddMMyyyy")
 		private String date1;
 
 		@JsonProperty("DATE2")
+		@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "ddMMyyyy")
 		private String date2;
 
 		@JsonProperty("DVR")

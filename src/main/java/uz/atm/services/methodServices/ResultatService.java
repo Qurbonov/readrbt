@@ -10,7 +10,6 @@ import uz.atm.dto.methods.ResultatCollectedDto;
 import uz.atm.dto.methods.ResultatDto;
 import uz.atm.model.resultat.ResultatMethod;
 import uz.atm.model.resultat.Specifications;
-import uz.atm.model.resultat.resultatDTO.PayloadDTO;
 import uz.atm.model.resultat.resultatDTO.ResultatDTO;
 import uz.atm.model.resultat.resultatDTO.SpecificationsDTO;
 import uz.atm.repository.ContractInfoRepository;
@@ -63,10 +62,7 @@ public class ResultatService extends AbstractService<ResultatMethodRepository> {
             resultatMethod.setPayload(modelMapper.map(resultatDTO.getPayloadDTO(), ResultatMethod.Payload.class));
             resultatMethod.getPayload().setSpecifications(specificationsList);
             ResultatMethod save = repository.save(resultatMethod);
-
-
         }
-
     }
 
     private Specifications toSPC(SpecificationsDTO sp) {

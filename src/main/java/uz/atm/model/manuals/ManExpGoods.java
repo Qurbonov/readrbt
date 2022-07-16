@@ -1,5 +1,6 @@
 package uz.atm.model.manuals;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -56,8 +57,10 @@ public class ManExpGoods {
             @JsonProperty("EXPCODE")
             private String expCode;
             @JsonProperty("DATEENTER")
+            @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "ddMMyyyy")
             private String dateEnter;
             @JsonProperty("DATEDELETE")
+            @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "ddMMyyyy")
             private String dateDelete;
         }
     }

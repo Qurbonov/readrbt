@@ -6,8 +6,6 @@ import org.springframework.stereotype.Component;
 import uz.atm.repository.RbtMsgsRepository;
 import uz.atm.services.GeneralService;
 
-import java.io.IOException;
-
 @Component
 public class QueueConsumer {
     private final RbtMsgsRepository repository;
@@ -20,10 +18,9 @@ public class QueueConsumer {
     }
 
 
-        @RabbitListener(queues = {"cportal_in"})
-
+    @RabbitListener(queues = {"${queue.name}"})
     public void receive(@Payload String fileBody) {
-//		System.out.println(fileBody);
+        System.out.println(fileBody);
         generalService.parser(fileBody);
     }
 }

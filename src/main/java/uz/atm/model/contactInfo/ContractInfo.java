@@ -1,5 +1,6 @@
 package uz.atm.model.contactInfo;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
 import uz.atm.model.DateEntity;
@@ -37,6 +38,7 @@ public class ContractInfo extends DateEntity {
 		private Long lotId;
 
 		@JsonProperty("REGDAT")
+		@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "ddMMyyyy")
 		private Long regDat;
 
 		@JsonProperty("GENID")

@@ -1,5 +1,6 @@
 package uz.atm.model.manuals;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -25,10 +26,11 @@ public class ManAccounts {
     @JsonProperty("PAYLOAD")
     @Embedded
     private Payload payload;
+
     @Embeddable
     @Getter
     @Setter
-    private static class Payload{
+    private static class Payload {
         @JsonProperty("ID")
         private String id;
         @JsonProperty("PAGENUM")
@@ -42,7 +44,7 @@ public class ManAccounts {
         @Entity
         @Getter
         @Setter
-        private static class Data{
+        private static class Data {
             @Id
             @GeneratedValue(strategy = GenerationType.IDENTITY)
             private long id;
@@ -65,10 +67,13 @@ public class ManAccounts {
             @JsonProperty("STATE")
             private String state;
             @JsonProperty("DATEOPEN")
+            @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "ddMMyyyy")
             private String dateOpen;
             @JsonProperty("DATECLOSE")
+            @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "ddMMyyyy")
             private String dateClose;
             @JsonProperty("DATECHANGE")
+            @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "ddMMyyyy")
             private String dateChange;
             @JsonProperty("KLSTYPE")
             private String klsType;
