@@ -10,10 +10,17 @@ spring:
   flyway:
     enabled: true
     baseline-on-migrate: true
+  rabbitmq:
+    host: prod-rabbit.mf.uz
+    port: 5672
+    username: cportal
+    password: Kh4Gtd
+
 springdoc:
   swagger-ui:
     path: /swagger-ui
   api-docs:
     path: /api/doc
-
+queue:
+  name: cportal_in
 
