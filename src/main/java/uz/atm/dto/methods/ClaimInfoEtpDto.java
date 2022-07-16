@@ -2,6 +2,8 @@ package uz.atm.dto.methods;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.util.Date;
+
 /**
  * @author Bekpulatov Shoxruh
  * createdAt 27/06/22
@@ -32,10 +34,10 @@ public class ClaimInfoEtpDto {
     public Long inn;
 
     @JsonProperty("date1")
-    public String date1;
+    public Date date1;
 
     @JsonProperty("date2")
-    public String date2;
+    public Date date2;
 
     @JsonProperty("dvr")
     public Integer dvr;

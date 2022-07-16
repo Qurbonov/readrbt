@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -58,10 +59,10 @@ public class ManExpGoods {
             private String expCode;
             @JsonProperty("DATEENTER")
             @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "ddMMyyyy")
-            private String dateEnter;
+            private Date dateEnter;
             @JsonProperty("DATEDELETE")
             @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "ddMMyyyy")
-            private String dateDelete;
+            private Date dateDelete;
         }
     }
 }

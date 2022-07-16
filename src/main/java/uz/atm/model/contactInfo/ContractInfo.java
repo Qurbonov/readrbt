@@ -6,6 +6,7 @@ import lombok.*;
 import uz.atm.model.DateEntity;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Entity
 @AllArgsConstructor
@@ -39,7 +40,7 @@ public class ContractInfo extends DateEntity {
 
 		@JsonProperty("REGDAT")
 		@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "ddMMyyyy")
-		private Long regDat;
+		private Date regDat;
 
 		@JsonProperty("GENID")
 		private Long genId;

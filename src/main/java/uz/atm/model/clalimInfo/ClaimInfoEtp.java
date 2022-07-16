@@ -9,6 +9,7 @@ import uz.atm.model.resultat.Grafics;
 import uz.atm.model.resultat.Specifications;
 
 import javax.persistence.*;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -55,11 +56,11 @@ public class ClaimInfoEtp extends DateEntity {
 
 		@JsonProperty("DATE1")
 		@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "ddMMyyyy")
-		private String date1;
+		private Date date1;
 
 		@JsonProperty("DATE2")
 		@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "ddMMyyyy")
-		private String date2;
+		private Date date2;
 
 		@JsonProperty("DVR")
 		private Integer dvr;

@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -68,13 +69,13 @@ public class ManAccounts {
             private String state;
             @JsonProperty("DATEOPEN")
             @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "ddMMyyyy")
-            private String dateOpen;
+            private Date dateOpen;
             @JsonProperty("DATECLOSE")
             @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "ddMMyyyy")
-            private String dateClose;
+            private Date dateClose;
             @JsonProperty("DATECHANGE")
             @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "ddMMyyyy")
-            private String dateChange;
+            private Date dateChange;
             @JsonProperty("KLSTYPE")
             private String klsType;
         }

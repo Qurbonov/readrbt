@@ -9,6 +9,7 @@ import lombok.Setter;
 import uz.atm.model.resultat.Specifications;
 
 import javax.persistence.*;
+import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -38,7 +39,8 @@ public class Records {
 	private String numbInvoice;
 
 	@JsonProperty("DATEINVOICE")
-	private String dateInvoice;
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "ddMMyyyy")
+	private Date dateInvoice;
 
 	@JsonProperty("CONAME")
 	private String coName;
@@ -47,7 +49,7 @@ public class Records {
 
 	@JsonProperty("DATEDOC")
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "ddMMyyyy")
-	private String dateDoc;
+	private Date dateDoc;
 
 	@JsonProperty("SUMPAY")
 	private Long sumPay;

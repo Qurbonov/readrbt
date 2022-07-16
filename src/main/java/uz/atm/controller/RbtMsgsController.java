@@ -8,10 +8,10 @@ import uz.atm.services.RbtMsgsService;
 
 @RestController
 @RequestMapping("/rbtmsgs")
-public class rbtMsgsController {
+public class RbtMsgsController {
     private final RbtMsgsService rbtMsgsService;
 
-    public rbtMsgsController(final RbtMsgsService rbtMsgsService) {
+    public RbtMsgsController(final RbtMsgsService rbtMsgsService) {
         this.rbtMsgsService = rbtMsgsService;
     }
 
