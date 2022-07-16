@@ -12,6 +12,7 @@ import uz.atm.model.responseClaimInfo.ResponseClaimInfo;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 
 @AllArgsConstructor
@@ -46,7 +47,7 @@ public class RkpPaysInfo extends DateEntity {
         public int payId;
         @JsonProperty("OPERDAY")
         @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "ddMMyyyy")
-        public LocalDate operDay;
+        public Date operDay;
         @JsonProperty("PAYTYPE")
         public int payType;
         @JsonProperty("ID")
@@ -55,7 +56,7 @@ public class RkpPaysInfo extends DateEntity {
         public String docNumb;
         @JsonProperty("DOCDATE")
         @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "ddMMyyyy")
-        public LocalDate docDate;
+        public Date docDate;
         @JsonProperty("SUMPAY")
         public Long sumPay;
         @JsonProperty("CONTRACT")
@@ -94,6 +95,8 @@ public class RkpPaysInfo extends DateEntity {
         public String purpose;
         @JsonProperty("ERRMSG")
         public String errMsg;
+        @JsonProperty("ACC")
+        public String acc;
     }
 
 }

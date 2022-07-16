@@ -20,7 +20,7 @@ public class QueueConsumer {
     }
 
 
-        @RabbitListener(queues = {"cportal_in"})
+//        @RabbitListener(queues = {"cportal_in"})
 
     public void receive(@Payload String fileBody) {
 //		System.out.println(fileBody);

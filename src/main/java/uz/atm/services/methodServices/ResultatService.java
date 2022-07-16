@@ -43,14 +43,13 @@ public class ResultatService extends AbstractService<ResultatMethodRepository> {
 
     public void save(String json) throws JsonProcessingException {
         try {
-            ResultatMethod resultatMethod = mapper.readValue(json, new TypeReference<ResultatMethod>() {
+            ResultatMethod resultatMethod = mapper.readValue(json, new TypeReference<>() {
             });
 
-            System.out.println(resultatMethod.toString());
 
             ResultatMethod save = repository.save(resultatMethod);
         } catch (JsonProcessingException e) {
-            ResultatDTO resultatDTO = mapper.readValue(json, new TypeReference<ResultatDTO>() {
+            ResultatDTO resultatDTO = mapper.readValue(json, new TypeReference<>() {
             });
             List<Specifications> specificationsList = new LinkedList<>();
 
