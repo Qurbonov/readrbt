@@ -2,6 +2,7 @@ package uz.atm.model.paysByLotId;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
+import uz.atm.model.resultat.Note;
 
 import javax.persistence.*;
 import java.util.List;
@@ -25,6 +26,10 @@ public class PaysByLotId {
 	@JsonProperty("METHOD_NAME")
 	private String methodName;
 
+	@JsonProperty("PAYLOAD")
+	@OneToMany(cascade = CascadeType.ALL)
+	private List<PaysPayload> payload;
+/*
 	@JsonProperty("PAYLOAD")
 	@Embedded
 	private Payload payload;   //List
@@ -65,5 +70,5 @@ public class PaysByLotId {
 
 		@JsonProperty("ERRMSG")
 		private String errMsg;
-	}
+	}*/
 }

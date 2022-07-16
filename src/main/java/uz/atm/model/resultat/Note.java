@@ -2,26 +2,28 @@ package uz.atm.model.resultat;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-@Data
+@Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 public class Note {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     @JsonProperty("MARKA")
     private String marka;
+
     @Column(columnDefinition = "TEXT")
     @JsonProperty("TECHSPEC")
     private String techSpec;
+
     @JsonProperty("MANUFACTURER")
     private String manufacturer;
     @JsonProperty("COUNTRY")

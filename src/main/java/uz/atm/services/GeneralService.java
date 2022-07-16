@@ -67,6 +67,7 @@ public class GeneralService {
     }*/
 
     public void parser(String str) {
+
         General general = new Gson().fromJson(str, General.class);
         if (Objects.nonNull(general.getMETHOD_NAME())) {
             String methodName = general.getMETHOD_NAME();
@@ -101,33 +102,3 @@ public class GeneralService {
         }
     }
 }
-
-
-/*
-
-  "METOD_NAME":"RKP_PAYS",
-
-  2.2.9.So'rovshartnoma fakturalari
-  &ldquo;METHOD_NAME&rdquo;: &ldquo;QUERY_FACTURA&rdquo;
-
-  2.2.10. TIN bo'yicha tashkilotlarga so'rov
-  &ldquo;METHOD_NAME&rdquo;: &ldquo;QUERY_ORGAN&rdquo;
-
-  2.2.11. TIN bo'yicha shaxsiy hisoblarni so'rash
-  &ldquo;METHOD_NAME&rdquo;: &ldquo;QUERY_CLS&rdquo;
-
-  2.2.13. Hujjatni qabul qilishni tasdiqlash
-   &ldquo;METHOD_NAME&rdquo;: &ldquo;SUCCESS_HUJJATLAR&rdquo;
-
-  2.2.15. Tashkilot kodi bo'yicha komissiya to'lovlarini talab qilish
-  &ldquo;METHOD_NAME&rdquo;: &ldquo;QUERY_PAYS_COMMISSION&rdquo;,
-
-  2.3.1. Xarid qilish rejasi
-  "METOD_NAME":"REJA_MA'LUMOT",
-
-  2.3.6. Qabul qilingan to'lov topshiriqlariga javob / ETP dan CMO
-  "METOD_NAME":"RKP_PAYS_INFO"
-
-
-
- */

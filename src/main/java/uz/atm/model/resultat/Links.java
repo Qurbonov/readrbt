@@ -16,12 +16,12 @@ import javax.persistence.Id;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-class Links {
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
-	@JsonProperty("FILENAME")
-	private String fileName;
-	@JsonProperty("LINK")
-	private String linkDoc;
+public class Links {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    @JsonProperty("FILENAME")
+    private String fileName;
+    @JsonProperty("LINK")
+    private String linkDoc;
 }

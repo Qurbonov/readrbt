@@ -1,6 +1,7 @@
 package uz.atm.model.rkpPaysInfo;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -17,6 +18,7 @@ import java.util.List;
 @Getter
 @Setter
 @Entity
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class RkpPaysInfo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -54,7 +56,7 @@ public class RkpPaysInfo {
         @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "ddMMyyyy")
         public LocalDate docDate;
         @JsonProperty("SUMPAY")
-        public long sumPay;
+        public Long sumPay;
         @JsonProperty("CONTRACT")
         public Integer contract;
         @JsonProperty("LOTID")
@@ -83,6 +85,8 @@ public class RkpPaysInfo {
         public String coinn;
         @JsonProperty("COPINFL")
         public String copinfl;
+        @JsonProperty("STATE")
+        private Integer state;
         @JsonProperty("OPER")
         public String oper;
         @JsonProperty("PURPOSE")
