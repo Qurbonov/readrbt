@@ -6,10 +6,10 @@ import lombok.Data;
 @Data
 public class ManualIdentifier {
     @JsonProperty("DIGEST_ID")
-    private Long digestId;
+    private Long DIGEST_ID;
 
     @JsonProperty("TYPE")
-    private String type;
+    private String TYPE;
 
 
 }

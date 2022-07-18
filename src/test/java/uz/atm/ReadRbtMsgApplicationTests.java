@@ -15,7 +15,7 @@ class ReadRbtMsgApplicationTests {
 
     @Test
     void contextLoads() {
-        generalService.parser(contractInfo());
+/*        generalService.parser(contractInfo());
         generalService.parser(resultatStr());
         generalService.parser(resultatArr());
         generalService.parser(requestEtp());
@@ -32,7 +32,8 @@ class ReadRbtMsgApplicationTests {
         generalService.parser(queryPlan());
         generalService.parser(queryKls());
         generalService.parser(planInfo());
-        generalService.parser(noResult());
+        generalService.parser(noResult());*/
+        generalService.parser(def());
 
     }
 
@@ -60,6 +61,21 @@ class ReadRbtMsgApplicationTests {
                     "ERRMSG": ""
                   }
                 }""";
+    }
+    private String def() {
+        return """
+                  {
+                    "DIGEST_ID": 3598592,
+                    "REQUEST_ID": 3626301,
+                    "TYPE": "MAN_ORGANIZATIONS",
+                    "PAYLOAD": {
+                      "ID": "E41437BC698EC54DE0530100007F9A0C",
+                      "PAGENUM": 0,
+                      "PAGECNT": 0,
+                      "DATA": []
+                    }
+                  }
+                """;
     }
 
     private String resultatStr() {

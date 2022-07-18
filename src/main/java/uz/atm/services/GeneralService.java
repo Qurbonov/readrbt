@@ -70,9 +70,16 @@ public class GeneralService {
     public void parser(String str) {
 
         General general = new Gson().fromJson(str, General.class);
+
+        if (general.getMETHOD_NAME() == null) {
+            general.setMETHOD_NAME("DEFAULT");
+        }
+
         if (Objects.nonNull(general.getMETHOD_NAME())) {
+
             String methodName = general.getMETHOD_NAME();
             Methods methods;
+
             try {
                 methods = Methods.valueOf(methodName);
             } catch (IllegalArgumentException e) {

@@ -21,8 +21,8 @@ public class ManualIdentifierService {
 
     public void saveManualAccordingToType(String json) throws JsonProcessingException {
         ManualIdentifier manualIdentifier = new Gson().fromJson(json, ManualIdentifier.class);
-        if (Objects.nonNull(manualIdentifier.getType())) {
-            String type = manualIdentifier.getType();
+        if (Objects.nonNull(manualIdentifier.getTYPE())) {
+            String type = manualIdentifier.getTYPE();
             if (ManualValues.MAN_ACCOUNTS.toString().equals(type)) {
                 manAccountsService.save(json);
             } else if (ManualValues.MAN_EXPGOODS.toString().equals(type)) {
