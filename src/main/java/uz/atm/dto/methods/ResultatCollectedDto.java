@@ -13,5 +13,5 @@ public class ResultatCollectedDto {
 
     public ResultatMethod resultat;
 
-    public List<ContractInfo> contractInfo;
+    public ContractInfo contractInfo;
 }

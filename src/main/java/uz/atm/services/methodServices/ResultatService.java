@@ -93,7 +93,10 @@ public class ResultatService extends AbstractService<ResultatMethodRepository> {
             ResultatMethod resultatMethod = byId.get();
             resultatCollectedDto.resultat = resultatMethod;
             Long lotId = resultatMethod.getPayload().getLotId();
-            resultatCollectedDto.contractInfo = contractInfoRepository.findAllByPayload_LotId(lotId);
+            if (contractInfoRepository.findContractInfoByState(lotId).isPresent())
+                resultatCollectedDto.contractInfo = contractInfoRepository.findContractInfoByState(lotId).get();
+            else
+                System.out.println("Shit is not working");
             return Optional.of(resultatCollectedDto);
         } else return Optional.empty();
     }
