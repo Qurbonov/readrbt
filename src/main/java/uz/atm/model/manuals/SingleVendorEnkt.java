@@ -20,10 +20,12 @@ public class SingleVendorEnkt {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(insertable = false, updatable = false)
-    private int identity;
+    private Integer identity;
 
     @JsonProperty("DIGEST_ID")
     private int digestId;
+    @JsonProperty("REQUEST_ID")
+    private int requestId;
     @JsonProperty("TYPE")
     private String type;
     @JsonProperty("PAYLOAD")

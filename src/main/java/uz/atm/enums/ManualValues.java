@@ -14,6 +14,7 @@ public enum ManualValues {
     MAN_ACCOUNTS,
     MAN_EXPGOODS,
     SINGLEVENDOR,
+    DEF,
     SINGLEVENDOR_ENKT
 
 }

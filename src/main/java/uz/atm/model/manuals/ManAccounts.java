@@ -24,6 +24,8 @@ public class ManAccounts {
     private int digestId;
     @JsonProperty("TYPE")
     private String type;
+    @JsonProperty("REQUEST_ID")
+    private int requestId;
     @JsonProperty("PAYLOAD")
     @Embedded
     private Payload payload;

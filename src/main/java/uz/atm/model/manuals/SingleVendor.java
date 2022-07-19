@@ -23,6 +23,8 @@ public class SingleVendor {
     private int identity;
     @JsonProperty("DIGEST_ID")
     private int digestId;
+    @JsonProperty("REQUEST_ID")
+    private int requestId;
     @JsonProperty("TYPE")
     private String type;
     @JsonProperty("PAYLOAD")

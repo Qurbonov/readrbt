@@ -20,10 +20,12 @@ public class ManExpGoods {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(insertable = false, updatable = false)
-    private int identity;
+    private Long identity;
 
     @JsonProperty("DIGEST_ID")
     private int digestId;
+    @JsonProperty("REQUEST_ID")
+    private int requestId;
     @JsonProperty("TYPE")
     private String type;
     @JsonProperty("PAYLOAD")
