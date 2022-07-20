@@ -97,6 +97,7 @@ public class PaysPayload {
     private String purpose;
 
     @JsonProperty("ERRMSG")
+    @Column(columnDefinition = "TEXT")
     private String errMsg;
 
 }
