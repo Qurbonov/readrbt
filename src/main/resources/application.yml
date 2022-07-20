@@ -1,8 +1,13 @@
 spring:
+  rabbitmq:
+    host: prod-rabbit.mf.uz
+    port: 5672
+    username: cportal
+    password: Kh4Gtd
   datasource:
     username: postgres
     password: Shoxruh0912
-    url: jdbc:postgresql://localhost:5432/postgres
+    url: jdbc:postgresql://localhost:5432/dxmap
     driver-class-name: org.postgresql.Driver
   jpa:
     hibernate:
@@ -17,5 +22,5 @@ springdoc:
   api-docs:
     path: /api/doc
 queue:
-  name: cportal_in
+ name: cportal_in
 

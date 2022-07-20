@@ -2,6 +2,7 @@ package uz.atm;
 
 import io.swagger.v3.oas.annotations.OpenAPIDefinition;
 import org.modelmapper.ModelMapper;
+import org.springframework.amqp.rabbit.annotation.EnableRabbit;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -14,6 +15,7 @@ import uz.atm.services.auth.AuthUserService;
 
 @SpringBootApplication
 @OpenAPIDefinition
+@EnableRabbit
 @EnableConfigurationProperties(value = OpenApiProperties.class)
 public class ReadRbtMsgApplication {
 

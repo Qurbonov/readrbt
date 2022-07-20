@@ -12,8 +12,11 @@ import java.time.LocalDate;
 public interface ResultatMethodRepository extends JpaRepository<ResultatMethod, Long> {
 
     @Query(value = "select public.get_resultat(:etpId,:lotId,:organName,:organInn,:maloy,:vendorInn,:vendorName,:contractNum,:procId,:fromDate,:toDate,:sizee,:page);", nativeQuery = true)
-    String findByCriteria(@Param("etpId") Integer etpId,@Param("lotId") Long lotId, @Param("organName") String organName, @Param("organInn") String organInn,
+    String findByCriteria(@Param("etpId") Integer etpId, @Param("lotId") Long lotId, @Param("organName") String organName, @Param("organInn") String organInn,
                           @Param("maloy") String maloy, @Param("vendorInn") String vendorInn, @Param("vendorName") String vendorName,
                           @Param("contractNum") String contractNum, @Param("procId") Integer procId, @Param("fromDate") LocalDate fromDate,
                           @Param("toDate") LocalDate toDate, @Param("sizee") Integer sizee, @Param("page") Integer page);
+
+    @Query(value = "select public.get_chart_info(:year)", nativeQuery = true)
+    String getChartInfo(@Param("year") Integer year);
 }

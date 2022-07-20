@@ -6,6 +6,7 @@ import com.fasterxml.jackson.databind.SerializationFeature;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 import uz.atm.criteria.ResultatCriteria;
+import uz.atm.dto.charts.EtpResultatDto;
 import uz.atm.dto.methods.ResultatCollectedDto;
 import uz.atm.dto.methods.ResultatDto;
 import uz.atm.model.resultat.ResultatMethod;
@@ -96,5 +97,18 @@ public class ResultatService extends AbstractService<ResultatMethodRepository> {
             resultatCollectedDto.contractInfo = contractInfoRepository.findAllByPayload_LotId(lotId);
             return Optional.of(resultatCollectedDto);
         } else return Optional.empty();
+    }
+
+    public EtpResultatDto getChartInfo(Integer year) {
+        EtpResultatDto resultatDto2 = new EtpResultatDto();
+        String json = repository.getChartInfo(year);
+        try {
+            resultatDto2 = mapper.readValue(json, new TypeReference<>() {
+            });
+            return resultatDto2;
+        } catch (JsonProcessingException e) {
+            throw new RuntimeException(e);
+        }
+
     }
 }

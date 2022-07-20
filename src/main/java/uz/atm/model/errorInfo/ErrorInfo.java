@@ -42,6 +42,5 @@ public class ErrorInfo extends DateEntity {
 		@JsonProperty("ERRTXT")
 		@Column(columnDefinition = "TEXT")
 		private String errTxt;
-
 	}
 }

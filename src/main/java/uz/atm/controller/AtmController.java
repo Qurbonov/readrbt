@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import uz.atm.criteria.ClaimInfoCriteria;
 import uz.atm.criteria.RequestEtpCriteria;
 import uz.atm.criteria.ResultatCriteria;
+import uz.atm.dto.charts.EtpResultatDto;
 import uz.atm.dto.methods.*;
 import uz.atm.enums.Pltf;
 import uz.atm.enums.ProcId;
@@ -228,6 +229,12 @@ public class AtmController {
         return claimInfoEtpDto
                 .map(m -> new ResponseEntity<>(m, HttpStatus.OK))
                 .orElseGet(() -> new ResponseEntity<>(new ArrayList<>(), HttpStatus.NOT_FOUND));
+    }
+
+    @GetMapping("/getChartInfos")
+    public ResponseEntity<EtpResultatDto> getChartInfo(Integer year) {
+        EtpResultatDto dto = resultatService.getChartInfo(year);
+        return new ResponseEntity<>(dto, HttpStatus.OK);
     }
 
 }
