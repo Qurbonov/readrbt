@@ -15,6 +15,6 @@ public interface ContractInfoRepository extends JpaRepository<ContractInfo, Long
     List<ContractInfo> findAllByPayload_LotId(Long payload_lotId);
 
     @Query(value = "SELECT * FROM public.contract_info ci " +
-            "where ci.state = 2 AND lot_id = :lot_id ORDER BY ci.version DESC LIMIT 1", nativeQuery = true)
+            "where ci.state = 2 AND lot_id = :lot_id ORDER BY ci.version DESC , ci.response_id DESC LIMIT 1", nativeQuery = true)
     Optional<ContractInfo> findContractInfoByState(@Param("lot_id") Long lotId);
 }
