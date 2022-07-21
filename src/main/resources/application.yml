@@ -1,10 +1,5 @@
 spring:
-  rabbitmq:
-    host: prod-rabbit.mf.uz
-    port: 5672
-    username: cportal
-    password: Kh4Gtd
-  datasource:
+   datasource:
     username: postgres
     password: Shoxruh0912
     url: jdbc:postgresql://localhost:5432/dxmap
