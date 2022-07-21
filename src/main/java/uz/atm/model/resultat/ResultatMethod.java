@@ -53,13 +53,13 @@ public class ResultatMethod extends DateEntity {
 
         @Transient
         @JsonProperty("LOTDATES1")
-        @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
+        @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd.MM.yyyy")
         private Date lotDates1;
 
 
         @Transient
         @JsonProperty("LOTDATES2")
-        @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
+        @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd.MM.yyyy")
         private Date lotDates2;
 
         public Date getLotDates1() {
@@ -73,11 +73,25 @@ public class ResultatMethod extends DateEntity {
         @JsonProperty("LOTDATE2")
         @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "ddMMyyyy")
         private Date lotDate2;
+
+
         @JsonProperty("CONTRACTNUM")
         private String contractNum;
+
+
         @JsonProperty("CONTRACTDAT")
         @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "ddMMyyyy")
         private Date contractDat;
+
+        @Transient
+        @JsonProperty("CONTRACTDATS")
+        @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd.MM.yyyy")
+        private Date contractSDat;
+
+        public Date getContractSDat() {
+            return contractDat;
+        }
+
         @JsonProperty("DVR")
         private int dvr;
         @JsonProperty("ORGAN")
@@ -121,25 +135,55 @@ public class ResultatMethod extends DateEntity {
         private String avans;
         @JsonProperty("AVANSDAY")
         private int avansDay;
+
+
+
+
         @JsonProperty("CONTRACTBEG")
         @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "ddMMyyyy")
         private Date contractBeg;
+
+        @Transient
+        @JsonProperty("CONTRACTBEGS")
+        @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd.MM.yyyy")
+        private Date contractsBeg;
+
+        public Date getContractsBeg() {
+            return contractBeg;
+        }
+
         @JsonProperty("CONTRACTEND")
         @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "ddMMyyyy")
         private Date contractEnd;
+
+        @Transient
+        @JsonProperty("CONTRACTENDS")
+        @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd.MM.yyyy")
+        private Date contractsEnd;
+
+        public Date getContractsEnd() {
+            return contractEnd;
+        }
+
         @JsonProperty("PURPOSE")
         @Column(columnDefinition = "TEXT")
         private String purpose;
+
         @JsonProperty("VENDORTERR")
         private int vendorTerr;
+
         @JsonProperty("BENEFICIAR")
         private String beneficiar;
+
         @JsonProperty("RASCHOT")
         private int raschot;
+
         @JsonProperty("REESTR_ID")
         private Long reestrId;
+
         @JsonProperty("PNFL")
         private Long pnfl;
+
         @JsonProperty("VENDORCOUNTRY")
         private String vendorCountry;
         @JsonProperty("VENDORFORIEGIN")
