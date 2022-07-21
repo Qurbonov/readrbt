@@ -20,5 +20,4 @@ public interface ClaimInfoEtpRepository extends JpaRepository<ClaimInfoEtp, Long
                          @Param("srok") Integer srok, @Param("state") Integer state, @Param("summaFrom") Long summaFrom,
                          @Param("summaTo") Long summaTo, @Param("size") Integer size, @Param("page") Integer page);
 
-
 }

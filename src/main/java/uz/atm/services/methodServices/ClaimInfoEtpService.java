@@ -5,6 +5,7 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import org.springframework.stereotype.Service;
 import uz.atm.criteria.ClaimInfoCriteria;
 import uz.atm.dto.methods.ClaimInfoEtpDto;
+import uz.atm.dto.methods.mapper.ClaimInfoMapper;
 import uz.atm.model.clalimInfo.ClaimInfoEtp;
 import uz.atm.repository.ClaimInfoEtpRepository;
 import uz.atm.services.AbstractService;
@@ -36,7 +37,7 @@ public class ClaimInfoEtpService extends AbstractService<ClaimInfoEtpRepository>
             String dataJson = repository.getByCriteria(
                     c.getLotId(), c.getOrganName(), c.getProcId(),
                     c.getSrok(), c.getState(), c.getSummaFrom(),
-                    c.getSummaTo(),c.getSize(),c.getPage());
+                    c.getSummaTo(), c.getSize(), c.getPage());
             List<ClaimInfoEtpDto> claimInfoEtpDtos = mapper.readValue(dataJson, new TypeReference<List<ClaimInfoEtpDto>>() {
             });
             return Optional.of(claimInfoEtpDtos);
@@ -45,4 +46,5 @@ public class ClaimInfoEtpService extends AbstractService<ClaimInfoEtpRepository>
             return Optional.empty();
         }
     }
+
 }

@@ -46,9 +46,30 @@ public class ResultatMethod extends DateEntity {
         private Long lotId;
         @JsonProperty("PROC_ID")
         private int procId;
+
         @JsonProperty("LOTDATE1")
         @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "ddMMyyyy")
         private Date lotDate1;
+
+        @Transient
+        @JsonProperty("LOTDATES1")
+        @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
+        private Date lotDates1;
+
+
+        @Transient
+        @JsonProperty("LOTDATES2")
+        @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
+        private Date lotDates2;
+
+        public Date getLotDates1() {
+            return lotDate1;
+        }
+
+        public Date getLotDates2() {
+            return lotDate2;
+        }
+
         @JsonProperty("LOTDATE2")
         @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "ddMMyyyy")
         private Date lotDate2;
@@ -61,6 +82,19 @@ public class ResultatMethod extends DateEntity {
         private int dvr;
         @JsonProperty("ORGAN")
         private String organ;
+
+        @Transient
+        @JsonProperty("ORGAN_NAME")
+        private String organName;
+
+        public String getOrganName() {
+            return organName;
+        }
+
+        public void setOrganName(String organName) {
+            this.organName = organName;
+        }
+
         @JsonProperty("INN")
         private String inn;
         @JsonProperty("LS")

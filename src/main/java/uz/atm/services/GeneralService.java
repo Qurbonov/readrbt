@@ -3,6 +3,7 @@ package uz.atm.services;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.google.gson.Gson;
 import lombok.RequiredArgsConstructor;
+import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import uz.atm.enums.Methods;
@@ -38,6 +39,8 @@ public class GeneralService {
 
     private final RkpPaysService rkpPaysService;
 
+
+
 /*    public void parse(String str) throws JsonProcessingException {
         General general = new Gson().fromJson(str, General.class);
         if (Objects.nonNull(general.getMETHOD_NAME())) {
@@ -67,25 +70,25 @@ public class GeneralService {
             manualIdentifierService.saveManualAccordingToType(str);
     }*/
 
+    @SneakyThrows
     public void parser(String str) {
 
         General general = new Gson().fromJson(str, General.class);
-
         if (general.getMETHOD_NAME() == null) {
             general.setMETHOD_NAME("DEFAULT");
         }
 
         if (Objects.nonNull(general.getMETHOD_NAME())) {
-
             String methodName = general.getMETHOD_NAME();
             Methods methods;
-
             try {
                 methods = Methods.valueOf(methodName);
             } catch (IllegalArgumentException e) {
                 System.out.println(str);
+
                 methods = Methods.valueOf("DEFAULT");
             }
+
 
             try {
                 switch (methods) {
@@ -110,4 +113,5 @@ public class GeneralService {
             }
         }
     }
+
 }

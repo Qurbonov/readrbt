@@ -25,7 +25,7 @@ public class ManExpGoods {
     @JsonProperty("DIGEST_ID")
     private int digestId;
     @JsonProperty("REQUEST_ID")
-    private int requestId;
+    private Integer requestId;
     @JsonProperty("TYPE")
     private String type;
     @JsonProperty("PAYLOAD")

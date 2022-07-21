@@ -14,32 +14,32 @@ public class ClaimInfoEtpDto {
     public Long id;
 
     @JsonProperty("lot_id")
-    public Long lotId;
+    public Long lotId;//+
 
     @JsonProperty("organ_name")
-    public String organName;
+    public String organName; //?
 
-    public Long summa;
+    public Long summa;//+
 
-    public Integer srok;
+    public Integer srok; //?
 
-    public String purpose;
+    public String purpose;//+
 
-    public Integer state;
+    public Integer state; //?
 
     @JsonProperty("proc_id")
-    public Integer prodId;
+    public Integer prodId; //+
 
     @JsonProperty("inn")
-    public Long inn;
+    public Long inn;//+
 
     @JsonProperty("date1")
-    public Date date1;
+    public Date date1; //+
 
     @JsonProperty("date2")
-    public Date date2;
+    public Date date2; //+
 
     @JsonProperty("dvr")
-    public Integer dvr;
+    public Integer dvr; //+
 
 }

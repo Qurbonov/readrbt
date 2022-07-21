@@ -15,6 +15,7 @@ import uz.atm.model.resultat.resultatDTO.ResultatDTO;
 import uz.atm.model.resultat.resultatDTO.SpecificationsDTO;
 import uz.atm.repository.ContractInfoRepository;
 import uz.atm.repository.ResultatMethodRepository;
+import uz.atm.repository.manualsRepo.ManOrganizationsRepo;
 import uz.atm.services.AbstractService;
 
 import java.util.ArrayList;
@@ -34,11 +35,14 @@ public class ResultatService extends AbstractService<ResultatMethodRepository> {
 
     private final ModelMapper modelMapper;
 
+    private final ManOrganizationsRepo manOrganizationsRepo;
 
-    public ResultatService(ResultatMethodRepository repository, ContractInfoRepository contractInfoRepository, ModelMapper modelMapper) {
+
+    public ResultatService(ResultatMethodRepository repository, ContractInfoRepository contractInfoRepository, ModelMapper modelMapper, ManOrganizationsRepo manOrganizationsRepo) {
         super(repository);
         this.contractInfoRepository = contractInfoRepository;
         this.modelMapper = modelMapper;
+        this.manOrganizationsRepo = manOrganizationsRepo;
     }
 
     public void save(String json) throws JsonProcessingException {
@@ -92,6 +96,11 @@ public class ResultatService extends AbstractService<ResultatMethodRepository> {
         Optional<ResultatMethod> byId = repository.findById(id);
         if (byId.isPresent()) {
             ResultatMethod resultatMethod = byId.get();
+            String organ = resultatMethod.getPayload().getOrgan();
+            String organName = manOrganizationsRepo.getNameByOrgan(organ);
+            resultatMethod.getPayload().setOrganName(organName);
+
+
             resultatCollectedDto.resultat = resultatMethod;
             Long lotId = resultatMethod.getPayload().getLotId();
             if (contractInfoRepository.findContractInfoByState(lotId).isPresent())
