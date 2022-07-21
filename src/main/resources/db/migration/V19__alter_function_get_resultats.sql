@@ -42,6 +42,7 @@ BEGIN
                AND (v_proc_id = rm.proc_id OR v_proc_id = 2147483647)
                AND (v_etp_id = rm.etp_id OR v_etp_id = 2147483647)
                AND (rm.contract_dat BETWEEN v_date1 AND v_date2)
+             ORDER BY mpd.organ
              limit v_limit offset (v_offset - 1) * v_limit
         loop
             select *
