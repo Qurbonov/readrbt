@@ -66,6 +66,7 @@ public class ManAccounts {
             @JsonProperty("TERRITORY")
             private String territory;
             @JsonProperty("NAME")
+            @Column(columnDefinition = "TEXT")
             private String name;
             @JsonProperty("STATE")
             private String state;
