@@ -6,7 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import uz.atm.enums.Role;
 import uz.atm.enums.Status;
-import uz.atm.model.Auditable;
+import uz.atm.model.SubAuditable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -23,7 +23,7 @@ import javax.persistence.Enumerated;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class AuthUser extends Auditable {
+public class AuthUser extends SubAuditable {
 
     @Column(nullable = false, unique = true)
     private String username;

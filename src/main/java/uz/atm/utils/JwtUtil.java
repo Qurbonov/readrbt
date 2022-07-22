@@ -1,4 +1,4 @@
-package uz.atm.util;
+package uz.atm.utils;
 
 import io.jsonwebtoken.*;
 import uz.atm.dto.auth.JwtDTO;

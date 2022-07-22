@@ -2,7 +2,7 @@ package uz.atm.model.noResult;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
-import uz.atm.model.DateEntity;
+import uz.atm.model.Auditable;
 
 import javax.persistence.*;
 
@@ -11,10 +11,7 @@ import javax.persistence.*;
 @Getter
 @Setter
 @Entity
-public class NoResult extends DateEntity {
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id;
+public class NoResult extends Auditable {
 
 	@JsonProperty("ETP_ID")
 	private int etpId;

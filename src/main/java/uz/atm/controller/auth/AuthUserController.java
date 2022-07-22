@@ -1,12 +1,10 @@
 package uz.atm.controller.auth;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import uz.atm.dto.auth.AuthResetPasswordDto;
-import uz.atm.dto.auth.AuthUserCreateDto;
-import uz.atm.dto.auth.AuthUserDto;
-import uz.atm.dto.auth.AuthUserUpdateDto;
+import uz.atm.dto.auth.*;
 import uz.atm.enums.Status;
 import uz.atm.services.auth.AuthUserService;
 
@@ -17,22 +15,28 @@ import java.util.List;
  * Date: 06/07/22
  * Time: 11:27
  */
-@CrossOrigin(origins = "http://192.168.254.145:3085")
+@CrossOrigin(origins = "${front.address}")
 @RestController
+@Slf4j
 @RequestMapping("/v1/atm/auth")
 public class AuthUserController {
 
     private final AuthUserService service;
-
 
     public AuthUserController(AuthUserService service) {
         this.service = service;
     }
 
 
+    @PostMapping("/login")
+    public ResponseEntity<LoginResponse> login(@RequestBody ProfileDetailDTO dto) {
+        log.info("Login {}", dto);
+        return service.login(dto);
+    }
+
+
     @PostMapping("/create")
     public ResponseEntity<?> create(@RequestBody AuthUserCreateDto createDto) {
-
         AuthUserDto authUserDto = service.create(createDto);
         return new ResponseEntity<>(authUserDto, HttpStatus.CREATED);
     }

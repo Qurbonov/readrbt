@@ -3,7 +3,7 @@ package uz.atm.mapper.blackList;
 import org.mapstruct.Mapper;
 import org.springframework.stereotype.Component;
 import uz.atm.dto.blackList.BlackListCreateDto;
-import uz.atm.model.BlackList;
+import uz.atm.model.blackList.BlackList;
 
 /**
  * Author: Bekpulatov Shoxruh

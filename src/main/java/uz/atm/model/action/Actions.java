@@ -4,8 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import uz.atm.enums.ActionMessage;
-import uz.atm.model.Auditable;
+import uz.atm.model.SubAuditable;
 
 import javax.persistence.Entity;
 
@@ -19,7 +18,7 @@ import javax.persistence.Entity;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Actions extends Auditable {
+public class Actions extends SubAuditable {
 
     private String message;
 

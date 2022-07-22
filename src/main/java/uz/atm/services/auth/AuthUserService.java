@@ -1,5 +1,6 @@
 package uz.atm.services.auth;
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -7,10 +8,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import uz.atm.config.encoder.PassEncoder;
-import uz.atm.dto.auth.AuthResetPasswordDto;
-import uz.atm.dto.auth.AuthUserCreateDto;
-import uz.atm.dto.auth.AuthUserDto;
-import uz.atm.dto.auth.AuthUserUpdateDto;
+import uz.atm.dto.auth.*;
 import uz.atm.enums.Status;
 import uz.atm.exceptions.AppBadRequestException;
 import uz.atm.exceptions.UserAlreadyExistException;
@@ -20,6 +18,7 @@ import uz.atm.model.auth.AuthUser;
 import uz.atm.repository.AuthUserRepository;
 import uz.atm.services.AbstractService;
 import uz.atm.services.GenericService;
+import uz.atm.utils.JwtUtil;
 
 import java.util.List;
 import java.util.Optional;
@@ -33,7 +32,6 @@ import java.util.Optional;
 @Service
 public class AuthUserService extends AbstractService<AuthUserRepository> implements UserDetailsService, GenericService<
         AuthUserDto, AuthUserUpdateDto, AuthUserCreateDto, Long> {
-
 
     private final AuthUserMapper authUserMapper;
     private final PassEncoder passEncoder;
@@ -56,6 +54,33 @@ public class AuthUserService extends AbstractService<AuthUserRepository> impleme
             throw new UsernameNotFoundException("User not found");
         }
     }
+
+    /**
+     * @param dto -> username, password
+     * @return Token
+     */
+    public ResponseEntity<LoginResponse> login(ProfileDetailDTO dto) {
+
+        Optional<AuthUser> authUser = repository.findByUsernameAndDeletedFalse(dto.username);
+
+        if (authUser.isEmpty()) {
+            return ResponseEntity.badRequest().body(new LoginResponse(false, "Check your username!!!", false));
+        }
+        boolean matches = passEncoder.passwordEncoder().matches(dto.password, authUser.get().getPassword());
+
+        if (!matches) {
+            return ResponseEntity.badRequest().body(new LoginResponse(false, "Check your password!!!", true));
+        }
+
+        if (authUser.get().getStatus().equals(Status.BLOCK)) {
+            return ResponseEntity.badRequest().body(new LoginResponse(false, "Your account is blocked!!!", true));
+        }
+
+        String token = JwtUtil.encode(authUser.get().getUsername(), authUser.get().getRole());
+
+        return ResponseEntity.ok().body(new LoginResponse(true, "You are login successfully", true, token));
+    }
+
 
     @Override
     public AuthUserDto create(AuthUserCreateDto createDto) throws UserAlreadyExistException {

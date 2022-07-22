@@ -49,8 +49,6 @@ public class ResultatService extends AbstractService<ResultatMethodRepository> {
         try {
             ResultatMethod resultatMethod = mapper.readValue(json, new TypeReference<>() {
             });
-
-
             ResultatMethod save = repository.save(resultatMethod);
         } catch (JsonProcessingException e) {
             ResultatDTO resultatDTO = mapper.readValue(json, new TypeReference<>() {
@@ -99,7 +97,6 @@ public class ResultatService extends AbstractService<ResultatMethodRepository> {
             String organ = resultatMethod.getPayload().getOrgan();
             String organName = manOrganizationsRepo.getNameByOrgan(organ);
             resultatMethod.getPayload().setOrganName(organName);
-
 
             resultatCollectedDto.resultat = resultatMethod;
             Long lotId = resultatMethod.getPayload().getLotId();

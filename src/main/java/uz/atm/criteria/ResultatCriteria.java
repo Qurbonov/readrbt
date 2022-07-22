@@ -30,11 +30,11 @@ public class ResultatCriteria extends GenericCriteria {
 
     private Integer procId;
 
-    public LocalDate fromDate;
+    private LocalDate fromDate;
 
-    public LocalDate toDate;
+    private LocalDate toDate;
 
-    public Integer etpId;
+    private Integer etpId;
 
 
 

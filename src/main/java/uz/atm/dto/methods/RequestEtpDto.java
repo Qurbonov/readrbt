@@ -1,6 +1,7 @@
 package uz.atm.dto.methods;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import uz.atm.dto.GenericDto;
 
 import java.util.Date;
 
@@ -9,9 +10,7 @@ import java.util.Date;
  * Date: 28/06/22
  * Time: 11:15
  */
-public class RequestEtpDto {
-
-    public Long id;
+public class RequestEtpDto extends GenericDto {
 
     @JsonProperty("lot_id")
     public Long lotId;

@@ -1,6 +1,7 @@
 package uz.atm.dto.methods;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import uz.atm.dto.GenericDto;
 
 import java.sql.Date;
 
@@ -8,9 +9,7 @@ import java.sql.Date;
  * @author Bekpulatov Shoxruh
  * createdAt 27/06/22
  */
-public class ResultatDto {
-
-    public Long id;
+public class ResultatDto extends GenericDto {
 
     @JsonProperty("lot_id")
     public Long lotId;

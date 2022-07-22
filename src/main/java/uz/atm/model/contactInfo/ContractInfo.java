@@ -3,7 +3,7 @@ package uz.atm.model.contactInfo;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
-import uz.atm.model.DateEntity;
+import uz.atm.model.Auditable;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -13,10 +13,7 @@ import java.util.Date;
 @NoArgsConstructor
 @Getter
 @Setter
-public class ContractInfo extends DateEntity {
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+public class ContractInfo extends Auditable {
 
 	@JsonProperty("RESPONSE_ID")
 	private Long responseId;

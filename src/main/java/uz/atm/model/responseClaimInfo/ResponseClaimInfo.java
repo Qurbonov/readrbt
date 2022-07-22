@@ -5,7 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import uz.atm.model.DateEntity;
+import uz.atm.model.Auditable;
 
 import javax.persistence.*;
 
@@ -14,10 +14,8 @@ import javax.persistence.*;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-public class ResponseClaimInfo extends DateEntity {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+public class ResponseClaimInfo extends Auditable {
+
     @JsonProperty("RESPONSE_ID")
     private int responseId;
     @JsonProperty("REQUEST_ID")

@@ -1,4 +1,4 @@
-package uz.atm.model;
+package uz.atm.model.blackList;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;

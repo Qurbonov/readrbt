@@ -4,13 +4,11 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 import uz.atm.dto.auth.JwtDTO;
-import uz.atm.services.auth.AuthUserService;
-import uz.atm.util.JwtUtil;
+import uz.atm.utils.JwtUtil;
 
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
@@ -30,47 +28,28 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class JwtFilter extends OncePerRequestFilter {
 
-
-    private final AuthUserService authUserService;
-
-
     @Override
     protected void doFilterInternal(HttpServletRequest request,
                                     HttpServletResponse response,
                                     FilterChain filterChain) throws ServletException, IOException {
         final String header = request.getHeader("Authorization");
-        if (Optional.ofNullable(header).isEmpty() || !header.startsWith("Bearer ")) {
-            filterChain.doFilter(request, response);
-            return;
-        }
+        if (Optional.ofNullable(header).isPresent() && header.startsWith("Bearer ")) {
+            try {
+                final String token = header.split(" ")[1].trim();
+                JwtDTO jwtDTO = JwtUtil.decode(token);
+                String username = jwtDTO.username;
+                String role = jwtDTO.role;
+                List<SimpleGrantedAuthority> roleList = Collections.singletonList(new SimpleGrantedAuthority(role));
 
-        try {
-            final String token = header.split(" ")[1].trim();
+                UsernamePasswordAuthenticationToken
+                        authentication = new UsernamePasswordAuthenticationToken(username,
+                        null, roleList);
 
-            JwtDTO jwtDTO = JwtUtil.decode(token);
-
-            String username = jwtDTO.getUsername();
-            String role = jwtDTO.getRole();
-            List<SimpleGrantedAuthority> roleList = Collections.singletonList(new SimpleGrantedAuthority(role));
-
-//            UserDetails userDetails = authUserService.loadUserByUsername(username);
-
-            UsernamePasswordAuthenticationToken
-                    authentication = new UsernamePasswordAuthenticationToken(username,
-                    null, roleList);
-
-            authentication.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
-
-            SecurityContextHolder.getContext().setAuthentication(authentication);
-
-        } catch (RuntimeException e) {
-            response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
-            return;
-        }
-
-        filterChain.doFilter(request, response);
-
+                authentication.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
+                SecurityContextHolder.getContext().setAuthentication(authentication);
+            } catch (RuntimeException e) {
+                response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+            }
+        } else filterChain.doFilter(request, response);
     }
-
-
 }

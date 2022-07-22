@@ -4,7 +4,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import uz.atm.dto.blackList.BlackListCreateDto;
-import uz.atm.model.BlackList;
+import uz.atm.model.blackList.BlackList;
 import uz.atm.services.blacklist.BlackListService;
 
 import java.util.List;
@@ -15,6 +15,7 @@ import java.util.List;
  * Time: 15:10
  */
 @RestController
+@CrossOrigin(origins = "${front.address}")
 @RequestMapping("/v1/atm/black/list")
 public class BlackListController {
 

@@ -1,14 +1,12 @@
 package uz.atm.config;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import uz.atm.config.filter.JwtFilter;
@@ -31,8 +29,8 @@ import uz.atm.services.auth.AuthUserService;
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     private final AuthUserService authUserService;
-
     private final JwtFilter jwtFilter;
+    private final PasswordEncoder passwordEncoder;
 
     private static final String[] AUTH_BLACKLIST = {
             "/v1/atm/auth/**",
@@ -43,20 +41,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) {
-
         try {
-            auth.userDetailsService(authUserService)
-                    .passwordEncoder(getPasswordEncoder());
+            auth.userDetailsService(authUserService).passwordEncoder(passwordEncoder);
         } catch (Exception e) {
             throw new IllegalArgumentException();
         }
     }
-
-    @Bean
-    public PasswordEncoder getPasswordEncoder() {
-        return new BCryptPasswordEncoder();
-    }
-
 
     @Override
     protected void configure(HttpSecurity http) {
@@ -67,7 +57,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             http.authorizeRequests()
                     .antMatchers(AUTH_BLACKLIST).authenticated()
                     .anyRequest().permitAll();
-//            http.cors().and().csrf().disable();
         } catch (Exception e) {
             throw new AppForbiddenException(e.getMessage());
         }

@@ -2,43 +2,43 @@ package uz.atm.model.responseAuction;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
-import uz.atm.model.DateEntity;
+import uz.atm.model.Auditable;
 
-import javax.persistence.*;
+import javax.persistence.Embeddable;
+import javax.persistence.Embedded;
+import javax.persistence.Entity;
 
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
 @Entity
-public class ResponseAuction extends DateEntity {
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id;
-	@JsonProperty("RESPONSE_ID")
-	private long responseId;
+public class ResponseAuction extends Auditable {
 
-	@JsonProperty("REQUEST_ID")
-	private long requestId;
+    @JsonProperty("RESPONSE_ID")
+    private long responseId;
 
-	@JsonProperty("METHOD_NAME")
-	private String methodName;
+    @JsonProperty("REQUEST_ID")
+    private long requestId;
 
-	@JsonProperty("PAYLOAD")
-	@Embedded
-	private Payload payload;
+    @JsonProperty("METHOD_NAME")
+    private String methodName;
 
-	@Embeddable
-	@Data
-	private static class Payload {
-		@JsonProperty("LOTID")
-		private Long lotId;
+    @JsonProperty("PAYLOAD")
+    @Embedded
+    private Payload payload;
 
-		@JsonProperty("STATE")
-		private int state;
+    @Embeddable
+    @Data
+    private static class Payload {
+        @JsonProperty("LOTID")
+        private Long lotId;
 
-		@JsonProperty("MSG")
-		private String msg;
-	}
+        @JsonProperty("STATE")
+        private int state;
+
+        @JsonProperty("MSG")
+        private String msg;
+    }
 
 }

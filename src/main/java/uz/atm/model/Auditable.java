@@ -33,10 +33,4 @@ public abstract class Auditable implements BaseEntity, Serializable {
     @Column(name = "created_at", columnDefinition = "TIMESTAMP default NOW()")
     private LocalDateTime createdAt;
 
-    @LastModifiedDate
-    @UpdateTimestamp
-    private LocalDateTime updatedAt;
-
-    private boolean deleted = false;
-
 }

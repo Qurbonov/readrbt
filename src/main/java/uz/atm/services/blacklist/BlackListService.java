@@ -5,7 +5,7 @@ import uz.atm.dto.blackList.BlackListCreateDto;
 import uz.atm.enums.BlackListStatus;
 import uz.atm.exceptions.AppBadRequestException;
 import uz.atm.mapper.blackList.BlackListMapper;
-import uz.atm.model.BlackList;
+import uz.atm.model.blackList.BlackList;
 import uz.atm.model.action.Actions;
 import uz.atm.repository.BlackListRepository;
 import uz.atm.services.AbstractService;
@@ -38,7 +38,6 @@ public class BlackListService extends AbstractService<BlackListRepository> {
     public List<BlackList> getAll() {
         return repository.findAllByStatus(BlackListStatus.BLOCK.getCode());
     }
-
 
     public Long create(BlackListCreateDto list) {
         BlackList blackList = blackListMapper.fromCreateDto(list);

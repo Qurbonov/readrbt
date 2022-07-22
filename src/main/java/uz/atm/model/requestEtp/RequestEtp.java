@@ -3,7 +3,8 @@ package uz.atm.model.requestEtp;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
-import uz.atm.model.DateEntity;
+import org.springframework.stereotype.Component;
+import uz.atm.model.Auditable;
 import uz.atm.model.resultat.Specifications;
 
 import javax.persistence.*;
@@ -15,10 +16,8 @@ import java.util.List;
 @NoArgsConstructor
 @Getter
 @Setter
-public class RequestEtp extends DateEntity {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+@Component
+public class RequestEtp extends Auditable {
 
     @JsonProperty("ETP_ID")
     private Long etpId;

@@ -27,7 +27,7 @@ import java.util.Optional;
  * @author Bekpulatov Shoxruh
  * createdAt 27/06/22
  */
-@CrossOrigin(origins = "http://192.168.254.145:3085")
+@CrossOrigin(origins = "${front.address}")
 @RestController
 @RequestMapping("/v1/atm")
 @RequiredArgsConstructor

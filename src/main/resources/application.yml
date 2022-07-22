@@ -1,5 +1,5 @@
 spring:
-   datasource:
+  datasource:
     username: postgres
     password: Shoxruh0912
     url: jdbc:postgresql://localhost:5432/dxmap
@@ -10,7 +10,6 @@ spring:
   flyway:
     enabled: true
     baseline-on-migrate: true
- 
 springdoc:
   swagger-ui:
     path: /swagger-ui
@@ -19,3 +18,5 @@ springdoc:
 queue:
  name: cportal_in
 
+front:
+  address: http://192.168.254.145:3085 # for @CrossOrigin

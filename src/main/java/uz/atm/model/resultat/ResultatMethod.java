@@ -6,7 +6,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import uz.atm.model.DateEntity;
+import uz.atm.model.Auditable;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -18,15 +18,12 @@ import java.util.List;
 @NoArgsConstructor
 @JsonIgnoreProperties
 
-public class ResultatMethod extends DateEntity {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id", unique = true)
-    private Long id;
+public class ResultatMethod extends Auditable {
 
     @Column(name = "etp_id")
     @JsonProperty("ETP_ID")
     private int etp_id;
+
     @JsonProperty("REQUEST_ID")
     private int request_id;
 
@@ -135,8 +132,6 @@ public class ResultatMethod extends DateEntity {
         private String avans;
         @JsonProperty("AVANSDAY")
         private int avansDay;
-
-
 
 
         @JsonProperty("CONTRACTBEG")

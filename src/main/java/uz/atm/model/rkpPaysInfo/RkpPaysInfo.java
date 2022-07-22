@@ -7,13 +7,10 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import uz.atm.model.DateEntity;
-import uz.atm.model.responseClaimInfo.ResponseClaimInfo;
+import uz.atm.model.Auditable;
 
 import javax.persistence.*;
-import java.time.LocalDate;
 import java.util.Date;
-import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -21,10 +18,7 @@ import java.util.List;
 @Setter
 @Entity
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class RkpPaysInfo extends DateEntity {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+public class RkpPaysInfo extends Auditable {
 
     @JsonProperty("RESPONSE_ID")
     private Long responseId;

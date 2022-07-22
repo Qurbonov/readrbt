@@ -35,7 +35,6 @@ public class OpenApiConfig {
         this.openApiProperties = openApiProperties;
     }
 
-
     @Bean
     public OpenAPI api() {
         return new OpenAPI()
